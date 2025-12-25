@@ -423,6 +423,68 @@
           </div>
         </div>
         
+        <!-- Organization Filter Row -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="organizationSelect" class="form-label">
+              <i class="bi bi-building"></i> Select Organization
+            </label>
+            <select class="form-select" id="organizationSelect">
+              <option value="">All Organizations</option>
+            </select>
+            <small class="text-muted">Select an organization to see its active vendors and rules</small>
+          </div>
+          <div class="col-md-6">
+            <div class="mt-4 pt-1">
+              <div class="d-flex gap-3">
+                <span class="badge bg-info" id="orgDeviceCount">0 Devices</span>
+                <span class="badge bg-success" id="orgVendorCount">0 Vendors</span>
+                <span class="badge bg-warning text-dark" id="orgRuleCount">0 Rules</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSV Upload Section -->
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0"><i class="bi bi-file-earmark-text"></i> Upload CSV File to Filter by Specific Vendors</h6>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-upload"></i></span>
+                      <input type="file" class="form-control" id="csvFileInput" accept=".csv" />
+                      <button class="btn btn-outline-primary" id="uploadCsvBtn">
+                        <i class="bi bi-upload"></i> Upload & Filter
+                      </button>
+                      <button class="btn btn-outline-danger" id="clearCsvBtn" style="display: none;">
+                        <i class="bi bi-x-circle"></i> Clear Filter
+                      </button>
+                    </div>
+                    <small class="text-muted">Upload a CSV file containing vendor names to filter rules. CSV should have vendor names in the first column.</small>
+                    <div id="csvFileInfo" class="mt-2" style="display: none;">
+                      <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> <span id="csvFileName"></span> - 
+                        <span id="csvVendorCount"></span> vendors loaded
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div id="csvVendorsList" style="display: none;">
+                      <small class="text-muted"><strong>Loaded vendors:</strong></small>
+                      <div id="csvVendorsDisplay" class="mt-1"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row mb-3">
           <div class="col-md-8">
             <div class="input-group">
@@ -432,8 +494,11 @@
               <button class="btn btn-primary" id="searchVendorRulesBtn">
                 <i class="bi bi-search"></i> Get Rules
               </button>
+              <button class="btn btn-outline-secondary" id="getOrgVendorRulesBtn" style="display: none;">
+                <i class="bi bi-building-check"></i> Get Organization Rules
+              </button>
             </div>
-            <small class="text-muted">Enter one or more vendor names to see their applicable security rules</small>
+            <small class="text-muted">Enter vendor names or select an organization above to see applicable security rules</small>
           </div>
           <div class="col-md-4">
             <div class="input-group">
@@ -1791,19 +1856,27 @@
 
   // Vendor Rules Functions
   function searchVendorRules() {
-    const vendorInput = $('#vendorSearchInput').val().trim();
+    let vendors = [];
     
-    if (!vendorInput) {
-      showAlert('warning', 'Please enter at least one vendor name.');
-      return;
-    }
-    
-    // Parse comma-separated vendors
-    const vendors = vendorInput.split(',').map(v => v.trim()).filter(v => v.length > 0);
-    
-    if (vendors.length === 0) {
-      showAlert('warning', 'Please enter valid vendor names.');
-      return;
+    // Check if CSV filter is active
+    if (csvFilteredVendors && csvFilteredVendors.length > 0) {
+      vendors = csvFilteredVendors;
+      showAlert('info', `Using CSV filter: searching for ${vendors.length} vendors from uploaded file.`);
+    } else {
+      const vendorInput = $('#vendorSearchInput').val().trim();
+      
+      if (!vendorInput) {
+        showAlert('warning', 'Please enter at least one vendor name or upload a CSV file.');
+        return;
+      }
+      
+      // Parse comma-separated vendors
+      vendors = vendorInput.split(',').map(v => v.trim()).filter(v => v.length > 0);
+      
+      if (vendors.length === 0) {
+        showAlert('warning', 'Please enter valid vendor names.');
+        return;
+      }
     }
     
     const btn = $('#searchVendorRulesBtn');
@@ -2216,6 +2289,304 @@
     showAlert('info', `Added ${vendor} to search list`);
   }
 
+  // Organization Functions
+  function loadOrganizations() {
+    fetch('/api/organizations')
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error('Error loading organizations:', data.error);
+          showAlert('danger', `Error loading organizations: ${data.error}`);
+          return;
+        }
+        
+        populateOrganizationSelect(data.organizations);
+      })
+      .catch(error => {
+        console.error('Error loading organizations:', error);
+        showAlert('danger', 'Error loading organizations. Please try again.');
+      });
+  }
+  
+  function populateOrganizationSelect(organizations) {
+    const select = $('#organizationSelect');
+    select.empty();
+    select.append('<option value="">All Organizations</option>');
+    
+    organizations.forEach(org => {
+      const option = $('<option></option>')
+        .val(org.id)
+        .text(`${org.organization_name} (${org.device_count} devices, ${org.vendor_count} vendors)`)
+        .data('org', org);
+      select.append(option);
+    });
+  }
+  
+  function onOrganizationSelect() {
+    const selectedOrgId = $('#organizationSelect').val();
+    const selectedOption = $('#organizationSelect option:selected');
+    
+    if (!selectedOrgId) {
+      // Clear organization display
+      updateOrganizationStats(0, 0, 0);
+      $('#getOrgVendorRulesBtn').hide();
+      $('#vendorSearchInput').prop('placeholder', 'Enter vendor names (comma-separated) e.g., Fortigate, Microsoft, Cisco');
+      return;
+    }
+    
+    const orgData = selectedOption.data('org');
+    updateOrganizationStats(orgData.device_count, orgData.vendor_count, 0);
+    $('#getOrgVendorRulesBtn').show();
+    $('#vendorSearchInput').prop('placeholder', `Or enter custom vendor names for ${orgData.organization_name}`);
+  }
+  
+  function updateOrganizationStats(deviceCount, vendorCount, ruleCount) {
+    $('#orgDeviceCount').text(`${deviceCount} Devices`);
+    $('#orgVendorCount').text(`${vendorCount} Vendors`);
+    $('#orgRuleCount').text(`${ruleCount} Rules`);
+  }
+  
+  function getOrganizationVendorRules() {
+    const selectedOrgId = $('#organizationSelect').val();
+    if (!selectedOrgId) {
+      showAlert('warning', 'Please select an organization first.');
+      return;
+    }
+    
+    const btn = $('#getOrgVendorRulesBtn');
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Loading...').prop('disabled', true);
+    
+    $('#vendorRulesContainer').hide();
+    $('#vendorRulesLoadingSpinner').show();
+    
+    fetch(`/api/organizations/${selectedOrgId}/vendor-rules`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showAlert('danger', `Error: ${data.error}`);
+          $('#vendorRulesContainer').html(`
+            <div class="empty-state">
+              <i class="bi bi-exclamation-triangle"></i>
+              <h4>Error Loading Organization Rules</h4>
+              <p>${data.error}</p>
+            </div>
+          `).show();
+        } else if (data.total_rules === 0) {
+          $('#vendorRulesContainer').html(`
+            <div class="empty-state">
+              <i class="bi bi-info-circle"></i>
+              <h4>No Rules Found</h4>
+              <p>${data.message || 'No vendor rules found for this organization.'}</p>
+            </div>
+          `).show();
+          updateOrganizationStats(data.total_devices_with_vendors || 0, data.total_vendors, 0);
+        } else {
+          // Store data for filtering
+          vendorRulesData = data;
+          const processedData = displayOrganizationVendorRules(data);
+          
+          // Update stats based on whether CSV filter is applied
+          const statsData = processedData || data;
+          updateOrganizationStats(data.total_devices_with_vendors || 0, statsData.total_vendors, statsData.total_rules);
+          
+          if (csvFilteredVendors && csvFilteredVendors.length > 0) {
+            showAlert('success', `Found ${statsData.total_rules} rules for ${statsData.total_vendors} vendors (filtered by CSV) in ${data.organization_name}`);
+          } else {
+            showAlert('success', `Found ${statsData.total_rules} rules for ${statsData.total_vendors} vendors in ${data.organization_name}`);
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching organization vendor rules:', error);
+        showAlert('danger', 'Error loading organization rules. Please try again.');
+        $('#vendorRulesContainer').html(`
+          <div class="empty-state">
+            <i class="bi bi-exclamation-triangle"></i>
+            <h4>Error Loading Rules</h4>
+            <p>Failed to load organization vendor rules. Please try again.</p>
+          </div>
+        `).show();
+      })
+      .finally(() => {
+        $('#vendorRulesLoadingSpinner').hide();
+        btn.html(originalText).prop('disabled', false);
+      });
+  }
+  
+  function displayOrganizationVendorRules(data) {
+    let html = '';
+    let processedData = data;
+    
+    // Apply CSV filter if active
+    if (csvFilteredVendors && csvFilteredVendors.length > 0) {
+      const filteredVendorRulesGrouped = {};
+      let totalRulesAfterFilter = 0;
+      
+      // Enhanced vendor matching with common aliases
+      const vendorAliases = {
+        'fortinet': ['fortigate', 'fortiguard', 'fortiedr', 'fortideceptor', 'fortianalyzer', 'fortiweb', 'fortirecon'],
+        'microsoft': ['windows', 'ms'],
+        'trendmicro': ['trend micro', 'trend'],
+        'linux': ['centos', 'ubuntu', 'redhat', 'unix'],
+        'amazon': ['aws', 'ec2'],
+        'generic': ['unknown'],
+        'vmware': ['vm', 'vsphere', 'vcloud']
+      };
+      
+      function vendorMatches(csvVendor, ruleVendor) {
+        const csvLower = csvVendor.toLowerCase();
+        const ruleLower = ruleVendor.toLowerCase();
+        
+        // Exact match
+        if (csvLower === ruleLower) return true;
+        
+        // Partial match (either direction)
+        if (csvLower.includes(ruleLower) || ruleLower.includes(csvLower)) return true;
+        
+        // Alias matching
+        const aliases = vendorAliases[csvLower] || [];
+        if (aliases.some(alias => ruleLower.includes(alias) || alias.includes(ruleLower))) return true;
+        
+        // Check if rule vendor has aliases that match CSV vendor
+        for (const [mainVendor, aliasArray] of Object.entries(vendorAliases)) {
+          if (ruleLower.includes(mainVendor) || aliasArray.some(alias => ruleLower.includes(alias))) {
+            if (csvLower === mainVendor || aliasArray.includes(csvLower)) return true;
+          }
+        }
+        
+        return false;
+      }
+      
+      // Filter vendor_rules_grouped based on CSV vendors with enhanced matching
+      for (const [vendorName, vendorData] of Object.entries(data.vendor_rules_grouped)) {
+        const matchesCSV = csvFilteredVendors.some(csvVendor => vendorMatches(csvVendor, vendorName));
+        
+        if (matchesCSV) {
+          filteredVendorRulesGrouped[vendorName] = vendorData;
+          totalRulesAfterFilter += vendorData.rule_count;
+        }
+      }
+      
+      processedData = {
+        ...data,
+        vendor_rules_grouped: filteredVendorRulesGrouped,
+        total_vendors: Object.keys(filteredVendorRulesGrouped).length,
+        total_rules: totalRulesAfterFilter
+      };
+      
+      // Show info about filtering
+      if (Object.keys(filteredVendorRulesGrouped).length === 0) {
+        showAlert('warning', `No matching vendors found for the ${csvFilteredVendors.length} vendors in your CSV file.`);
+      } else {
+        showAlert('info', `Filtered to ${processedData.total_vendors} vendors (${processedData.total_rules} rules) based on CSV file.`);
+      }
+    }
+    
+    if (!processedData.vendor_rules_grouped || Object.keys(processedData.vendor_rules_grouped).length === 0) {
+      html = `
+        <div class="empty-state">
+          <i class="bi bi-search"></i>
+          <h4>No Rules Found</h4>
+          <p>No security rules found for the selected organization's vendors.</p>
+        </div>
+      `;
+    } else {
+      // Add organization header
+      html += `
+        <div class="alert alert-info">
+          <h5><i class="bi bi-building"></i> ${data.organization_name}</h5>
+          <p class="mb-0">
+            <strong>${processedData.total_vendors}</strong> vendors ${csvFilteredVendors ? '(filtered by CSV)' : 'active across'} 
+            <strong>${data.total_devices_with_vendors || processedData.total_vendors}</strong> ${csvFilteredVendors ? 'found' : 'devices'} with 
+            <strong>${processedData.total_rules}</strong> applicable rules
+          </p>
+        </div>
+      `;
+      
+      html += `<div class="accordion" id="orgVendorRulesAccordion">`;
+      
+      let vendorIndex = 0;
+      for (const [vendor, vendorData] of Object.entries(processedData.vendor_rules_grouped)) {
+        const isFirst = vendorIndex === 0;
+        
+        html += `
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-${vendorIndex}">
+              <button class="accordion-button ${isFirst ? '' : 'collapsed'}" type="button" 
+                      data-bs-toggle="collapse" data-bs-target="#collapse-${vendorIndex}"
+                      aria-expanded="${isFirst}" aria-controls="collapse-${vendorIndex}">
+                <div class="d-flex justify-content-between w-100 me-3">
+                  <span><i class="bi bi-shield-check"></i> <strong>${vendor}</strong></span>
+                  <div class="d-flex gap-2">
+                    <span class="badge bg-primary">${vendorData.rule_count} Rules</span>
+                    <span class="badge bg-info">${vendorData.categories?.length || 0} Categories</span>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div id="collapse-${vendorIndex}" class="accordion-collapse collapse ${isFirst ? 'show' : ''}"
+                 aria-labelledby="heading-${vendorIndex}" data-bs-parent="#orgVendorRulesAccordion">
+              <div class="accordion-body">
+                <div class="mb-2">
+                  <strong>Functions:</strong> ${vendorData.functions?.join(', ') || 'N/A'}
+                  <br><strong>Categories:</strong> ${vendorData.categories?.join(', ') || 'N/A'}
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover vendor-rules-table">
+                    <thead>
+                      <tr>
+                        <th width="5%">#</th>
+                        <th width="30%">Rule Name</th>
+                        <th width="25%">Data Source</th>
+                        <th width="15%">Function</th>
+                        <th width="15%">Category</th>
+                        <th width="10%">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        vendorData.rules.forEach((rule, index) => {
+          html += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>
+                <div class="rule-name fw-bold">${rule.name}</div>
+                <small class="text-muted">ID: ${rule.id}</small>
+              </td>
+              <td><code>${rule.data_source}</code></td>
+              <td><span class="badge bg-secondary">${rule.function || 'N/A'}</span></td>
+              <td><span class="badge bg-warning text-dark">${rule.category || 'N/A'}</span></td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm" onclick="viewRuleDetails('${rule.id}', '${vendor}')">
+                  <i class="bi bi-eye"></i> View
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+        
+        html += `
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        vendorIndex++;
+      }
+      
+      html += `</div>`;
+    }
+    
+    $('#vendorRulesContainer').html(html).show();
+    
+    // Return processed data for stats update
+    return processedData !== data ? processedData : null;
+  }
+
   // Event Handlers
   $('#searchVendorRulesBtn').on('click', searchVendorRules);
   
@@ -2232,11 +2603,103 @@
   
   $('#refreshRulesBtn').on('click', refreshRulesData);
   $('#viewAllVendorsBtn').on('click', showAllVendors);
+  
+  // Organization event handlers
+  $('#organizationSelect').on('change', onOrganizationSelect);
+  $('#getOrgVendorRulesBtn').on('click', getOrganizationVendorRules);
+  
+  // CSV Upload functionality
+  let csvFilteredVendors = null;
+  
+  $('#uploadCsvBtn').on('click', function() {
+    const fileInput = document.getElementById('csvFileInput');
+    const file = fileInput.files[0];
+    
+    if (!file) {
+      showAlert('warning', 'Please select a CSV file first.');
+      return;
+    }
+    
+    if (!file.name.toLowerCase().endsWith('.csv')) {
+      showAlert('danger', 'Please upload a CSV file (.csv extension required).');
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const csvContent = e.target.result;
+        const vendors = parseCsvVendors(csvContent);
+        
+        if (vendors.length === 0) {
+          showAlert('warning', 'No vendor names found in the CSV file.');
+          return;
+        }
+        
+        csvFilteredVendors = vendors;
+        updateCsvDisplay(file.name, vendors);
+        showAlert('success', `Loaded ${vendors.length} vendors from CSV. Now get rules to see filtered results.`);
+        
+      } catch (error) {
+        console.error('Error parsing CSV:', error);
+        showAlert('danger', 'Error parsing CSV file. Please check the file format.');
+      }
+    };
+    
+    reader.readAsText(file);
+  });
+  
+  $('#clearCsvBtn').on('click', function() {
+    csvFilteredVendors = null;
+    $('#csvFileInput').val('');
+    $('#csvFileInfo').hide();
+    $('#csvVendorsList').hide();
+    $('#clearCsvBtn').hide();
+    showAlert('info', 'CSV filter cleared. Rules will now show all available vendors.');
+  });
+  
+  function parseCsvVendors(csvContent) {
+    const lines = csvContent.split('\n');
+    const vendors = [];
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+      
+      // Remove quotes and get first column value
+      let vendor = line.split(',')[0].replace(/"/g, '').trim();
+      
+      // Skip header row if it looks like a header
+      if (i === 0 && (vendor.toLowerCase().includes('vendor') || vendor.toLowerCase().includes('device'))) {
+        continue;
+      }
+      
+      if (vendor && vendor !== '') {
+        vendors.push(vendor);
+      }
+    }
+    
+    // Remove duplicates and sort
+    return [...new Set(vendors)].sort();
+  }
+  
+  function updateCsvDisplay(fileName, vendors) {
+    $('#csvFileName').text(fileName);
+    $('#csvVendorCount').text(vendors.length);
+    $('#csvFileInfo').show();
+    
+    // Display vendor list
+    const vendorBadges = vendors.map(v => `<span class="badge bg-secondary me-1 mb-1">${v}</span>`).join('');
+    $('#csvVendorsDisplay').html(vendorBadges);
+    $('#csvVendorsList').show();
+    $('#clearCsvBtn').show();
+  }
 
   $(document).ready(function() {
     initializeDateRangePicker();
     loadDashboardStats();
     loadClients();
+    loadOrganizations();
   });
 </script>
 

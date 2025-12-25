@@ -3541,3 +3541,591 @@
 2025-12-25 23:38:41,706 - __main__ - INFO - [<module>:1828] - Debug: False
 2025-12-25 23:38:41,722 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
 2025-12-25 23:38:41,729 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:39:23,861 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4468196112] GET /
+2025-12-25 23:39:23,881 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4468196112] GET / - Status: 200 - Duration: 19.10ms
+2025-12-25 23:39:23,882 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:39:23] "GET / HTTP/1.1" 200 -
+2025-12-25 23:39:24,460 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4468196112] GET /api/dashboard/stats
+2025-12-25 23:39:24,461 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4468196112] GET /api/clients
+2025-12-25 23:39:57,315 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:39:57,340 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:39:57,340 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:39:57,340 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:39:57,340 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:39:57,384 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:39:57,384 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:39:57,384 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:39:57,775 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:39:57,781 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:39:57,781 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:39:57,781 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:39:57,781 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:39:57,798 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:39:57,806 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:40:02,160 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4401217984] GET /
+2025-12-25 23:40:02,189 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4401217984] GET / - Status: 200 - Duration: 27.85ms
+2025-12-25 23:40:02,190 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:40:02] "GET / HTTP/1.1" 200 -
+2025-12-25 23:40:02,559 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4401217984] GET /api/dashboard/stats
+2025-12-25 23:40:02,560 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4401217984] GET /api/clients
+2025-12-25 23:40:31,832 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:40:31,839 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:40:31,839 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:40:31,839 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:40:31,839 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:40:31,879 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:40:31,879 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:40:31,880 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:40:32,273 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:40:32,279 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:40:32,279 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:40:32,279 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:40:32,279 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:40:32,294 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:40:32,301 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:40:38,021 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4465459840] GET /api/vendors/rules
+2025-12-25 23:40:38,022 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['microsoft']
+2025-12-25 23:40:38,022 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-25 23:40:38,022 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-25 23:40:40,181 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-25 23:40:40,185 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-25 23:40:40,286 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-25 23:40:40,290 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-25 23:40:40,294 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4465459840] GET /api/vendors/rules - Status: 200 - Duration: 2272.16ms
+2025-12-25 23:40:40,298 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:40:40] "GET /api/vendors/rules?vendors=microsoft HTTP/1.1" 200 -
+2025-12-25 23:46:33,093 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:46:33,099 - __main__ - INFO - [<module>:1873] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:46:33,099 - __main__ - INFO - [<module>:1874] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:46:33,099 - __main__ - INFO - [<module>:1875] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:46:33,099 - __main__ - INFO - [<module>:1876] - Debug: False
+2025-12-25 23:46:33,143 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:46:33,143 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:46:33,144 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:46:33,525 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:46:33,530 - __main__ - INFO - [<module>:1873] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:46:33,530 - __main__ - INFO - [<module>:1874] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:46:33,530 - __main__ - INFO - [<module>:1875] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:46:33,530 - __main__ - INFO - [<module>:1876] - Debug: False
+2025-12-25 23:46:33,544 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:46:33,551 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:50:27,047 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:50:27,054 - __main__ - INFO - [<module>:2032] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:50:27,054 - __main__ - INFO - [<module>:2033] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:50:27,054 - __main__ - INFO - [<module>:2034] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:50:27,054 - __main__ - INFO - [<module>:2035] - Debug: False
+2025-12-25 23:50:27,093 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:50:27,093 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:50:27,094 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:50:27,538 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:50:27,544 - __main__ - INFO - [<module>:2032] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:50:27,544 - __main__ - INFO - [<module>:2033] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:50:27,544 - __main__ - INFO - [<module>:2034] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:50:27,544 - __main__ - INFO - [<module>:2035] - Debug: False
+2025-12-25 23:50:27,563 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:50:27,572 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:50:33,557 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /
+2025-12-25 23:50:33,573 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET / - Status: 200 - Duration: 15.41ms
+2025-12-25 23:50:33,573 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:50:33] "GET / HTTP/1.1" 200 -
+2025-12-25 23:50:34,292 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/dashboard/stats
+2025-12-25 23:50:34,295 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/clients
+2025-12-25 23:50:34,297 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/organizations
+2025-12-25 23:50:34,472 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:50:34,473 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:50:34,479 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:50:34,520 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/clients - Status: 200 - Duration: 223.93ms
+2025-12-25 23:50:34,521 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:50:34] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 23:50:39,906 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/organizations - Status: 200 - Duration: 5609.45ms
+2025-12-25 23:50:39,908 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/dashboard/stats - Status: 200 - Duration: 5614.86ms
+2025-12-25 23:50:39,908 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:50:39] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-25 23:50:39,908 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:50:39] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-25 23:51:00,203 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/organizations/86/vendor-rules
+2025-12-25 23:51:00,363 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:51:00,429 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-25 23:51:00,429 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-25 23:51:03,793 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-25 23:51:03,796 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-25 23:51:03,899 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-25 23:51:03,903 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-25 23:51:03,908 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 3704.08ms
+2025-12-25 23:51:03,912 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:51:03] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-25 23:51:43,926 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/organizations/86/vendor-rules
+2025-12-25 23:51:44,075 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:51:44,141 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 214.07ms
+2025-12-25 23:51:44,145 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:51:44] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-25 23:51:49,438 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/vendors/rules
+2025-12-25 23:51:49,438 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['fortigate']
+2025-12-25 23:51:49,442 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/vendors/rules - Status: 200 - Duration: 4.15ms
+2025-12-25 23:51:49,445 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:51:49] "GET /api/vendors/rules?vendors=fortigate HTTP/1.1" 200 -
+2025-12-25 23:51:58,162 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4406905296] GET /api/vendors/rules
+2025-12-25 23:51:58,163 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['aws']
+2025-12-25 23:51:58,163 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4406905296] GET /api/vendors/rules - Status: 200 - Duration: 0.47ms
+2025-12-25 23:51:58,164 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:51:58] "GET /api/vendors/rules?vendors=aws HTTP/1.1" 200 -
+2025-12-25 23:55:23,689 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:23,695 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:23,695 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:23,695 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:23,695 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:23,744 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:55:23,744 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:55:23,745 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:55:24,120 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:24,126 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:24,126 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:24,126 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:24,126 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:24,141 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:55:24,152 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:55:37,876 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4458579472] GET /
+2025-12-25 23:55:37,899 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4458579472] GET / - Status: 200 - Duration: 21.67ms
+2025-12-25 23:55:37,900 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:55:37] "GET / HTTP/1.1" 200 -
+2025-12-25 23:55:38,628 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4458579472] GET /api/dashboard/stats
+2025-12-25 23:55:38,635 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4458579472] GET /api/clients
+2025-12-25 23:55:38,643 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4458579472] GET /api/organizations
+2025-12-25 23:55:49,340 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:49,347 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:49,347 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:49,347 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:49,347 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:49,388 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:55:49,388 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:55:49,389 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:55:49,775 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:49,782 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:49,782 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:49,782 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:49,782 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:49,797 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:55:49,805 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:55:54,479 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4395812128] GET /
+2025-12-25 23:55:54,489 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4395812128] GET / - Status: 200 - Duration: 9.86ms
+2025-12-25 23:55:54,490 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:55:54] "GET / HTTP/1.1" 200 -
+2025-12-25 23:55:54,638 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4395812128] GET /api/dashboard/stats
+2025-12-25 23:55:54,638 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4395812128] GET /api/clients
+2025-12-25 23:55:54,639 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4395812128] GET /api/organizations
+2025-12-25 23:55:57,873 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:57,879 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:57,879 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:57,879 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:57,879 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:57,923 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:55:57,923 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:55:57,924 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:55:58,311 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:55:58,318 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:55:58,318 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:55:58,318 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:55:58,318 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:55:58,334 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:55:58,341 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:56:03,180 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4393108864] GET /
+2025-12-25 23:56:03,196 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4393108864] GET / - Status: 200 - Duration: 15.73ms
+2025-12-25 23:56:03,197 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:03] "GET / HTTP/1.1" 200 -
+2025-12-25 23:56:03,320 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4393108864] GET /api/dashboard/stats
+2025-12-25 23:56:03,322 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4393108864] GET /api/clients
+2025-12-25 23:56:03,323 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4393108864] GET /api/organizations
+2025-12-25 23:56:13,214 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:56:13,220 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:56:13,220 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:56:13,220 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:56:13,220 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:56:13,256 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:56:13,257 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:56:13,257 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:56:13,619 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:56:13,625 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:56:13,625 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:56:13,625 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:56:13,625 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:56:13,640 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:56:13,647 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:56:29,907 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4437132912] GET /
+2025-12-25 23:56:29,925 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4437132912] GET / - Status: 200 - Duration: 17.11ms
+2025-12-25 23:56:29,925 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:29] "GET / HTTP/1.1" 200 -
+2025-12-25 23:56:30,091 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4437132912] GET /api/dashboard/stats
+2025-12-25 23:56:30,095 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4437132912] GET /api/clients
+2025-12-25 23:56:30,099 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4437132912] GET /api/organizations
+2025-12-25 23:56:36,860 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:56:36,866 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:56:36,866 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:56:36,866 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:56:36,866 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:56:36,901 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:56:36,901 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:56:36,902 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:56:37,280 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:56:37,286 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:56:37,286 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:56:37,286 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:56:37,286 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:56:37,303 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:56:37,311 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:56:45,926 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4473177856] GET /
+2025-12-25 23:56:45,944 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4473177856] GET / - Status: 200 - Duration: 17.91ms
+2025-12-25 23:56:45,945 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:45] "GET / HTTP/1.1" 200 -
+2025-12-25 23:56:46,055 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4473177856] GET /api/dashboard/stats
+2025-12-25 23:56:46,058 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4473177856] GET /api/clients
+2025-12-25 23:56:46,059 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4473177856] GET /api/organizations
+2025-12-25 23:56:46,211 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:56:46,222 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:56:46,235 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:56:46,258 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4473177856] GET /api/clients - Status: 200 - Duration: 200.03ms
+2025-12-25 23:56:46,259 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:46] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 23:56:50,447 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4473177856] GET /api/dashboard/stats - Status: 200 - Duration: 4391.16ms
+2025-12-25 23:56:50,448 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:50] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-25 23:56:50,501 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4473177856] GET /api/organizations - Status: 200 - Duration: 4442.03ms
+2025-12-25 23:56:50,502 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:56:50] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-25 23:57:01,097 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4473177856] GET /api/organizations/86/vendor-rules
+2025-12-25 23:57:01,262 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:57:01,308 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-25 23:57:01,308 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-25 23:57:04,654 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-25 23:57:04,656 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-25 23:57:04,765 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-25 23:57:04,769 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-25 23:57:04,779 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4473177856] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 3681.65ms
+2025-12-25 23:57:04,789 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:57:04] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-25 23:58:39,530 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:58:39,537 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:58:39,537 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:58:39,537 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:58:39,537 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:58:39,575 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:58:39,575 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:58:39,576 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:58:39,958 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:58:39,964 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:58:39,964 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:58:39,964 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:58:39,964 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-25 23:58:39,978 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:58:39,986 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 23:58:53,290 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466492944] GET /api/organizations/86/vendor-rules
+2025-12-25 23:58:53,451 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:58:53,490 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-25 23:58:53,490 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-25 23:58:55,540 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-25 23:58:55,544 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-25 23:58:55,649 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-25 23:58:55,654 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-25 23:58:55,661 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466492944] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 2370.46ms
+2025-12-25 23:58:55,670 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:58:55] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-25 23:59:21,528 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466492944] GET /api/organizations/86/vendor-rules
+2025-12-25 23:59:21,684 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-25 23:59:21,750 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466492944] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 221.72ms
+2025-12-25 23:59:21,761 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:59:21] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:00:00,236 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466492944] GET /api/organizations/86/vendor-rules
+2025-12-26 00:00:00,393 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:00:00,455 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466492944] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 218.52ms
+2025-12-26 00:00:00,464 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:00:00] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:00:40,268 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:00:40,274 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:00:40,274 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:00:40,274 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:00:40,274 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:00:40,315 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:00:40,315 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:00:40,316 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:00:40,711 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:00:40,716 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:00:40,717 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:00:40,717 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:00:40,717 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:00:40,733 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:00:40,739 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:00:44,163 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4463576736] GET /
+2025-12-26 00:00:44,176 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4463576736] GET / - Status: 200 - Duration: 12.09ms
+2025-12-26 00:00:44,177 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:00:44] "GET / HTTP/1.1" 200 -
+2025-12-26 00:00:44,929 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4463576736] GET /api/dashboard/stats
+2025-12-26 00:00:44,932 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4463576736] GET /api/clients
+2025-12-26 00:00:44,932 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4463576736] GET /api/organizations
+2025-12-26 00:01:05,462 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:01:05,468 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:01:05,468 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:01:05,468 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:01:05,468 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:01:05,501 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:01:05,501 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:01:05,502 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:01:05,934 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:01:05,940 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:01:05,940 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:01:05,940 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:01:05,940 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:01:05,954 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:01:05,961 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:01:19,904 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /
+2025-12-26 00:01:19,915 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET / - Status: 200 - Duration: 9.65ms
+2025-12-26 00:01:19,915 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:19] "GET / HTTP/1.1" 200 -
+2025-12-26 00:01:20,263 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/dashboard/stats
+2025-12-26 00:01:20,268 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/clients
+2025-12-26 00:01:20,268 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/organizations
+2025-12-26 00:01:20,474 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:20,476 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:20,476 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:20,528 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/clients - Status: 200 - Duration: 259.15ms
+2025-12-26 00:01:20,530 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:20] "GET /api/clients HTTP/1.1" 200 -
+2025-12-26 00:01:24,963 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/dashboard/stats - Status: 200 - Duration: 4699.18ms
+2025-12-26 00:01:24,964 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:24] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:01:25,065 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/organizations - Status: 200 - Duration: 4796.82ms
+2025-12-26 00:01:25,066 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:25] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-26 00:01:27,887 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/organizations/86/vendor-rules
+2025-12-26 00:01:28,041 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:28,083 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-26 00:01:28,083 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-26 00:01:30,285 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-26 00:01:30,288 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-26 00:01:30,386 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-26 00:01:30,390 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-26 00:01:30,397 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 2510.15ms
+2025-12-26 00:01:30,407 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:30] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:01:49,187 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /
+2025-12-26 00:01:49,191 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET / - Status: 200 - Duration: 1.01ms
+2025-12-26 00:01:49,191 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:49] "GET / HTTP/1.1" 200 -
+2025-12-26 00:01:49,319 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/dashboard/stats
+2025-12-26 00:01:49,320 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/clients
+2025-12-26 00:01:49,321 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/organizations
+2025-12-26 00:01:49,493 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:49,494 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:49,494 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:01:49,539 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/clients - Status: 200 - Duration: 218.52ms
+2025-12-26 00:01:49,540 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:49] "GET /api/clients HTTP/1.1" 200 -
+2025-12-26 00:01:54,173 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/organizations - Status: 200 - Duration: 4851.71ms
+2025-12-26 00:01:54,174 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/dashboard/stats - Status: 200 - Duration: 4855.15ms
+2025-12-26 00:01:54,176 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:54] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-26 00:01:54,176 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:01:54] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:02:03,829 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/organizations/84/vendor-rules
+2025-12-26 00:02:04,001 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:02:04,098 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/organizations/84/vendor-rules - Status: 200 - Duration: 266.62ms
+2025-12-26 00:02:04,124 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:02:04] "GET /api/organizations/84/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:03:18,862 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/client/86/summary
+2025-12-26 00:03:18,863 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/client/86/devices/with-vendor
+2025-12-26 00:03:19,033 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:03:19,044 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:03:19,279 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/client/86/summary - Status: 200 - Duration: 414.47ms
+2025-12-26 00:03:19,280 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:03:19] "GET /api/client/86/summary?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:03:19,462 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:03:19,505 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 637.99ms
+2025-12-26 00:03:19,506 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:03:19] "GET /api/client/86/devices/with-vendor?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:03:19,552 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/client/86/devices/vendors
+2025-12-26 00:03:19,555 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/device/vendor/selections
+2025-12-26 00:03:19,596 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/device/vendor/selections - Status: 200 - Duration: 40.67ms
+2025-12-26 00:03:19,597 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:03:19] "GET /api/device/vendor/selections?client_id=86 HTTP/1.1" 200 -
+2025-12-26 00:03:19,734 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:03:20,082 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:03:23,651 - __main__ - INFO - [save_vendor_selections:164] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-26 00:03:23,651 - __main__ - INFO - [get_all_device_vendors:1143] - Auto-saved single vendor result: MEH_PRD_NAS -> Synology/NAS
+2025-12-26 00:03:23,659 - __main__ - INFO - [save_vendor_selections:164] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-26 00:03:23,659 - __main__ - INFO - [get_all_device_vendors:1143] - Auto-saved single vendor result: AHM_PRD_NAS -> Synology/NAS
+2025-12-26 00:03:26,810 - __main__ - INFO - [save_vendor_selections:164] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-26 00:03:26,810 - __main__ - INFO - [get_all_device_vendors:1143] - Auto-saved single vendor result: HOST-3.123.68.65 -> Fortinet/FortiWeb Cloud
+2025-12-26 00:03:26,830 - __main__ - INFO - [save_vendor_selections:164] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-26 00:03:26,830 - __main__ - INFO - [get_all_device_vendors:1143] - Auto-saved single vendor result: PV_RPT_DB.ahm.lambdacro.com -> Microsoft/Windows Server 2022
+2025-12-26 00:03:26,831 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/client/86/devices/vendors - Status: 200 - Duration: 7277.92ms
+2025-12-26 00:03:26,831 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:03:26] "GET /api/client/86/devices/vendors?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:04:32,498 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/vendors/rules
+2025-12-26 00:04:32,499 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['IRAJE']
+2025-12-26 00:04:32,501 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/vendors/rules - Status: 200 - Duration: 1.12ms
+2025-12-26 00:04:32,502 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:04:32] "GET /api/vendors/rules?vendors=IRAJE HTTP/1.1" 200 -
+2025-12-26 00:04:36,105 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4402251808] GET /api/organizations/84/vendor-rules
+2025-12-26 00:04:36,284 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:04:36,349 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4402251808] GET /api/organizations/84/vendor-rules - Status: 200 - Duration: 244.15ms
+2025-12-26 00:04:36,361 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:04:36] "GET /api/organizations/84/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:08:52,028 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:08:52,033 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:08:52,034 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:08:52,034 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:08:52,034 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:08:52,070 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:08:52,070 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:08:52,071 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:08:52,440 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:08:52,446 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:08:52,446 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:08:52,446 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:08:52,446 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:08:52,460 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:08:52,467 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:09:50,827 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4464051440] GET /
+2025-12-26 00:09:50,872 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4464051440] GET / - Status: 200 - Duration: 43.02ms
+2025-12-26 00:09:50,873 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:09:50] "GET / HTTP/1.1" 200 -
+2025-12-26 00:09:51,942 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4464051440] GET /api/dashboard/stats
+2025-12-26 00:09:51,945 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4464051440] GET /api/clients
+2025-12-26 00:09:51,948 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4464051440] GET /api/organizations
+2025-12-26 00:10:15,786 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:10:15,792 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:10:15,792 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:10:15,792 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:10:15,792 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:10:15,821 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:10:15,821 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:10:15,822 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:10:16,186 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:10:16,191 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:10:16,191 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:10:16,191 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:10:16,191 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:10:16,204 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:10:16,211 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:10:19,328 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /
+2025-12-26 00:10:19,347 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET / - Status: 200 - Duration: 18.00ms
+2025-12-26 00:10:19,347 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:10:19] "GET / HTTP/1.1" 200 -
+2025-12-26 00:10:19,610 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/dashboard/stats
+2025-12-26 00:10:19,611 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/clients
+2025-12-26 00:10:19,612 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/organizations
+2025-12-26 00:10:19,792 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:10:19,792 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:10:19,792 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:10:19,838 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/clients - Status: 200 - Duration: 225.93ms
+2025-12-26 00:10:19,839 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:10:19] "GET /api/clients HTTP/1.1" 200 -
+2025-12-26 00:10:24,214 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/dashboard/stats - Status: 200 - Duration: 4603.51ms
+2025-12-26 00:10:24,216 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:10:24] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:10:24,799 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/organizations - Status: 200 - Duration: 5186.85ms
+2025-12-26 00:10:24,800 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:10:24] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-26 00:10:45,071 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/organizations/86/vendor-rules
+2025-12-26 00:10:45,254 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:10:45,296 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-26 00:10:45,297 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-26 00:10:48,237 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-26 00:10:48,241 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-26 00:10:48,345 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-26 00:10:48,348 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-26 00:10:48,357 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 3284.48ms
+2025-12-26 00:10:48,365 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:10:48] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:11:07,997 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/vendors/rules
+2025-12-26 00:11:07,998 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['Amazon', 'CentOS', 'Fortinet', 'Generic', 'IRAJE', 'Microsoft', 'Stellar', 'Synology', 'TrendMicro', 'Unix', 'VMware']
+2025-12-26 00:11:08,011 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/vendors/rules - Status: 200 - Duration: 13.02ms
+2025-12-26 00:11:08,016 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:11:08] "GET /api/vendors/rules?vendors=Amazon&vendors=CentOS&vendors=Fortinet&vendors=Generic&vendors=IRAJE&vendors=Microsoft&vendors=Stellar&vendors=Synology&vendors=TrendMicro&vendors=Unix&vendors=VMware HTTP/1.1" 200 -
+2025-12-26 00:11:37,513 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/organizations/86/vendor-rules
+2025-12-26 00:11:37,694 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:11:37,757 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 242.81ms
+2025-12-26 00:11:37,767 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:11:37] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:11:45,592 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4474668560] GET /api/organizations/86/vendor-rules
+2025-12-26 00:11:45,752 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:11:45,814 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4474668560] GET /api/organizations/86/vendor-rules - Status: 200 - Duration: 221.29ms
+2025-12-26 00:11:45,824 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:11:45] "GET /api/organizations/86/vendor-rules HTTP/1.1" 200 -
+2025-12-26 00:12:11,689 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:12:11,695 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:12:11,695 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:12:11,695 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:12:11,696 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:12:11,752 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:12:11,752 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:12:11,753 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:12:12,348 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:12:12,354 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:12:12,354 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:12:12,354 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:12:12,354 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:12:12,373 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:12:12,382 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:12:14,123 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4431316496] GET /
+2025-12-26 00:12:14,147 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4431316496] GET / - Status: 200 - Duration: 22.49ms
+2025-12-26 00:12:14,147 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:12:14] "GET / HTTP/1.1" 200 -
+2025-12-26 00:12:14,342 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4431316496] GET /api/dashboard/stats
+2025-12-26 00:12:14,344 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4431316496] GET /api/clients
+2025-12-26 00:12:14,346 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4431316496] GET /api/organizations
+2025-12-26 00:12:14,515 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:12:14,515 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:12:14,516 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:12:14,559 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4431316496] GET /api/clients - Status: 200 - Duration: 214.46ms
+2025-12-26 00:12:14,559 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:12:14] "GET /api/clients HTTP/1.1" 200 -
+2025-12-26 00:12:19,556 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4431316496] GET /api/dashboard/stats - Status: 200 - Duration: 5213.65ms
+2025-12-26 00:12:19,557 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:12:19] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:12:19,678 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4431316496] GET /api/organizations - Status: 200 - Duration: 5331.34ms
+2025-12-26 00:12:19,678 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:12:19] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-26 00:12:30,172 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4431316496] GET /api/vendors/rules
+2025-12-26 00:12:30,173 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['Amazon', 'CentOS', 'Fortinet', 'Generic', 'IRAJE', 'Microsoft', 'Stellar', 'Synology', 'TrendMicro', 'Unix', 'VMware']
+2025-12-26 00:12:30,173 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-26 00:12:30,173 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-26 00:12:32,885 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-26 00:12:32,888 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-26 00:12:32,991 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3883 rules for 69 vendors
+2025-12-26 00:12:32,996 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 69 vendors into cache
+2025-12-26 00:12:32,999 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4431316496] GET /api/vendors/rules - Status: 200 - Duration: 2826.73ms
+2025-12-26 00:12:33,004 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:12:33] "GET /api/vendors/rules?vendors=Amazon&vendors=CentOS&vendors=Fortinet&vendors=Generic&vendors=IRAJE&vendors=Microsoft&vendors=Stellar&vendors=Synology&vendors=TrendMicro&vendors=Unix&vendors=VMware HTTP/1.1" 200 -
+2025-12-26 00:15:32,250 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:15:32,257 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:15:32,257 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:15:32,257 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:15:32,257 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:15:32,300 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-26 00:15:32,301 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-26 00:15:32,302 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-26 00:15:32,688 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-26 00:15:32,694 - __main__ - INFO - [<module>:2010] - Starting Flask on 0.0.0.0:5002
+2025-12-26 00:15:32,695 - __main__ - INFO - [<module>:2011] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-26 00:15:32,695 - __main__ - INFO - [<module>:2012] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-26 00:15:32,695 - __main__ - INFO - [<module>:2013] - Debug: False
+2025-12-26 00:15:32,713 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-26 00:15:32,721 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-26 00:15:43,013 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466526192] GET /
+2025-12-26 00:15:43,034 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466526192] GET / - Status: 200 - Duration: 20.53ms
+2025-12-26 00:15:43,035 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:15:43] "GET / HTTP/1.1" 200 -
+2025-12-26 00:15:43,215 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466526192] GET /api/dashboard/stats
+2025-12-26 00:15:43,216 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466526192] GET /api/clients
+2025-12-26 00:15:43,217 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466526192] GET /api/organizations
+2025-12-26 00:15:43,388 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:15:43,388 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:15:43,388 - __main__ - INFO - [get_db_connection:406] - Database connection established successfully
+2025-12-26 00:15:43,432 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466526192] GET /api/clients - Status: 200 - Duration: 215.16ms
+2025-12-26 00:15:43,433 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:15:43] "GET /api/clients HTTP/1.1" 200 -
+2025-12-26 00:15:47,367 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466526192] GET /api/dashboard/stats - Status: 200 - Duration: 4151.32ms
+2025-12-26 00:15:47,371 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:15:47] "GET /api/dashboard/stats?hours=24 HTTP/1.1" 200 -
+2025-12-26 00:15:47,823 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466526192] GET /api/organizations - Status: 200 - Duration: 4605.15ms
+2025-12-26 00:15:47,824 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:15:47] "GET /api/organizations HTTP/1.1" 200 -
+2025-12-26 00:16:03,863 - __main__ - INFO - [log_request_info:62] - REQUEST START [ID: 4466526192] GET /api/vendors/rules
+2025-12-26 00:16:03,865 - __main__ - INFO - [get_vendor_rules:1683] - Getting rules for vendors: ['Amazon', 'CentOS', 'Fortinet', 'Generic', 'IRAJE', 'Microsoft', 'Stellar', 'Synology', 'TrendMicro', 'Unix', 'VMware']
+2025-12-26 00:16:03,865 - __main__ - INFO - [load_rules_data:365] - Loading fresh rules data from FortiSIEM
+2025-12-26 00:16:03,865 - __main__ - INFO - [fetch_fortisiem_rules:221] - Fetching rules data from FortiSIEM API
+2025-12-26 00:16:08,180 - __main__ - INFO - [fetch_fortisiem_rules:239] - Successfully fetched rules data from FortiSIEM
+2025-12-26 00:16:08,182 - __main__ - INFO - [parse_rules_xml:252] - Parsing rules XML content
+2025-12-26 00:16:08,287 - __main__ - INFO - [parse_rules_xml:292] - Parsed 3876 rules for 63 vendors
+2025-12-26 00:16:08,292 - __main__ - INFO - [load_rules_data:371] - Loaded rules for 63 vendors into cache
+2025-12-26 00:16:08,296 - __main__ - INFO - [log_response_info:84] - REQUEST END [ID: 4466526192] GET /api/vendors/rules - Status: 200 - Duration: 4431.90ms
+2025-12-26 00:16:08,302 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [26/Dec/2025 00:16:08] "GET /api/vendors/rules?vendors=Amazon&vendors=CentOS&vendors=Fortinet&vendors=Generic&vendors=IRAJE&vendors=Microsoft&vendors=Stellar&vendors=Synology&vendors=TrendMicro&vendors=Unix&vendors=VMware HTTP/1.1" 200 -

@@ -309,12 +309,7 @@ def extract_vendors_from_datasource(data_source):
     
     # Common vendor patterns in data sources
     vendor_patterns = {
-        'Fortigate': ['fortigate', 'fortiguard'],
-        'FortiEDR': ['fortiedr'],
-        'FortiDeceptor': ['fortideceptor'],
-        'FortiAnalyzer': ['fortianalyzer'],
-        'FortiWeb': ['fortiweb'],
-        'FortiRecon': ['fortirecon'],
+        'Fortinet': ['fortigate', 'fortiguard', 'fortinet', 'fortiedr', 'fortideceptor', 'fortianalyzer', 'fortiweb', 'fortirecon'],
         'Microsoft': ['microsoft', 'windows'],
         'Cisco': ['cisco'],
         'Palo Alto': ['palo alto', 'paloalto'],
@@ -326,13 +321,18 @@ def extract_vendors_from_datasource(data_source):
         'HP': ['hp'],
         'Dell': ['dell'],
         'VMware': ['vmware'],
-        'Linux': ['linux'],
+        'Linux': ['linux', 'centos', 'ubuntu', 'redhat', 'unix'],
         'Apache': ['apache'],
         'Nginx': ['nginx'],
         'Oracle': ['oracle'],
         'MySQL': ['mysql'],
         'PostgreSQL': ['postgresql'],
-        'MongoDB': ['mongodb']
+        'MongoDB': ['mongodb'],
+        'Amazon': ['amazon', 'aws', 'ec2'],
+        'Generic': ['generic', 'unknown'],
+        'IRAJE': ['iraje'],
+        'Stellar': ['stellar'],
+        'Synology': ['synology']
     }
     
     data_source_lower = data_source.lower()
@@ -1809,6 +1809,191 @@ def search_vendor_rules():
         
     except Exception as e:
         logger.error(f"Error searching vendor rules: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/organizations')
+def get_organizations():
+    """Get all organizations (clients) with device and vendor counts"""
+    conn = get_db_connection()
+    if not conn:
+        return jsonify({'error': 'Database connection failed'}), 500
+    
+    cursor = conn.cursor(dictionary=True)
+    
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+    
+    try:
+        # Get client information with device counts
+        query = """
+            SELECT 
+                c.id,
+                c.name as organization_name,
+                c.status,
+                COUNT(DISTINCT i.incident_rpt_dev_name) as device_count,
+                COUNT(*) as incident_count
+            FROM clients c
+            LEFT JOIN incidents i ON c.id = i.client_id 
+                AND i.incident_rpt_dev_name IS NOT NULL 
+                AND i.incident_rpt_dev_name != ''
+                AND i.deleted_at IS NULL
+                AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
+            WHERE c.deleted_at IS NULL
+            GROUP BY c.id, c.name, c.status
+            ORDER BY c.name
+        """
+        cursor.execute(query, (hours,))
+        organizations = cursor.fetchall()
+        
+        # Get vendor selections for each organization
+        vendor_selections = get_client_vendor_selections_all()
+        
+        # Aggregate vendor counts per organization
+        for org in organizations:
+            client_id = org['id']
+            client_vendors = [vs for vs in vendor_selections if vs.get('client_id') == client_id]
+            
+            # Count unique vendors for this organization
+            unique_vendors = set()
+            for vs in client_vendors:
+                vendor = vs.get('selected_vendor')
+                if vendor and vendor not in ['Unknown', 'Error']:
+                    unique_vendors.add(vendor)
+            
+            org['vendor_count'] = len(unique_vendors)
+            org['selected_device_count'] = len(client_vendors)
+        
+        cursor.close()
+        conn.close()
+        
+        return jsonify({
+            'organizations': organizations,
+            'total_organizations': len(organizations),
+            'time_filter_hours': hours
+        })
+        
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        logger.error(f"Error getting organizations: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+def get_client_vendor_selections_all():
+    """Get all vendor selections from Excel file"""
+    try:
+        df = load_vendor_selections()
+        return df.to_dict('records') if not df.empty else []
+    except Exception as e:
+        logger.error(f"Error loading all vendor selections: {e}")
+        return []
+
+
+@app.route('/api/organizations/<int:org_id>/vendor-rules')
+def get_organization_vendor_rules(org_id):
+    """Get vendor rules grouped by vendor names for a specific organization"""
+    conn = get_db_connection()
+    if not conn:
+        return jsonify({'error': 'Database connection failed'}), 500
+    
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        # Verify organization exists
+        cursor.execute("SELECT id, name FROM clients WHERE id = %s AND deleted_at IS NULL", (org_id,))
+        organization = cursor.fetchone()
+        if not organization:
+            return jsonify({'error': 'Organization not found'}), 404
+        
+        cursor.close()
+        conn.close()
+        
+        # Get all available vendors and their rules (no database mapping)
+        rules_data = load_rules_data()
+        
+        # Group rules by vendor names
+        vendor_rules_grouped = {}
+        for vendor, rules in rules_data.items():
+            vendor_rules_grouped[vendor] = {
+                'vendor_name': vendor,
+                'rules': rules,
+                'rule_count': len(rules),
+                'categories': list(set(rule['category'] for rule in rules if rule['category'])),
+                'functions': list(set(rule['function'] for rule in rules if rule['function']))
+            }
+        
+        # Sort vendors by rule count (descending)
+        sorted_vendors = sorted(vendor_rules_grouped.items(), 
+                              key=lambda x: x[1]['rule_count'], reverse=True)
+        
+        total_rules = sum(len(rules) for rules in rules_data.values())
+        
+        return jsonify({
+            'organization_id': org_id,
+            'organization_name': organization['name'],
+            'vendor_rules_grouped': dict(sorted_vendors),
+            'total_vendors': len(vendor_rules_grouped),
+            'total_rules': total_rules,
+            'message': f'Rules grouped by {len(vendor_rules_grouped)} vendors'
+        })
+        
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        logger.error(f"Error getting organization vendor rules: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/debug/schema')
+def debug_database_schema():
+    """Debug endpoint to examine database schema for organization mapping"""
+    conn = get_db_connection()
+    if not conn:
+        return jsonify({'error': 'Database connection failed'}), 500
+
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        schema_info = {}
+        
+        # Check clients table structure
+        cursor.execute("DESCRIBE clients")
+        schema_info['clients_columns'] = cursor.fetchall()
+        
+        # Check if client_details table exists and its structure
+        try:
+            cursor.execute("DESCRIBE client_details")
+            schema_info['client_details_columns'] = cursor.fetchall()
+        except:
+            schema_info['client_details_columns'] = "Table does not exist"
+        
+        # Check for any organization-related tables
+        cursor.execute("SHOW TABLES LIKE '%org%'")
+        schema_info['organization_tables'] = cursor.fetchall()
+        
+        # Sample clients data to see what we have
+        cursor.execute("SELECT * FROM clients LIMIT 5")
+        schema_info['sample_clients'] = cursor.fetchall()
+        
+        # Sample client_details data if table exists
+        try:
+            cursor.execute("SELECT * FROM client_details LIMIT 5")
+            schema_info['sample_client_details'] = cursor.fetchall()
+        except:
+            schema_info['sample_client_details'] = "No data or table doesn't exist"
+        
+        cursor.close()
+        conn.close()
+        return jsonify(schema_info)
+        
+    except Exception as e:
+        cursor.close()
+        conn.close()
         return jsonify({'error': f'Error: {str(e)}'}), 500
 
 
