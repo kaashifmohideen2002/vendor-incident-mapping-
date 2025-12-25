@@ -1119,3 +1119,116 @@
 2025-12-25 16:47:54,626 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
 2025-12-25 16:47:54,873 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 414.54ms
 2025-12-25 16:47:54,874 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:47:54] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 17:19:42,312 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:19:42,317 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:19:42,317 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:19:42,317 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:19:42,317 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:19:42,352 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 17:19:42,353 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 17:19:42,353 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 17:19:42,732 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:19:42,737 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:19:42,737 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:19:42,737 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:19:42,737 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:19:42,753 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 17:19:42,761 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 17:24:31,658 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:24:31,662 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:24:31,662 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:24:31,662 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:24:31,662 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:24:31,695 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 17:24:31,695 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 17:24:31,695 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 17:24:32,071 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:24:32,076 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:24:32,076 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:24:32,076 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:24:32,076 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:24:32,091 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 17:24:32,100 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 17:24:37,133 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4462522240] GET /
+2025-12-25 17:24:37,148 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4462522240] GET / - Status: 200 - Duration: 13.90ms
+2025-12-25 17:24:37,149 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:24:37] "GET / HTTP/1.1" 200 -
+2025-12-25 17:24:40,014 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4462522240] GET /api/dashboard/stats
+2025-12-25 17:24:40,016 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4462522240] GET /api/clients
+2025-12-25 17:24:43,617 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:24:43,622 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:24:43,622 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:24:43,622 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:24:43,622 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:24:43,653 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 17:24:43,654 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 17:24:43,654 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 17:24:44,016 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 17:24:44,021 - __main__ - INFO - [<module>:1369] - Starting Flask on 0.0.0.0:5002
+2025-12-25 17:24:44,021 - __main__ - INFO - [<module>:1370] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 17:24:44,021 - __main__ - INFO - [<module>:1371] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 17:24:44,021 - __main__ - INFO - [<module>:1372] - Debug: False
+2025-12-25 17:24:44,035 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 17:24:44,041 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 17:25:36,849 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /
+2025-12-25 17:25:36,863 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET / - Status: 200 - Duration: 12.53ms
+2025-12-25 17:25:36,863 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:36] "GET / HTTP/1.1" 200 -
+2025-12-25 17:25:36,936 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/dashboard/stats
+2025-12-25 17:25:36,939 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/clients
+2025-12-25 17:25:37,125 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:37,125 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:37,174 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/clients - Status: 200 - Duration: 234.63ms
+2025-12-25 17:25:37,175 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:37] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 17:25:40,748 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/dashboard/stats - Status: 200 - Duration: 3810.96ms
+2025-12-25 17:25:40,748 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:40] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 17:25:41,563 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/client/86/summary
+2025-12-25 17:25:41,563 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/client/86/devices/with-vendor
+2025-12-25 17:25:41,718 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:41,719 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:41,982 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/client/86/summary - Status: 200 - Duration: 418.62ms
+2025-12-25 17:25:41,983 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:41] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 17:25:42,196 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:42,239 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 674.92ms
+2025-12-25 17:25:42,239 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:42] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 17:25:42,268 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/client/86/devices/vendors
+2025-12-25 17:25:42,268 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/device/vendor/selections
+2025-12-25 17:25:42,467 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:42,655 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/device/vendor/selections - Status: 200 - Duration: 386.12ms
+2025-12-25 17:25:42,655 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:42] "GET /api/device/vendor/selections?client_id=86 HTTP/1.1" 200 -
+2025-12-25 17:25:42,867 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:25:46,072 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:25:46,072 - __main__ - INFO - [get_all_device_vendors:927] - Auto-saved single vendor result: PV_RPT_DB.ahm.lambdacro.com -> Microsoft/Windows Server 2022
+2025-12-25 17:25:49,105 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:25:49,105 - __main__ - INFO - [get_all_device_vendors:927] - Auto-saved single vendor result: AHM_PRD_NAS -> Synology/NAS
+2025-12-25 17:25:49,162 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:25:49,162 - __main__ - INFO - [get_all_device_vendors:927] - Auto-saved single vendor result: MEH_PRD_NAS -> Synology/NAS
+2025-12-25 17:25:49,249 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:25:49,249 - __main__ - INFO - [get_all_device_vendors:927] - Auto-saved single vendor result: HOST-3.123.68.65 -> Fortinet/FortiWeb Cloud
+2025-12-25 17:25:49,250 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/client/86/devices/vendors - Status: 200 - Duration: 6980.89ms
+2025-12-25 17:25:49,250 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:25:49] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 17:26:41,750 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] POST /api/device/vendor/select
+2025-12-25 17:26:41,771 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:26:41,771 - __main__ - INFO - [select_device_vendor:1191] - Vendor selection saved: client=86, device=AHM_VCenter, vendor=VMware, model=vCenter
+2025-12-25 17:26:41,772 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] POST /api/device/vendor/select - Status: 200 - Duration: 20.01ms
+2025-12-25 17:26:41,772 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:26:41] "POST /api/device/vendor/select HTTP/1.1" 200 -
+2025-12-25 17:26:53,345 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] POST /api/device/vendor/select
+2025-12-25 17:26:53,362 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 17:26:53,362 - __main__ - INFO - [select_device_vendor:1191] - Vendor selection saved: client=86, device=LTRPDC.ahm.lambdacro.com, vendor=Microsoft, model=Windows
+2025-12-25 17:26:53,362 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] POST /api/device/vendor/select - Status: 200 - Duration: 17.11ms
+2025-12-25 17:26:53,362 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:26:53] "POST /api/device/vendor/select HTTP/1.1" 200 -
+2025-12-25 17:27:05,165 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/vendor/incidents/summary
+2025-12-25 17:27:05,361 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:27:05,634 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/vendor/incidents/summary - Status: 200 - Duration: 467.62ms
+2025-12-25 17:27:05,634 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:27:05] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 17:27:34,332 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4435455392] GET /api/vendor/incidents/summary
+2025-12-25 17:27:34,508 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 17:27:34,779 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4435455392] GET /api/vendor/incidents/summary - Status: 200 - Duration: 446.84ms
+2025-12-25 17:27:34,780 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 17:27:34] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -

@@ -9,6 +9,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -19,43 +22,251 @@
       --warning-color: #f39c12;
       --danger-color: #e74c3c;
       --bg-light: #ecf0f1;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-success: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+      --gradient-info: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+      --shadow-heavy: 0 8px 30px rgba(0,0,0,0.16);
     }
-    body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    .navbar { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .navbar-brand { font-weight: 600; font-size: 1.4rem; }
 
-    .stat-card { border-radius: 10px; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    .stat-icon { font-size: 2.5rem; opacity: 0.8; }
+    body { 
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
 
-    .client-card { cursor: pointer; border-radius: 8px; border: 2px solid #e0e0e0; transition: all 0.3s ease; }
-    .client-card:hover { border-color: var(--secondary-color); box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2); transform: translateY(-2px); }
-    .client-card.selected { border-color: var(--secondary-color); background-color: #e8f4f8; }
+    .navbar { 
+      background: var(--gradient-primary);
+      box-shadow: var(--shadow-medium);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; }
 
-    .table-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .severity-badge { padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
-    .severity-high { background-color: #ffe5e5; color: #c0392b; }
-    .severity-medium { background-color: #fff3cd; color: #e67e22; }
-    .severity-low { background-color: #d4edda; color: #27ae60; }
+    .stat-card { 
+      border-radius: 16px; 
+      border: none; 
+      box-shadow: var(--shadow-light);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.3) 100%);
+    }
+    .stat-card:hover { 
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-heavy);
+    }
+    .stat-icon { font-size: 2.8rem; opacity: 0.9; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
 
-    .loading-spinner { display: none; text-align: center; padding: 40px; }
-    .section-title { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid var(--secondary-color); }
+    .client-card { 
+      cursor: pointer; 
+      border-radius: 12px; 
+      border: 2px solid transparent;
+      background: white;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      box-shadow: var(--shadow-light);
+    }
+    .client-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, transparent, rgba(52, 152, 219, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .client-card:hover { 
+      border-color: var(--secondary-color); 
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-3px);
+    }
+    .client-card:hover::before { opacity: 1; }
+    .client-card.selected { 
+      border-color: var(--secondary-color); 
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.08), rgba(52, 152, 219, 0.02));
+      box-shadow: var(--shadow-medium);
+    }
 
-    .chart-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .btn-export { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); border: none; color: white; padding: 10px 24px; border-radius: 6px; font-weight: 500; transition: all 0.3s ease; }
-    .btn-export:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3); color: white; }
+    .table-container { 
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px; 
+      padding: 24px; 
+      box-shadow: var(--shadow-light);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-    .device-name-cell { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .empty-state { text-align: center; padding: 60px 20px; color: #7f8c8d; }
-    .empty-state i { font-size: 4rem; opacity: 0.3; margin-bottom: 20px; }
+    .severity-badge { 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      font-size: 0.8rem; 
+      font-weight: 600;
+      border: 1px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .severity-high { 
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    }
+    .severity-medium { 
+      background: linear-gradient(135deg, #feca57, #ff9ff3);
+      color: white;
+      box-shadow: 0 2px 8px rgba(254, 202, 87, 0.3);
+    }
+    .severity-low { 
+      background: linear-gradient(135deg, #48dbfb, #0abde3);
+      color: white;
+      box-shadow: 0 2px 8px rgba(72, 219, 251, 0.3);
+    }
 
-    .vendor-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; background-color: #e3f2fd; color: #1565c0; }
-    .model-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; background-color: #f3e5f5; color: #7b1fa2; }
-    .vendor-loading { color: #999; font-style: italic; font-size: 0.85rem; }
-    .vendor-unknown { color: #bbb; font-style: italic; }
+    .loading-spinner { display: none; text-align: center; padding: 50px; }
+    .section-title { 
+      font-size: 1.6rem; 
+      font-weight: 700; 
+      color: var(--primary-color); 
+      margin-bottom: 24px; 
+      padding-bottom: 12px; 
+      border-bottom: 3px solid transparent;
+      background: linear-gradient(90deg, var(--secondary-color), transparent) bottom / 100% 3px no-repeat;
+      letter-spacing: -0.5px;
+    }
 
-    .export-options { display: flex; gap: 10px; }
-    #vendorLoadingIndicator { display: none; margin-left: 10px; }
+    .chart-container { 
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px; 
+      padding: 24px; 
+      box-shadow: var(--shadow-light);
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-export { 
+      background: var(--gradient-success);
+      border: none; 
+      color: white; 
+      padding: 12px 28px; 
+      border-radius: 12px; 
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(76, 217, 100, 0.3);
+      letter-spacing: 0.3px;
+    }
+    .btn-export:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(76, 217, 100, 0.4);
+      color: white;
+    }
+
+    .device-name-cell { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .empty-state { 
+      text-align: center; 
+      padding: 80px 20px; 
+      color: #6c757d;
+    }
+    .empty-state i { 
+      font-size: 5rem; 
+      opacity: 0.3; 
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .vendor-badge { 
+      padding: 6px 12px; 
+      border-radius: 8px; 
+      font-size: 0.8rem; 
+      font-weight: 600;
+      background: var(--gradient-info);
+      color: white;
+      border: none;
+      box-shadow: 0 2px 6px rgba(116, 185, 255, 0.3);
+    }
+    .model-badge { 
+      padding: 6px 12px; 
+      border-radius: 8px; 
+      font-size: 0.8rem; 
+      font-weight: 600;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #2d3436;
+      box-shadow: 0 2px 6px rgba(168, 237, 234, 0.3);
+    }
+    .vendor-loading { 
+      color: #6c757d; 
+      font-style: italic; 
+      font-size: 0.85rem;
+      animation: pulse 1.5s infinite;
+    }
+    .vendor-unknown { color: #adb5bd; font-style: italic; }
+
+    .export-options { display: flex; gap: 12px; flex-wrap: wrap; }
+    #vendorLoadingIndicator { display: none; margin-left: 12px; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: rgba(52, 152, 219, 0.04);
+      transform: translateX(2px);
+      transition: all 0.2s ease;
+    }
+
+    .btn {
+      border-radius: 10px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    /* Enhanced Alert Styles */
+    .alert {
+      border: none;
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .alert-info {
+      background: linear-gradient(135deg, rgba(116, 185, 255, 0.1), rgba(116, 185, 255, 0.05));
+      border-left: 4px solid #74b9ff;
+    }
+
+    .alert-success {
+      background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+      border-left: 4px solid #27ae60;
+    }
+
+    .alert-warning {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(243, 156, 18, 0.05));
+      border-left: 4px solid #f39c12;
+    }
+
+    .alert-danger {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05));
+      border-left: 4px solid #e74c3c;
+    }
   </style>
 </head>
 
@@ -400,16 +611,18 @@
               <td>${index + 1}</td>
               <td class="device-name-cell" title="${device.device_name}">${device.device_name}</td>
               <td class="vendor-cell">
-                <span class="vendor-loading"><i class="bi bi-hourglass-split"></i> Loading...</span>
-                <br><small><a href="#" onclick="openVendorLive('${deviceNameEscaped}');return false;">Live XML/Progress</a></small>
+                <span class="vendor-loading"><i class="bi bi-arrow-clockwise"></i> Loading vendor...</span>
+                <br><small><a href="#" onclick="openVendorLive('${deviceNameEscaped}');return false;" class="text-decoration-none">
+                  <i class="bi bi-play-circle"></i> Live Query
+                </a></small>
               </td>
-              <td class="model-cell"><span class="vendor-loading"><i class="bi bi-hourglass-split"></i> Loading...</span></td>
-              <td><span class="badge bg-primary">${device.incident_count}</span></td>
+              <td class="model-cell"><span class="vendor-loading"><i class="bi bi-arrow-clockwise"></i> Loading model...</span></td>
+              <td><span class="badge bg-primary rounded-pill">${device.incident_count}</span></td>
               <td><span class="severity-badge severity-high">${device.high_severity || 0}</span></td>
               <td><span class="severity-badge severity-medium">${device.medium_severity || 0}</span></td>
               <td><span class="severity-badge severity-low">${device.low_severity || 0}</span></td>
-              <td>${device.first_incident || 'N/A'}</td>
-              <td>${device.last_incident || 'N/A'}</td>
+              <td><small class="text-muted">${device.first_incident || 'N/A'}</small></td>
+              <td><small class="text-muted">${device.last_incident || 'N/A'}</small></td>
             </tr>
           `;
         });
@@ -478,19 +691,33 @@
             
             // keep live link (second line)
             const liveLink = vendorCell.find('small').parent().html();
-            vendorCell.html(`<span class="vendor-badge">${escapeHtml(selectedVendor)}</span> <small class="badge bg-success">Selected</small><br>${liveLink}`);
+            vendorCell.html(`<span class="vendor-badge">${escapeHtml(selectedVendor)}</span> <small class="badge bg-success rounded-pill"><i class="bi bi-check-circle"></i> Selected</small><br>${liveLink}`);
             modelCell.html(`<span class="model-badge">${escapeHtml(selectedModel)}</span>`);
             modelCell.off('click').css('cursor', 'default').removeAttr('title');
           } else {
             // No selection made, show primary vendor with option to select if multiple
             const primaryVendor = vendorInfo.vendor || 'Unknown';
             const primaryModel = vendorInfo.model || 'Unknown';
+            const isAutoSaved = vendorInfo.auto_saved === true;
+            const isSingleResult = vendorInfo.single_result === true;
 
             // preserve the Live link we already placed; rebuild only the top part
             let vendorTop = '';
             if (primaryVendor !== 'Unknown' && primaryVendor !== 'Error') {
               vendorTop = `<span class="vendor-badge">${escapeHtml(primaryVendor)}</span>`;
-              if (vendorInfo.total_entries > 1) vendorTop += ` <small class="text-muted">(+${vendorInfo.total_entries - 1} more)</small>`;
+              
+              // Show different badges based on result type
+              if (isAutoSaved) {
+                vendorTop += ` <small class="badge bg-info rounded-pill"><i class="bi bi-robot"></i> Auto-Selected</small>`;
+                // Show notification for auto-save
+                setTimeout(() => {
+                  showAlert('info', `✨ Auto-selected vendor for ${deviceName}: ${primaryVendor} / ${primaryModel}`, 4000);
+                }, 1000);
+              } else if (isSingleResult) {
+                vendorTop += ` <small class="badge bg-success rounded-pill"><i class="bi bi-check-circle"></i> Single Match</small>`;
+              } else if (vendorInfo.total_entries > 1) {
+                vendorTop += ` <small class="badge bg-warning rounded-pill"><i class="bi bi-exclamation-triangle"></i> ${vendorInfo.total_entries} options - Click to choose</small>`;
+              }
             } else {
               vendorTop = `<span class="vendor-unknown">${escapeHtml(primaryVendor)}</span>`;
             }
@@ -500,12 +727,19 @@
             vendorCell.html(vendorTop + '<br>' + liveLink);
 
             if (primaryModel !== 'Unknown' && primaryModel !== 'Error') {
-              modelCell.html(`<span class="model-badge">${escapeHtml(primaryModel)}</span>`);
+              let modelHtml = `<span class="model-badge">${escapeHtml(primaryModel)}</span>`;
+              
+              // Add click handler for multiple results only
               if (vendorInfo.total_entries > 1) {
+                modelHtml += ` <small class="text-primary">👆 Click to choose</small>`;
+                modelCell.html(modelHtml);
                 modelCell.css('cursor', 'pointer').attr('title', 'Click to select correct vendor from multiple options');
                 modelCell.off('click').on('click', function() {
                   showVendorDetails(deviceName, vendorInfo);
                 });
+              } else {
+                modelCell.html(modelHtml);
+                modelCell.off('click').css('cursor', 'default').removeAttr('title');
               }
             } else {
               modelCell.html(`<span class="vendor-unknown">${escapeHtml(primaryModel)}</span>`);
@@ -525,7 +759,7 @@
 
   function showVendorDetails(deviceName, vendorInfo) {
     if (!vendorInfo.vendors || !vendorInfo.vendors.length) {
-      alert('No vendor information available for this device.');
+      showAlert('warning', 'No vendor information available for this device.');
       return;
     }
 
@@ -533,43 +767,88 @@
       <div class="modal fade" id="vendorDetailsModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Select Correct Vendor: ${escapeHtml(deviceName)}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">
+                <i class="bi bi-building-check"></i> Select Correct Vendor for Device
+              </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-              <p class="text-muted">Found ${vendorInfo.total_entries} vendor/model combination(s) for this device. Please select the correct one:</p>
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead><tr><th>Select</th><th>Vendor</th><th>Model</th><th>Event Count</th></tr></thead>
-                  <tbody>
+              <div class="alert alert-light border-primary">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-hdd-network-fill text-primary fs-4 me-3"></i>
+                  <div>
+                    <strong class="text-primary">Device:</strong> ${escapeHtml(deviceName)}<br>
+                    <small class="text-muted">Found ${vendorInfo.total_entries} vendor/model combination(s)</small>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="fw-semibold mb-3">
+                <i class="bi bi-hand-index"></i> Please select the correct vendor that best represents this device:
+              </p>
+              
+              <div class="vendor-selection-container">
     `;
 
     vendorInfo.vendors.forEach((v, idx) => {
-      const rowClass = idx === 0 ? 'table-primary' : '';
-      const badge = idx === 0 ? ' <small class="badge bg-success">Most Common</small>' : '';
+      const isRecommended = idx === 0;
+      const cardClass = isRecommended ? 'border-success bg-success bg-opacity-10' : 'border-secondary';
+      const badge = isRecommended ? '<span class="badge bg-success ms-2"><i class="bi bi-star"></i> Recommended</span>' : '';
+      
       modalHtml += `
-        <tr class="${rowClass}" style="cursor: pointer;" onclick="selectVendorOption('${escapeHtml(deviceName)}', '${escapeHtml(v.vendor)}', '${escapeHtml(v.model)}', this)">
-          <td><input type="radio" name="vendorSelection" value="${idx}" class="form-check-input"></td>
-          <td><span class="vendor-badge">${escapeHtml(v.vendor)}</span>${badge}</td>
-          <td><span class="model-badge">${escapeHtml(v.model)}</span></td>
-          <td><span class="badge bg-info">${v.count}</span></td>
-        </tr>
+        <div class="card mb-3 vendor-option-card ${cardClass}" style="cursor: pointer;" 
+             onclick="selectVendorOption('${escapeHtml(deviceName)}', '${escapeHtml(v.vendor)}', '${escapeHtml(v.model)}', this)">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-1">
+                <input type="radio" name="vendorSelection" value="${idx}" class="form-check-input form-check-input-lg">
+              </div>
+              <div class="col-4">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-building-fill text-primary me-2"></i>
+                  <div>
+                    <strong class="vendor-name">${escapeHtml(v.vendor)}</strong>
+                    ${badge}
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-cpu text-secondary me-2"></i>
+                  <span class="model-name text-dark">${escapeHtml(v.model)}</span>
+                </div>
+              </div>
+              <div class="col-3 text-end">
+                <div class="d-flex align-items-center justify-content-end">
+                  <i class="bi bi-graph-up text-info me-2"></i>
+                  <span class="badge bg-info fs-6">${v.count} events</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       `;
     });
 
     modalHtml += `
-                  </tbody>
-                </table>
               </div>
-              <div class="alert alert-info mt-3">
-                <i class="bi bi-info-circle"></i> <strong>Tip:</strong> Select the vendor that best represents this device. This selection will be used for generating vendor incident reports.
+              
+              <div class="alert alert-info mt-4">
+                <i class="bi bi-lightbulb"></i> <strong>Helpful Tips:</strong>
+                <ul class="mb-0 mt-2">
+                  <li>The recommended option (⭐) has the most events and is likely correct</li>
+                  <li>Your selection will be saved and used for incident reporting</li>
+                  <li>You can change your selection later if needed</li>
+                </ul>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                <i class="bi bi-x-circle"></i> Cancel
+              </button>
               <button type="button" class="btn btn-success" id="confirmVendorSelection" disabled>
-                <i class="bi bi-check2"></i> Confirm Selection
+                <i class="bi bi-check-circle"></i> Confirm Selection
               </button>
             </div>
           </div>
@@ -579,27 +858,57 @@
 
     $('#vendorDetailsModal').remove();
     $('body').append(modalHtml);
+    
+    // Add CSS for hover effects
+    $('head').append(`
+      <style>
+        .vendor-option-card:hover {
+          border-color: var(--bs-primary) !important;
+          box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+          transform: translateY(-2px);
+          transition: all 0.2s ease;
+        }
+        .vendor-option-card.selected {
+          border-color: var(--bs-success) !important;
+          background-color: rgba(40, 167, 69, 0.1) !important;
+          box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+        }
+        .vendor-selection-container {
+          max-height: 400px;
+          overflow-y: auto;
+        }
+      </style>
+    `);
+    
     new bootstrap.Modal(document.getElementById('vendorDetailsModal')).show();
   }
 
-  function selectVendorOption(deviceName, vendor, model, row) {
+  function selectVendorOption(deviceName, vendor, model, cardElement) {
     // Clear previous selections
-    $('#vendorDetailsModal tr').removeClass('table-success');
+    $('#vendorDetailsModal .vendor-option-card').removeClass('selected');
     $('#vendorDetailsModal input[type="radio"]').prop('checked', false);
     
-    // Select current row
-    $(row).addClass('table-success');
-    $(row).find('input[type="radio"]').prop('checked', true);
+    // Select current card
+    $(cardElement).addClass('selected');
+    $(cardElement).find('input[type="radio"]').prop('checked', true);
     
-    // Enable confirm button
-    $('#confirmVendorSelection').prop('disabled', false);
+    // Enable confirm button with animation
+    const confirmBtn = $('#confirmVendorSelection');
+    confirmBtn.prop('disabled', false);
+    confirmBtn.removeClass('btn-outline-success').addClass('btn-success');
     
     // Store selection data
-    $('#confirmVendorSelection').data('selection', {
+    confirmBtn.data('selection', {
       deviceName: deviceName,
       vendor: vendor,
       model: model
     });
+    
+    // Add a subtle success animation
+    $(cardElement).addClass('animate__animated animate__pulse');
+    setTimeout(() => {
+      $(cardElement).removeClass('animate__animated animate__pulse');
+    }, 600);
   }
 
   // Handle vendor selection confirmation
@@ -665,20 +974,43 @@
     });
   }
 
-  function showAlert(type, message) {
+  function showAlert(type, message, duration = 5000) {
+    const alertId = 'alert-' + Date.now();
     const alert = $(`
-      <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-        ${message}
+      <div id="${alertId}" class="alert alert-${type} alert-dismissible fade show" role="alert" style="margin-bottom: 1rem; border-radius: 12px;">
+        <div class="d-flex align-items-center">
+          <i class="bi ${getAlertIcon(type)} me-2"></i>
+          <div>${message}</div>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
     `);
     
-    $('.container-fluid').prepend(alert);
+    // Add alert to notifications container or create one
+    let notificationsContainer = $('#notifications-container');
+    if (notificationsContainer.length === 0) {
+      notificationsContainer = $('<div id="notifications-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999; max-width: 400px;"></div>');
+      $('body').append(notificationsContainer);
+    }
     
-    // Auto-dismiss after 5 seconds
+    notificationsContainer.append(alert);
+    
+    // Auto-dismiss after specified duration
     setTimeout(() => {
-      alert.alert('close');
-    }, 5000);
+      alert.fadeOut(300, function() {
+        $(this).remove();
+      });
+    }, duration);
+  }
+  
+  function getAlertIcon(type) {
+    switch(type) {
+      case 'success': return 'bi-check-circle-fill';
+      case 'info': return 'bi-info-circle-fill';
+      case 'warning': return 'bi-exclamation-triangle-fill';
+      case 'danger': return 'bi-x-circle-fill';
+      default: return 'bi-info-circle-fill';
+    }
   }
 
   function showVendorIncidentsReport() {

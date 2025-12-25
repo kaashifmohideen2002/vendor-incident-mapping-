@@ -420,7 +420,12 @@ def query_fortisiem_vendor(device_name, client_id):
             unique_vendors = [{'vendor': 'Unknown', 'model': 'Unknown', 'count': 0}]
             debug_info['parsed_vendors'] = unique_vendors
 
-        result = {'vendors': unique_vendors, 'total_entries': len(unique_vendors)}
+        # NEW: Auto-save single results
+        result = {
+            'vendors': unique_vendors, 
+            'total_entries': len(unique_vendors),
+            'single_result': len(unique_vendors) == 1 and unique_vendors[0]['vendor'] != 'Unknown'
+        }
         if DEBUG_MODE:
             result['debug_info'] = debug_info
 
@@ -803,6 +808,7 @@ def get_device_incidents_with_vendor(client_id):
 def get_device_vendor():
     device_name = request.args.get('device_name')
     fortisiem_cust_id = request.args.get('cust_id')
+    client_id = request.args.get('client_id')  # For auto-saving single results
     include_debug = request.args.get('debug', 'false').lower() == 'true'
 
     if not device_name or not fortisiem_cust_id:
@@ -810,8 +816,10 @@ def get_device_vendor():
 
     try:
         fortisiem_cust_id = int(fortisiem_cust_id)
+        if client_id:
+            client_id = int(client_id)
     except ValueError:
-        return jsonify({'error': 'Invalid cust_id'}), 400
+        return jsonify({'error': 'Invalid cust_id or client_id'}), 400
 
     vendor_info = query_fortisiem_vendor(device_name, fortisiem_cust_id)
 
@@ -821,8 +829,26 @@ def get_device_vendor():
             'vendors': vendor_info['vendors'],
             'total_entries': vendor_info.get('total_entries', len(vendor_info['vendors'])),
             'vendor': vendor_info['vendors'][0]['vendor'] if vendor_info['vendors'] else 'Unknown',
-            'model': vendor_info['vendors'][0]['model'] if vendor_info['vendors'] else 'Unknown'
+            'model': vendor_info['vendors'][0]['model'] if vendor_info['vendors'] else 'Unknown',
+            'single_result': vendor_info.get('single_result', False)
         }
+        
+        # Auto-save single results if client_id provided and result is valid
+        if (client_id and vendor_info.get('single_result') and 
+            vendor_info['vendors'][0]['vendor'] not in ['Unknown', 'Error']):
+            try:
+                save_vendor_selection(
+                    client_id, 
+                    device_name, 
+                    vendor_info['vendors'][0]['vendor'], 
+                    vendor_info['vendors'][0]['model']
+                )
+                response['auto_saved'] = True
+                logger.info(f"Auto-saved single vendor result: {device_name} -> {vendor_info['vendors'][0]['vendor']}/{vendor_info['vendors'][0]['model']}")
+            except Exception as e:
+                logger.warning(f"Failed to auto-save vendor selection: {e}")
+                response['auto_saved'] = False
+        
         if include_debug and vendor_info.get('debug_info'):
             response['debug_info'] = vendor_info['debug_info']
         return jsonify(response)
@@ -832,7 +858,8 @@ def get_device_vendor():
         'vendors': [{'vendor': 'Unknown', 'model': 'Unknown', 'count': 0}],
         'total_entries': 1,
         'vendor': 'Unknown',
-        'model': 'Unknown'
+        'model': 'Unknown',
+        'single_result': False
     }
     return jsonify(response)
 
@@ -882,8 +909,26 @@ def get_all_device_vendors(client_id):
                             'vendors': vendor_info['vendors'],
                             'total_entries': vendor_info.get('total_entries', len(vendor_info['vendors'])),
                             'vendor': vendor_info['vendors'][0]['vendor'],
-                            'model': vendor_info['vendors'][0]['model']
+                            'model': vendor_info['vendors'][0]['model'],
+                            'single_result': vendor_info.get('single_result', False)
                         }
+                        
+                        # Auto-save single results
+                        if (vendor_info.get('single_result') and 
+                            vendor_info['vendors'][0]['vendor'] not in ['Unknown', 'Error']):
+                            try:
+                                save_vendor_selection(
+                                    client_id, 
+                                    device_name, 
+                                    vendor_info['vendors'][0]['vendor'], 
+                                    vendor_info['vendors'][0]['model']
+                                )
+                                device_vendors['auto_saved'] = True
+                                logger.info(f"Auto-saved single vendor result: {device_name} -> {vendor_info['vendors'][0]['vendor']}/{vendor_info['vendors'][0]['model']}")
+                            except Exception as e:
+                                logger.warning(f"Failed to auto-save vendor selection for {device_name}: {e}")
+                                device_vendors['auto_saved'] = False
+                        
                         if include_debug and vendor_info.get('debug_info'):
                             device_vendors['debug_info'] = vendor_info['debug_info']
                         vendors[device_name] = device_vendors
