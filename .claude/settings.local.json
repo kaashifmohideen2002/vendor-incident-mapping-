@@ -4,12 +4,20 @@
       "Bash(python:*)",
       "Bash(pip3 install:*)",
       "Bash(PORT=5001 python3:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh repo create:*)",
+      "Bash(ssh-add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(ssh:*)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "/Users/kaashifmohideen/Desktop/techowl"
+      "/Users/kaashifmohideen/Desktop/techowl",
+      "/Users/kaashifmohideen/.ssh"
     ]
   }
 }
