@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Reports>
+    <Report>
+        <DataSource/>
+        <Name>Device Vendor Lookup - Lambda.coll</Name>
+        <Description>Vendor lookup query for device reports from FortiSIEM</Description>
+        <PatternClause>
+            <SubPattern id="1" name="">
+                <SingleEvtConstr>reptDevName="Lambda.coll" AND phCustId=86</SingleEvtConstr>
+                <GroupByAttr>reptVendor,reptModel</GroupByAttr>
+            </SubPattern>
+        </PatternClause>
+        <SelectClause>
+            <AttrList>reptVendor,reptModel,COUNT(*)</AttrList>
+            <ColumnNames>phRecvTime</ColumnNames>
+        </SelectClause>
+        <OrderByClause>
+            <AttrList>COUNT(*) DESC</AttrList>
+        </OrderByClause>
+        <ReportInterval>
+            <Low>1766573182</Low>
+            <High>1766659582</High>
+        </ReportInterval>
+    </Report>
+</Reports>

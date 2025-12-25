@@ -1,0 +1,1069 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Incident Analyzer - SOC Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --danger-color: #e74c3c;
+      --bg-light: #ecf0f1;
+    }
+    body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .navbar { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .navbar-brand { font-weight: 600; font-size: 1.4rem; }
+
+    .stat-card { border-radius: 10px; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .stat-icon { font-size: 2.5rem; opacity: 0.8; }
+
+    .client-card { cursor: pointer; border-radius: 8px; border: 2px solid #e0e0e0; transition: all 0.3s ease; }
+    .client-card:hover { border-color: var(--secondary-color); box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2); transform: translateY(-2px); }
+    .client-card.selected { border-color: var(--secondary-color); background-color: #e8f4f8; }
+
+    .table-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .severity-badge { padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
+    .severity-high { background-color: #ffe5e5; color: #c0392b; }
+    .severity-medium { background-color: #fff3cd; color: #e67e22; }
+    .severity-low { background-color: #d4edda; color: #27ae60; }
+
+    .loading-spinner { display: none; text-align: center; padding: 40px; }
+    .section-title { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid var(--secondary-color); }
+
+    .chart-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .btn-export { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); border: none; color: white; padding: 10px 24px; border-radius: 6px; font-weight: 500; transition: all 0.3s ease; }
+    .btn-export:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3); color: white; }
+
+    .device-name-cell { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .empty-state { text-align: center; padding: 60px 20px; color: #7f8c8d; }
+    .empty-state i { font-size: 4rem; opacity: 0.3; margin-bottom: 20px; }
+
+    .vendor-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; background-color: #e3f2fd; color: #1565c0; }
+    .model-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; background-color: #f3e5f5; color: #7b1fa2; }
+    .vendor-loading { color: #999; font-style: italic; font-size: 0.85rem; }
+    .vendor-unknown { color: #bbb; font-style: italic; }
+
+    .export-options { display: flex; gap: 10px; }
+    #vendorLoadingIndicator { display: none; margin-left: 10px; }
+  </style>
+</head>
+
+<body>
+<nav class="navbar navbar-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="bi bi-shield-check"></i> Device Incident Analyzer</a>
+    <span class="navbar-text text-white"><i class="bi bi-building"></i> SOC Dashboard</span>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row mb-4" id="dashboardStats">
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card bg-primary text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-subtitle mb-2 opacity-75">Total Clients</h6>
+              <h2 class="card-title mb-0" id="totalClients">-</h2>
+            </div>
+            <i class="bi bi-building-fill stat-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card bg-info text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-subtitle mb-2 opacity-75">Total Devices</h6>
+              <h2 class="card-title mb-0" id="totalDevices">-</h2>
+            </div>
+            <i class="bi bi-hdd-network-fill stat-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card bg-warning text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-subtitle mb-2 opacity-75">Total Incidents</h6>
+              <h2 class="card-title mb-0" id="totalIncidents">-</h2>
+            </div>
+            <i class="bi bi-exclamation-triangle-fill stat-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card bg-danger text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-subtitle mb-2 opacity-75">High Severity</h6>
+              <h2 class="card-title mb-0" id="highSeverity">-</h2>
+            </div>
+            <i class="bi bi-shield-fill-exclamation stat-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="section-title"><i class="bi bi-list-ul"></i> Select Client</div>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="searchClient" placeholder="🔍 Search clients...">
+      </div>
+
+      <div id="clientList" style="max-height: 600px; overflow-y: auto;">
+        <div class="loading-spinner" style="display: block;">
+          <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <p class="mt-2">Loading clients...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="section-title mb-0">
+          <i class="bi bi-hdd-network"></i> Device Incident Analysis
+          <span id="vendorLoadingIndicator">
+            <span class="spinner-border spinner-border-sm text-primary" role="status"></span>
+            <small class="text-muted">Loading vendor info...</small>
+          </span>
+        </div>
+
+        <div class="export-options" style="display:none;" id="exportOptions">
+          <div class="dropdown">
+            <button class="btn btn-export dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-download"></i> Export to CSV
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+              <li><a class="dropdown-item" href="#" id="exportBasic"><i class="bi bi-file-earmark-text"></i> Basic Export</a></li>
+              <li><a class="dropdown-item" href="#" id="exportWithVendor">
+                <i class="bi bi-file-earmark-plus"></i> Export with Vendor Info
+                <small class="text-muted d-block">Includes FortiSIEM data</small>
+              </a></li>
+            </ul>
+          </div>
+
+          <button class="btn btn-outline-success btn-sm" id="vendorIncidentsBtn" title="View Vendor Incidents Report">
+            <i class="bi bi-building"></i> Vendor Incidents
+          </button>
+
+          <button class="btn btn-outline-primary btn-sm" id="refreshVendorBtn" title="Refresh Vendor Info">
+            <i class="bi bi-arrow-clockwise"></i> Refresh Vendors
+          </button>
+        </div>
+      </div>
+
+      <div id="clientSummary" style="display:none;">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <div class="card text-center"><div class="card-body">
+              <h3 class="text-primary" id="summaryDevices">0</h3><small class="text-muted">Devices</small>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center"><div class="card-body">
+              <h3 class="text-warning" id="summaryIncidents">0</h3><small class="text-muted">Incidents</small>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center"><div class="card-body">
+              <h3 class="text-success" id="summaryActiveDays">0</h3><small class="text-muted">Active Days</small>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center"><div class="card-body">
+              <h3 class="text-info" id="summaryAvgIncidents">0</h3><small class="text-muted">Avg/Device</small>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="chart-container mb-3">
+          <canvas id="severityChart" height="80"></canvas>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div id="deviceTableContainer">
+          <div class="empty-state">
+            <i class="bi bi-inbox"></i>
+            <h4>No Client Selected</h4>
+            <p>Select a client from the list to view device incident analysis</p>
+          </div>
+        </div>
+
+        <div id="deviceLoadingSpinner" class="loading-spinner">
+          <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <p class="mt-2">Loading device data...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  let selectedClientId = null;
+  let selectedClientName = null;
+  let fortisiemCustId = null;
+  let deviceTable = null;
+  let severityChart = null;
+  let deviceVendors = {}; // bulk cache
+
+  function loadDashboardStats() {
+    fetch('/api/dashboard/stats')
+      .then(r => r.json())
+      .then(data => {
+        $('#totalClients').text(data.total_clients || 0);
+        $('#totalDevices').text(data.total_devices || 0);
+        $('#totalIncidents').text(data.total_incidents || 0);
+        $('#highSeverity').text(data.high_severity_count || 0);
+      })
+      .catch(err => console.error('Error loading dashboard stats:', err));
+  }
+
+  function loadClients() {
+    fetch('/api/clients')
+      .then(r => r.json())
+      .then(clients => {
+        const clientList = $('#clientList');
+        clientList.empty();
+
+        if (!clients || clients.length === 0) {
+          clientList.html('<div class="empty-state"><p>No clients found</p></div>');
+          return;
+        }
+
+        clients.forEach(client => {
+          const statusBadge = client.status === 1 ?
+            '<span class="badge bg-success">Active</span>' :
+            '<span class="badge bg-secondary">Inactive</span>';
+
+          const card = $(`
+            <div class="card client-card mb-2" data-client-id="${client.id}" data-client-name="${client.name}">
+              <div class="card-body py-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div><h6 class="mb-0">${client.name}</h6></div>
+                  ${statusBadge}
+                </div>
+              </div>
+            </div>
+          `);
+
+          card.on('click', function() {
+            selectClient(client.id, client.name);
+          });
+
+          clientList.append(card);
+        });
+      })
+      .catch(err => {
+        console.error('Error loading clients:', err);
+        $('#clientList').html('<div class="alert alert-danger">Error loading clients</div>');
+      });
+  }
+
+  function selectClient(clientId, clientName) {
+    selectedClientId = clientId;
+    selectedClientName = clientName;
+    deviceVendors = {};
+
+    $('.client-card').removeClass('selected');
+    $(`.client-card[data-client-id="${clientId}"]`).addClass('selected');
+
+    loadClientSummary(clientId);
+    loadDeviceData(clientId);
+
+    $('#exportOptions').show();
+  }
+
+  function loadClientSummary(clientId) {
+    fetch(`/api/client/${clientId}/summary`)
+      .then(r => r.json())
+      .then(data => {
+        $('#clientSummary').show();
+        $('#summaryDevices').text(data.total_devices || 0);
+        $('#summaryIncidents').text(data.total_incidents || 0);
+        $('#summaryActiveDays').text(data.active_days || 0);
+
+        const avgIncidents = (data.total_devices > 0) ? (data.total_incidents / data.total_devices).toFixed(1) : 0;
+        $('#summaryAvgIncidents').text(avgIncidents);
+
+        updateSeverityChart(data);
+      })
+      .catch(err => console.error('Error loading client summary:', err));
+  }
+
+  function updateSeverityChart(data) {
+    const ctx = document.getElementById('severityChart').getContext('2d');
+    if (severityChart) severityChart.destroy();
+
+    severityChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['High', 'Medium', 'Low'],
+        datasets: [{
+          label: 'Incidents by Severity',
+          data: [data.high_severity || 0, data.medium_severity || 0, data.low_severity || 0],
+          backgroundColor: ['rgba(231, 76, 60, 0.8)','rgba(243, 156, 18, 0.8)','rgba(39, 174, 96, 0.8)'],
+          borderColor: ['rgba(231, 76, 60, 1)','rgba(243, 156, 18, 1)','rgba(39, 174, 96, 1)'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Incident Distribution by Severity' }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+      }
+    });
+  }
+
+  function loadDeviceData(clientId) {
+    $('#deviceTableContainer').hide();
+    $('#deviceLoadingSpinner').show();
+
+    fetch(`/api/client/${clientId}/devices/with-vendor`)
+      .then(r => r.json())
+      .then(data => {
+        $('#deviceLoadingSpinner').hide();
+        $('#deviceTableContainer').show();
+
+        const devices = data.devices || [];
+        fortisiemCustId = data.fortisiem_cust_id;
+
+        if (!devices.length) {
+          $('#deviceTableContainer').html(`
+            <div class="empty-state">
+              <i class="bi bi-inbox"></i>
+              <h4>No Devices Found</h4>
+              <p>No incident data available for this client</p>
+            </div>
+          `);
+          return;
+        }
+
+        if (deviceTable) deviceTable.destroy();
+
+        let tableHtml = `
+          <table id="deviceTable" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Device Name</th>
+                <th>Vendor</th>
+                <th>Model</th>
+                <th>Incidents</th>
+                <th>High</th>
+                <th>Medium</th>
+                <th>Low</th>
+                <th>First Seen</th>
+                <th>Last Seen</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        devices.forEach((device, index) => {
+          const deviceNameEscaped = (device.device_name || '').replace(/"/g, '&quot;');
+          tableHtml += `
+            <tr data-device-name="${deviceNameEscaped}">
+              <td>${index + 1}</td>
+              <td class="device-name-cell" title="${device.device_name}">${device.device_name}</td>
+              <td class="vendor-cell">
+                <span class="vendor-loading"><i class="bi bi-hourglass-split"></i> Loading...</span>
+                <br><small><a href="#" onclick="openVendorLive('${deviceNameEscaped}');return false;">Live XML/Progress</a></small>
+              </td>
+              <td class="model-cell"><span class="vendor-loading"><i class="bi bi-hourglass-split"></i> Loading...</span></td>
+              <td><span class="badge bg-primary">${device.incident_count}</span></td>
+              <td><span class="severity-badge severity-high">${device.high_severity || 0}</span></td>
+              <td><span class="severity-badge severity-medium">${device.medium_severity || 0}</span></td>
+              <td><span class="severity-badge severity-low">${device.low_severity || 0}</span></td>
+              <td>${device.first_incident || 'N/A'}</td>
+              <td>${device.last_incident || 'N/A'}</td>
+            </tr>
+          `;
+        });
+
+        tableHtml += `</tbody></table>`;
+        $('#deviceTableContainer').html(tableHtml);
+
+        deviceTable = $('#deviceTable').DataTable({
+          pageLength: 25,
+          order: [[4, 'desc']],
+          language: { search: "Search devices:", lengthMenu: "Show _MENU_ devices per page" }
+        });
+
+        loadVendorInfo(clientId);
+      })
+      .catch(err => {
+        console.error('Error loading device data:', err);
+        $('#deviceLoadingSpinner').hide();
+        $('#deviceTableContainer').html(`
+          <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle"></i> Error loading device data
+          </div>
+        `).show();
+      });
+  }
+
+  function loadVendorInfo(clientId) {
+    $('#vendorLoadingIndicator').show();
+    
+    // Load vendor info and existing selections in parallel
+    Promise.all([
+      fetch(`/api/client/${clientId}/devices/vendors`).then(r => r.json()),
+      fetch(`/api/device/vendor/selections?client_id=${clientId}`).then(r => r.json())
+    ])
+      .then(([vendorData, selectionsData]) => {
+        $('#vendorLoadingIndicator').hide();
+        if (!vendorData.vendors) return;
+
+        deviceVendors = vendorData.vendors;
+        const selections = selectionsData.selections || [];
+        const selectionMap = {};
+        
+        // Create map of existing selections
+        selections.forEach(selection => {
+          selectionMap[selection.device_name] = selection;
+        });
+
+        $('#deviceTable tbody tr').each(function() {
+          const deviceName = $(this).data('device-name');
+          const vendorInfo = deviceVendors[deviceName];
+          const existingSelection = selectionMap[deviceName];
+
+          if (!vendorInfo) {
+            $(this).find('.vendor-cell').prepend('<span class="vendor-unknown">N/A</span><br>');
+            $(this).find('.model-cell').html('<span class="vendor-unknown">N/A</span>');
+            return;
+          }
+
+          const vendorCell = $(this).find('.vendor-cell');
+          const modelCell = $(this).find('.model-cell');
+
+          // Check if user has made a selection
+          if (existingSelection) {
+            const selectedVendor = existingSelection.selected_vendor;
+            const selectedModel = existingSelection.selected_model;
+            
+            // keep live link (second line)
+            const liveLink = vendorCell.find('small').parent().html();
+            vendorCell.html(`<span class="vendor-badge">${escapeHtml(selectedVendor)}</span> <small class="badge bg-success">Selected</small><br>${liveLink}`);
+            modelCell.html(`<span class="model-badge">${escapeHtml(selectedModel)}</span>`);
+            modelCell.off('click').css('cursor', 'default').removeAttr('title');
+          } else {
+            // No selection made, show primary vendor with option to select if multiple
+            const primaryVendor = vendorInfo.vendor || 'Unknown';
+            const primaryModel = vendorInfo.model || 'Unknown';
+
+            // preserve the Live link we already placed; rebuild only the top part
+            let vendorTop = '';
+            if (primaryVendor !== 'Unknown' && primaryVendor !== 'Error') {
+              vendorTop = `<span class="vendor-badge">${escapeHtml(primaryVendor)}</span>`;
+              if (vendorInfo.total_entries > 1) vendorTop += ` <small class="text-muted">(+${vendorInfo.total_entries - 1} more)</small>`;
+            } else {
+              vendorTop = `<span class="vendor-unknown">${escapeHtml(primaryVendor)}</span>`;
+            }
+
+            // keep live link (second line)
+            const liveLink = vendorCell.find('small').parent().html();
+            vendorCell.html(vendorTop + '<br>' + liveLink);
+
+            if (primaryModel !== 'Unknown' && primaryModel !== 'Error') {
+              modelCell.html(`<span class="model-badge">${escapeHtml(primaryModel)}</span>`);
+              if (vendorInfo.total_entries > 1) {
+                modelCell.css('cursor', 'pointer').attr('title', 'Click to select correct vendor from multiple options');
+                modelCell.off('click').on('click', function() {
+                  showVendorDetails(deviceName, vendorInfo);
+                });
+              }
+            } else {
+              modelCell.html(`<span class="vendor-unknown">${escapeHtml(primaryModel)}</span>`);
+            }
+          }
+        });
+      })
+      .catch(err => {
+        console.error('Error loading vendor info:', err);
+        $('#vendorLoadingIndicator').hide();
+        $('#deviceTable tbody tr').each(function() {
+          $(this).find('.vendor-cell').prepend('<span class="text-danger">Error</span><br>');
+          $(this).find('.model-cell').html('<span class="text-danger">Error</span>');
+        });
+      });
+  }
+
+  function showVendorDetails(deviceName, vendorInfo) {
+    if (!vendorInfo.vendors || !vendorInfo.vendors.length) {
+      alert('No vendor information available for this device.');
+      return;
+    }
+
+    let modalHtml = `
+      <div class="modal fade" id="vendorDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Select Correct Vendor: ${escapeHtml(deviceName)}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-muted">Found ${vendorInfo.total_entries} vendor/model combination(s) for this device. Please select the correct one:</p>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead><tr><th>Select</th><th>Vendor</th><th>Model</th><th>Event Count</th></tr></thead>
+                  <tbody>
+    `;
+
+    vendorInfo.vendors.forEach((v, idx) => {
+      const rowClass = idx === 0 ? 'table-primary' : '';
+      const badge = idx === 0 ? ' <small class="badge bg-success">Most Common</small>' : '';
+      modalHtml += `
+        <tr class="${rowClass}" style="cursor: pointer;" onclick="selectVendorOption('${escapeHtml(deviceName)}', '${escapeHtml(v.vendor)}', '${escapeHtml(v.model)}', this)">
+          <td><input type="radio" name="vendorSelection" value="${idx}" class="form-check-input"></td>
+          <td><span class="vendor-badge">${escapeHtml(v.vendor)}</span>${badge}</td>
+          <td><span class="model-badge">${escapeHtml(v.model)}</span></td>
+          <td><span class="badge bg-info">${v.count}</span></td>
+        </tr>
+      `;
+    });
+
+    modalHtml += `
+                  </tbody>
+                </table>
+              </div>
+              <div class="alert alert-info mt-3">
+                <i class="bi bi-info-circle"></i> <strong>Tip:</strong> Select the vendor that best represents this device. This selection will be used for generating vendor incident reports.
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-success" id="confirmVendorSelection" disabled>
+                <i class="bi bi-check2"></i> Confirm Selection
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    $('#vendorDetailsModal').remove();
+    $('body').append(modalHtml);
+    new bootstrap.Modal(document.getElementById('vendorDetailsModal')).show();
+  }
+
+  function selectVendorOption(deviceName, vendor, model, row) {
+    // Clear previous selections
+    $('#vendorDetailsModal tr').removeClass('table-success');
+    $('#vendorDetailsModal input[type="radio"]').prop('checked', false);
+    
+    // Select current row
+    $(row).addClass('table-success');
+    $(row).find('input[type="radio"]').prop('checked', true);
+    
+    // Enable confirm button
+    $('#confirmVendorSelection').prop('disabled', false);
+    
+    // Store selection data
+    $('#confirmVendorSelection').data('selection', {
+      deviceName: deviceName,
+      vendor: vendor,
+      model: model
+    });
+  }
+
+  // Handle vendor selection confirmation
+  $(document).on('click', '#confirmVendorSelection', function() {
+    const selection = $(this).data('selection');
+    if (!selection) return;
+    
+    const btn = $(this);
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Saving...').prop('disabled', true);
+    
+    // Save vendor selection
+    fetch('/api/device/vendor/select', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        device_name: selection.deviceName,
+        client_id: selectedClientId,
+        vendor: selection.vendor,
+        model: selection.model
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        // Close modal
+        $('#vendorDetailsModal').modal('hide');
+        
+        // Update the device table to show selected vendor
+        updateDeviceRowVendor(selection.deviceName, selection.vendor, selection.model);
+        
+        // Show success message
+        showAlert('success', `Vendor selection saved: ${selection.vendor} / ${selection.model}`);
+      } else {
+        showAlert('danger', `Error saving vendor selection: ${data.error || 'Unknown error'}`);
+      }
+    })
+    .catch(error => {
+      console.error('Error saving vendor selection:', error);
+      showAlert('danger', 'Error saving vendor selection. Please try again.');
+    })
+    .finally(() => {
+      btn.html(originalText).prop('disabled', false);
+    });
+  });
+
+  function updateDeviceRowVendor(deviceName, vendor, model) {
+    $('#deviceTable tbody tr').each(function() {
+      if ($(this).data('device-name') === deviceName) {
+        const vendorCell = $(this).find('.vendor-cell');
+        const modelCell = $(this).find('.model-cell');
+        
+        // Keep the Live link
+        const liveLink = vendorCell.find('small').parent().html();
+        const liveLinkPart = liveLink.split('<br>')[1] || '';
+        
+        vendorCell.html(`<span class="vendor-badge">${escapeHtml(vendor)}</span> <small class="badge bg-success">Selected</small><br>${liveLinkPart}`);
+        modelCell.html(`<span class="model-badge">${escapeHtml(model)}</span>`);
+        modelCell.off('click').css('cursor', 'default').removeAttr('title');
+      }
+    });
+  }
+
+  function showAlert(type, message) {
+    const alert = $(`
+      <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    `);
+    
+    $('.container-fluid').prepend(alert);
+    
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+      alert.alert('close');
+    }, 5000);
+  }
+
+  function showVendorIncidentsReport() {
+    if (!selectedClientId) return;
+    
+    const btn = $('#vendorIncidentsBtn');
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Loading...').prop('disabled', true);
+    
+    fetch(`/api/vendor/incidents/summary?client_id=${selectedClientId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showAlert('danger', `Error loading vendor incidents: ${data.error}`);
+          return;
+        }
+        
+        displayVendorIncidentsModal(data);
+      })
+      .catch(error => {
+        console.error('Error loading vendor incidents:', error);
+        showAlert('danger', 'Error loading vendor incidents report. Please try again.');
+      })
+      .finally(() => {
+        btn.html(originalText).prop('disabled', false);
+      });
+  }
+
+  function displayVendorIncidentsModal(data) {
+    let modalHtml = `
+      <div class="modal fade" id="vendorIncidentsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                <i class="bi bi-building"></i> Vendor Incidents Report - ${escapeHtml(selectedClientName)}
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+    `;
+    
+    if (data.summary_lines && data.summary_lines.length > 0) {
+      modalHtml += `
+        <div class="alert alert-info">
+          <h6><i class="bi bi-info-circle"></i> Summary</h6>
+          <ul class="mb-0">
+      `;
+      data.summary_lines.forEach(line => {
+        modalHtml += `<li>${escapeHtml(line)}</li>`;
+      });
+      modalHtml += `</ul></div>`;
+    }
+    
+    if (data.vendor_summary && data.vendor_summary.length > 0) {
+      modalHtml += `
+        <h6 class="mt-3"><i class="bi bi-building-fill"></i> Vendor Breakdown</h6>
+        <div class="accordion" id="vendorAccordion">
+      `;
+      
+      data.vendor_summary.forEach((vendor, idx) => {
+        modalHtml += `
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button ${idx > 0 ? 'collapsed' : ''}" type="button" 
+                      data-bs-toggle="collapse" data-bs-target="#vendor${idx}">
+                <div class="d-flex w-100 justify-content-between align-items-center me-3">
+                  <span><strong>${escapeHtml(vendor.vendor)}</strong></span>
+                  <div class="d-flex gap-3">
+                    <span class="badge bg-primary">${vendor.total_incidents} incidents</span>
+                    <span class="badge bg-info">${vendor.device_count} devices</span>
+                    <span class="badge bg-danger">${vendor.high_severity} high</span>
+                    <span class="badge bg-warning">${vendor.medium_severity} medium</span>
+                    <span class="badge bg-success">${vendor.low_severity} low</span>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div id="vendor${idx}" class="accordion-collapse collapse ${idx === 0 ? 'show' : ''}" data-bs-parent="#vendorAccordion">
+              <div class="accordion-body">
+                <h6>Models:</h6>
+                <div class="mb-3">
+        `;
+        
+        Object.entries(vendor.models).forEach(([model, count]) => {
+          modalHtml += `<span class="badge bg-secondary me-2 mb-1">${escapeHtml(model)}: ${count} incidents</span>`;
+        });
+        
+        modalHtml += `
+                </div>
+                <h6>Devices:</h6>
+                <div class="table-responsive">
+                  <table class="table table-sm table-striped">
+                    <thead><tr><th>Device Name</th><th>Model</th><th>Incidents</th><th>High</th><th>Med</th><th>Low</th><th>First Seen</th><th>Last Seen</th></tr></thead>
+                    <tbody>
+        `;
+        
+        vendor.devices.forEach(device => {
+          modalHtml += `
+            <tr>
+              <td class="device-name-cell" title="${escapeHtml(device.device_name)}">${escapeHtml(device.device_name)}</td>
+              <td><span class="model-badge">${escapeHtml(device.model)}</span></td>
+              <td><span class="badge bg-primary">${device.incident_count}</span></td>
+              <td><span class="severity-badge severity-high">${device.high_severity}</span></td>
+              <td><span class="severity-badge severity-medium">${device.medium_severity}</span></td>
+              <td><span class="severity-badge severity-low">${device.low_severity}</span></td>
+              <td>${device.first_incident || 'N/A'}</td>
+              <td>${device.last_incident || 'N/A'}</td>
+            </tr>
+          `;
+        });
+        
+        modalHtml += `
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      modalHtml += `</div>`;
+    }
+    
+    if (data.unselected_devices && data.unselected_devices.length > 0) {
+      modalHtml += `
+        <div class="alert alert-warning mt-4">
+          <h6><i class="bi bi-exclamation-triangle"></i> Devices Without Vendor Selection (${data.total_unselected_devices})</h6>
+          <p class="mb-2">These devices have incidents but no vendor has been selected yet:</p>
+          <div class="table-responsive">
+            <table class="table table-sm table-striped">
+              <thead><tr><th>Device Name</th><th>Incidents</th><th>High</th><th>Med</th><th>Low</th><th>Action</th></tr></thead>
+              <tbody>
+      `;
+      
+      data.unselected_devices.forEach(device => {
+        modalHtml += `
+          <tr>
+            <td class="device-name-cell" title="${escapeHtml(device.device_name)}">${escapeHtml(device.device_name)}</td>
+            <td><span class="badge bg-primary">${device.incident_count}</span></td>
+            <td><span class="severity-badge severity-high">${device.high_severity}</span></td>
+            <td><span class="severity-badge severity-medium">${device.medium_severity}</span></td>
+            <td><span class="severity-badge severity-low">${device.low_severity}</span></td>
+            <td><button class="btn btn-sm btn-outline-primary" onclick="selectVendorForDevice('${escapeHtml(device.device_name)}')">Select Vendor</button></td>
+          </tr>
+        `;
+      });
+      
+      modalHtml += `
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+    
+    if (!data.vendor_summary || data.vendor_summary.length === 0) {
+      modalHtml += `
+        <div class="empty-state">
+          <i class="bi bi-building"></i>
+          <h4>No Vendor Data Available</h4>
+          <p>No vendor selections have been made yet. Select vendors for devices to see incident reports.</p>
+        </div>
+      `;
+    }
+    
+    modalHtml += `
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    $('#vendorIncidentsModal').remove();
+    $('body').append(modalHtml);
+    new bootstrap.Modal(document.getElementById('vendorIncidentsModal')).show();
+  }
+
+  function selectVendorForDevice(deviceName) {
+    // Close incidents modal first
+    $('#vendorIncidentsModal').modal('hide');
+    
+    // Find the device in the current vendor data and show selection modal
+    const vendorInfo = deviceVendors[deviceName];
+    if (vendorInfo && vendorInfo.total_entries > 1) {
+      showVendorDetails(deviceName, vendorInfo);
+    } else {
+      showAlert('info', 'Please load vendor information for this device first by viewing the device table.');
+    }
+  }
+
+  // NEW: live XML + progress + result via SSE
+  function openVendorLive(deviceName) {
+    if (!fortisiemCustId) {
+      alert("FortiSIEM customer ID not available yet.");
+      return;
+    }
+
+    $('#vendorLiveModal').remove();
+
+    const modalHtml = `
+      <div class="modal fade" id="vendorLiveModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Live Vendor Lookup: ${escapeHtml(deviceName)}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-2">
+                <div class="progress">
+                  <div id="liveProgressBar" class="progress-bar" role="progressbar" style="width:0%">0%</div>
+                </div>
+                <small class="text-muted" id="liveMeta"></small>
+              </div>
+
+              <div class="accordion" id="liveAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#liveXml">
+                      XML Query
+                    </button>
+                  </h2>
+                  <div id="liveXml" class="accordion-collapse collapse show" data-bs-parent="#liveAccordion">
+                    <div class="accordion-body">
+                      <pre id="liveXmlPre" class="bg-light p-3" style="font-size:.8rem;overflow:auto;"></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#liveResult">
+                      Parsed Result
+                    </button>
+                  </h2>
+                  <div id="liveResult" class="accordion-collapse collapse" data-bs-parent="#liveAccordion">
+                    <div class="accordion-body">
+                      <div id="liveResultBox" class="table-responsive"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#liveRawXml">
+                      Raw Result XML
+                    </button>
+                  </h2>
+                  <div id="liveRawXml" class="accordion-collapse collapse" data-bs-parent="#liveAccordion">
+                    <div class="accordion-body">
+                      <pre id="liveRawXmlPre" class="bg-light p-3" style="font-size:.8rem;max-height:400px;overflow:auto;"></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2 text-danger" id="liveError"></div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    $('body').append(modalHtml);
+    const modalEl = document.getElementById('vendorLiveModal');
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+
+    const url = `/api/device/vendor/stream?device_name=${encodeURIComponent(deviceName)}&cust_id=${encodeURIComponent(fortisiemCustId)}`;
+    const es = new EventSource(url);
+
+    modalEl.addEventListener('hidden.bs.modal', () => {
+      try { es.close(); } catch(e) {}
+    });
+
+    es.addEventListener("xml", (ev) => {
+      const data = JSON.parse(ev.data);
+      $('#liveXmlPre').text(data.xml_query || '');
+    });
+
+    es.addEventListener("meta", (ev) => {
+      const data = JSON.parse(ev.data);
+      $('#liveMeta').text(`requestId=${data.request_id}, expireTime=${data.expire_time}`);
+    });
+
+    es.addEventListener("progress", (ev) => {
+      const data = JSON.parse(ev.data);
+      const p = Math.max(0, Math.min(100, data.progress || 0));
+      $('#liveProgressBar').css('width', `${p}%`).text(`${p}%`);
+    });
+
+    es.addEventListener("result", (ev) => {
+      const data = JSON.parse(ev.data);
+
+      let html = `<table class="table table-striped">
+        <thead><tr><th>Vendor</th><th>Model</th><th>Count</th></tr></thead><tbody>`;
+      (data.vendors || []).forEach(v => {
+        html += `<tr><td>${escapeHtml(v.vendor)}</td><td>${escapeHtml(v.model)}</td><td>${v.count}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+      $('#liveResultBox').html(html);
+
+      $('#liveRawXmlPre').text(data.raw_xml || '');
+
+      // open parsed section
+      new bootstrap.Collapse(document.getElementById('liveResult'), {toggle: true});
+    });
+
+    es.addEventListener("error", (ev) => {
+      // EventSource fires error on disconnect too; handle only if payload is present
+      try {
+        const data = JSON.parse(ev.data || '{}');
+        if (data.message) $('#liveError').text(data.message);
+      } catch(e) {}
+    });
+
+    es.addEventListener("done", () => {
+      try { es.close(); } catch(e) {}
+      $('#liveProgressBar').css('width', `100%`).text(`100%`);
+    });
+  }
+
+  // helper
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text == null ? '' : String(text);
+    return div.innerHTML;
+  }
+
+  // export actions
+  $('#exportBasic').on('click', function(e) {
+    e.preventDefault();
+    if (selectedClientId) window.location.href = `/api/client/${selectedClientId}/export`;
+  });
+
+  $('#exportWithVendor').on('click', function(e) {
+    e.preventDefault();
+    if (!selectedClientId) return;
+
+    const btn = $(this);
+    const originalHtml = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Preparing export...');
+    btn.addClass('disabled');
+
+    setTimeout(() => {
+      window.location.href = `/api/client/${selectedClientId}/export?include_vendor=true`;
+      setTimeout(() => {
+        btn.html(originalHtml);
+        btn.removeClass('disabled');
+      }, 3000);
+    }, 100);
+  });
+
+  $('#refreshVendorBtn').on('click', function() {
+    if (!selectedClientId) return;
+    fetch('/api/cache/clear')
+      .then(() => loadVendorInfo(selectedClientId))
+      .catch(() => loadVendorInfo(selectedClientId));
+  });
+
+  $('#vendorIncidentsBtn').on('click', function() {
+    if (!selectedClientId) return;
+    showVendorIncidentsReport();
+  });
+
+  $('#searchClient').on('keyup', function() {
+    const searchTerm = $(this).val().toLowerCase();
+    $('.client-card').each(function() {
+      const clientName = ($(this).data('client-name') || '').toLowerCase();
+      $(this).toggle(clientName.includes(searchTerm));
+    });
+  });
+
+  $(document).ready(function() {
+    loadDashboardStats();
+    loadClients();
+  });
+</script>
+
+</body>
+</html>

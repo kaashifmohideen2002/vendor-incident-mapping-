@@ -1,0 +1,1121 @@
+2025-12-25 14:55:37,775 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 14:55:37,780 - __main__ - INFO - [<module>:1190] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 14:55:37,780 - __main__ - INFO - [<module>:1191] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 14:55:37,780 - __main__ - INFO - [<module>:1192] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 14:55:37,780 - __main__ - INFO - [<module>:1193] - 🔍 Debug mode: False
+2025-12-25 14:55:37,809 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 14:55:37,809 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 14:55:37,809 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 14:55:37,977 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 14:55:37,981 - __main__ - INFO - [<module>:1190] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 14:55:37,981 - __main__ - INFO - [<module>:1191] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 14:55:37,981 - __main__ - INFO - [<module>:1192] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 14:55:37,981 - __main__ - INFO - [<module>:1193] - 🔍 Debug mode: False
+2025-12-25 14:55:37,996 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 14:55:38,002 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 14:55:51,020 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4460180816] GET /
+2025-12-25 14:55:51,032 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4460180816] GET / - Status: 200 - Duration: 12.13ms
+2025-12-25 14:55:51,033 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:55:51] "GET / HTTP/1.1" 200 -
+2025-12-25 14:55:51,551 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4460180816] GET /api/dashboard/stats
+2025-12-25 14:55:51,551 - __main__ - INFO - [get_dashboard_stats:1004] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 14:55:51,552 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4460180816] GET /api/clients
+2025-12-25 14:55:51,553 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 14:56:22,472 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 14:56:22,477 - __main__ - INFO - [<module>:1190] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 14:56:22,477 - __main__ - INFO - [<module>:1191] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 14:56:22,477 - __main__ - INFO - [<module>:1192] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 14:56:22,477 - __main__ - INFO - [<module>:1193] - 🔍 Debug mode: False
+2025-12-25 14:56:22,511 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 14:56:22,511 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 14:56:22,512 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 14:56:22,683 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 14:56:22,687 - __main__ - INFO - [<module>:1190] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 14:56:22,687 - __main__ - INFO - [<module>:1191] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 14:56:22,687 - __main__ - INFO - [<module>:1192] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 14:56:22,687 - __main__ - INFO - [<module>:1193] - 🔍 Debug mode: False
+2025-12-25 14:56:22,702 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 14:56:22,709 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 14:56:35,098 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /
+2025-12-25 14:56:35,104 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET / - Status: 200 - Duration: 5.40ms
+2025-12-25 14:56:35,104 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:35] "GET / HTTP/1.1" 200 -
+2025-12-25 14:56:35,396 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/dashboard/stats
+2025-12-25 14:56:35,397 - __main__ - INFO - [get_dashboard_stats:1004] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 14:56:35,404 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/clients
+2025-12-25 14:56:35,404 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 14:56:35,644 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:35,654 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:35,689 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 14:56:35,691 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/clients - Status: 200 - Duration: 286.71ms
+2025-12-25 14:56:35,692 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:35] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 14:56:38,733 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/summary
+2025-12-25 14:56:38,733 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/devices/with-vendor
+2025-12-25 14:56:38,733 - __main__ - INFO - [get_client_summary:502] - 🚀 API REQUEST: /api/client/86/summary - Getting client summary
+2025-12-25 14:56:38,734 - __main__ - INFO - [get_device_incidents_with_vendor:619] - 🚀 API REQUEST: /api/client/86/devices/with-vendor - Getting devices with vendor lookup
+2025-12-25 14:56:38,884 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:38,927 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:39,406 - __main__ - INFO - [get_client_summary:542] - ✅ API SUCCESS: /api/client/86/summary - Found summary data: 61 devices, 42591 incidents
+2025-12-25 14:56:39,406 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/summary - Status: 200 - Duration: 672.81ms
+2025-12-25 14:56:39,407 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:39] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 14:56:39,509 - __main__ - INFO - [get_device_incidents_with_vendor:654] - 📄 Found 61 devices for vendor lookup for client 86
+2025-12-25 14:56:39,684 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:39,729 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 14:56:39,730 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 14:56:39,730 - __main__ - INFO - [get_device_incidents_with_vendor:658] - 🎯 FortiSIEM customer ID for client 86: 86
+2025-12-25 14:56:39,732 - __main__ - INFO - [get_device_incidents_with_vendor:679] - ✅ API SUCCESS: /api/client/86/devices/with-vendor - Returning 61 devices with FortiSIEM ID 86
+2025-12-25 14:56:39,733 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 999.01ms
+2025-12-25 14:56:39,734 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:39] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 14:56:39,806 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/devices/vendors
+2025-12-25 14:56:39,807 - __main__ - INFO - [get_all_device_vendors:759] - 🚀 API REQUEST: /api/client/86/devices/vendors - Bulk vendor lookup for all devices (debug: False)
+2025-12-25 14:56:39,989 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:40,027 - __main__ - INFO - [get_dashboard_stats:1035] - ✅ API SUCCESS: /api/dashboard/stats - Clients: 118, Devices: 11071, Incidents: 969019
+2025-12-25 14:56:40,029 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/dashboard/stats - Status: 200 - Duration: 4631.74ms
+2025-12-25 14:56:40,029 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:40] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 14:56:40,203 - __main__ - INFO - [get_all_device_vendors:786] - 📄 Found 61 unique devices for bulk vendor lookup for client 86
+2025-12-25 14:56:40,368 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:56:40,410 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 14:56:40,411 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 14:56:40,412 - __main__ - INFO - [get_all_device_vendors:794] - 🎯 Starting bulk vendor lookup with FortiSIEM customer ID: 86
+2025-12-25 14:56:40,412 - __main__ - INFO - [get_all_device_vendors:801] - 🗂️ BULK PROCESSING LIST:
+2025-12-25 14:56:40,412 - __main__ - INFO - [get_all_device_vendors:803] -   1/61: api.in.xdr.trendmicro.com
+2025-12-25 14:56:40,412 - __main__ - INFO - [get_all_device_vendors:803] -   2/61: LTRPDC.ahm.lambdacro.com
+2025-12-25 14:56:40,413 - __main__ - INFO - [get_all_device_vendors:803] -   3/61: LTRADC.ahm.lambdacro.com
+2025-12-25 14:56:40,413 - __main__ - INFO - [get_all_device_vendors:803] -   4/61: Lambda_Primary_Firewall-200F
+2025-12-25 14:56:40,413 - __main__ - INFO - [get_all_device_vendors:803] -   5/61: HOST-13.233.235.68
+2025-12-25 14:56:40,413 - __main__ - INFO - [get_all_device_vendors:803] -   6/61: PV_TEST.ahm.lambdacro.com
+2025-12-25 14:56:40,413 - __main__ - INFO - [get_all_device_vendors:803] -   7/61: HPVM4
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   8/61: Biznet4.ahm.lambdacro.com
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   9/61: PV_RPT_DB.ahm.lambdacro.com
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   10/61: HPVM6
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   11/61: HOST-10.1.10.139
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   12/61: LTRPactrack.ahm.lambdacro.com
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   13/61: CLLAB07
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   14/61: localhost.localdomain
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   15/61: HPVM3
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   16/61: HOST-3.108.150.181
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   17/61: LC.LCS.COM
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   18/61: Lambda.coll
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   19/61: HOST-20.43.121.254
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   20/61: HOST-192.168.22.98
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   21/61: HOST-13.202.87.160
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   22/61: HOST-40.79.139.196
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   23/61: HOST-192.168.22.98,Lambda.coll
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   24/61: HOST-13.232.42.11
+2025-12-25 14:56:40,414 - __main__ - INFO - [get_all_device_vendors:803] -   25/61: manage.office.com
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   26/61: Test_App.ahm.lambdacro.com
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   27/61: Lambda_MEH_FW-100F
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   28/61: Lambda-Changodar-60F
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   29/61: Fortigate_Firewall_Ahm_OT
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   30/61: HOST-13.107.228.31
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   31/61: HOST-13.107.228.51
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   32/61: HOST-13.107.228.41
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   33/61: LAMFILE_NAS
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   34/61: ARCHIVAL_AHM_NAS
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   35/61: BIZNET7.ahm.lambdacro.com
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   36/61: HOST-10.1.10.117
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   37/61: HOST-10.1.10.140
+2025-12-25 14:56:40,415 - __main__ - INFO - [get_all_device_vendors:803] -   38/61: HOST-10.1.10.126
+2025-12-25 14:56:40,416 - __main__ - INFO - [get_all_device_vendors:803] -   39/61: HOST-10.1.10.138
+2025-12-25 14:56:40,416 - __main__ - INFO - [get_all_device_vendors:803] -   40/61: HOST-3.123.68.65
+2025-12-25 14:56:40,416 - __main__ - INFO - [get_all_device_vendors:803] -   41/61: Softmax_CDMO.ahm.lambdacro.com
+2025-12-25 14:56:40,416 - __main__ - INFO - [get_all_device_vendors:803] -   42/61: supervisor
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   43/61: graph.microsoft.com
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   44/61: HOST-13.107.219.37
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   45/61: HOST-127.0.0.1
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   46/61: AHM_VCenter
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   47/61: HOST-10.1.10.125
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   48/61: Chromeleon_DB.ahm.lambdacro.com
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   49/61: LTRProXE.ahm.lambdacro.com
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   50/61: AHM_PRD_NAS
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   51/61: MEHLAMFILE_NAS
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   52/61: MEH_PRD_NAS
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   53/61: CDMO_NAS
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   54/61: Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   55/61: PV_DB.ahm.lambdacro.com
+2025-12-25 14:56:40,417 - __main__ - INFO - [get_all_device_vendors:803] -   56/61: CDMO_PRD_AHM
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:803] -   57/61: LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:803] -   58/61: LAMBDA-THERMO-01.ahm.lambdacro.com
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:803] -   59/61: Chromeleon_DB
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:803] -   60/61: Recovery_Nas
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:803] -   61/61: Lambda-Changodar-60F,Lambda_Primary_Firewall-200F
+2025-12-25 14:56:40,418 - __main__ - INFO - [get_all_device_vendors:806] - 🚀 Starting parallel vendor lookups (max 5 concurrent threads)
+2025-12-25 14:56:40,420 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 1/61 (1.6%) - Processing result for 'LTRPactrack.ahm.lambdacro.com'
+2025-12-25 14:56:40,421 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRPactrack.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,421 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 2/61 (3.3%) - Processing result for 'Lambda_Primary_Firewall-200F'
+2025-12-25 14:56:40,421 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,421 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 3/61 (4.9%) - Processing result for 'localhost.localdomain'
+2025-12-25 14:56:40,421 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'localhost.localdomain' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 4/61 (6.6%) - Processing result for 'Biznet4.ahm.lambdacro.com'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Biznet4.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 5/61 (8.2%) - Processing result for 'HPVM4'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM4' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 6/61 (9.8%) - Processing result for 'HOST-10.1.10.139'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.139' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 7/61 (11.5%) - Processing result for 'HOST-13.233.235.68'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.233.235.68' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 8/61 (13.1%) - Processing result for 'api.in.xdr.trendmicro.com'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'api.in.xdr.trendmicro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 9/61 (14.8%) - Processing result for 'PV_TEST.ahm.lambdacro.com'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_TEST.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 10/61 (16.4%) - Processing result for 'LTRADC.ahm.lambdacro.com'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRADC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 11/61 (18.0%) - Processing result for 'HPVM6'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM6' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,422 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 12/61 (19.7%) - Processing result for 'PV_RPT_DB.ahm.lambdacro.com'
+2025-12-25 14:56:40,422 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_RPT_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 13/61 (21.3%) - Processing result for 'LTRPDC.ahm.lambdacro.com'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRPDC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 14/61 (23.0%) - Processing result for 'HPVM3'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM3' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 15/61 (24.6%) - Processing result for 'CLLAB07'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CLLAB07' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 16/61 (26.2%) - Processing result for 'HOST-3.108.150.181'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-3.108.150.181' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 17/61 (27.9%) - Processing result for 'HOST-13.202.87.160'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.202.87.160' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 18/61 (29.5%) - Processing result for 'HOST-40.79.139.196'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-40.79.139.196' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 19/61 (31.1%) - Processing result for 'HOST-192.168.22.98,Lambda.coll'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-192.168.22.98,Lambda.coll' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 20/61 (32.8%) - Processing result for 'HOST-13.232.42.11'
+2025-12-25 14:56:40,423 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.232.42.11' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,423 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 21/61 (34.4%) - Processing result for 'manage.office.com'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'manage.office.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 22/61 (36.1%) - Processing result for 'Test_App.ahm.lambdacro.com'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Test_App.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 23/61 (37.7%) - Processing result for 'Lambda_MEH_FW-100F'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda_MEH_FW-100F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 24/61 (39.3%) - Processing result for 'Lambda-Changodar-60F'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 25/61 (41.0%) - Processing result for 'Fortigate_Firewall_Ahm_OT'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Fortigate_Firewall_Ahm_OT' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 26/61 (42.6%) - Processing result for 'HOST-13.107.228.31'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.31' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 27/61 (44.3%) - Processing result for 'HOST-13.107.228.51'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.51' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 28/61 (45.9%) - Processing result for 'HOST-13.107.228.41'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.41' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 29/61 (47.5%) - Processing result for 'LAMFILE_NAS'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LAMFILE_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,424 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 30/61 (49.2%) - Processing result for 'ARCHIVAL_AHM_NAS'
+2025-12-25 14:56:40,424 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'ARCHIVAL_AHM_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 31/61 (50.8%) - Processing result for 'BIZNET7.ahm.lambdacro.com'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'BIZNET7.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 32/61 (52.5%) - Processing result for 'HOST-10.1.10.117'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.117' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 33/61 (54.1%) - Processing result for 'HOST-10.1.10.140'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.140' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 34/61 (55.7%) - Processing result for 'HOST-10.1.10.126'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.126' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 35/61 (57.4%) - Processing result for 'HOST-10.1.10.138'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.138' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 36/61 (59.0%) - Processing result for 'HOST-3.123.68.65'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-3.123.68.65' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 37/61 (60.7%) - Processing result for 'Softmax_CDMO.ahm.lambdacro.com'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Softmax_CDMO.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 38/61 (62.3%) - Processing result for 'supervisor'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'supervisor' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 39/61 (63.9%) - Processing result for 'graph.microsoft.com'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'graph.microsoft.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 40/61 (65.6%) - Processing result for 'HOST-13.107.219.37'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.219.37' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 41/61 (67.2%) - Processing result for 'HOST-127.0.0.1'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-127.0.0.1' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 42/61 (68.9%) - Processing result for 'AHM_VCenter'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'AHM_VCenter' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,425 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 43/61 (70.5%) - Processing result for 'HOST-10.1.10.125'
+2025-12-25 14:56:40,425 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.125' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 44/61 (72.1%) - Processing result for 'Chromeleon_DB.ahm.lambdacro.com'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Chromeleon_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 45/61 (73.8%) - Processing result for 'LTRProXE.ahm.lambdacro.com'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRProXE.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 46/61 (75.4%) - Processing result for 'AHM_PRD_NAS'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'AHM_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 47/61 (77.0%) - Processing result for 'MEHLAMFILE_NAS'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'MEHLAMFILE_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 48/61 (78.7%) - Processing result for 'MEH_PRD_NAS'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'MEH_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 49/61 (80.3%) - Processing result for 'CDMO_NAS'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CDMO_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 50/61 (82.0%) - Processing result for 'Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 51/61 (83.6%) - Processing result for 'PV_DB.ahm.lambdacro.com'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 52/61 (85.2%) - Processing result for 'CDMO_PRD_AHM'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CDMO_PRD_AHM' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 53/61 (86.9%) - Processing result for 'LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 54/61 (88.5%) - Processing result for 'LAMBDA-THERMO-01.ahm.lambdacro.com'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LAMBDA-THERMO-01.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 55/61 (90.2%) - Processing result for 'Chromeleon_DB'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Chromeleon_DB' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 56/61 (91.8%) - Processing result for 'Recovery_Nas'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Recovery_Nas' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 57/61 (93.4%) - Processing result for 'Lambda-Changodar-60F,Lambda_Primary_Firewall-200F'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F,Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 58/61 (95.1%) - Processing result for 'LC.LCS.COM'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LC.LCS.COM' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 59/61 (96.7%) - Processing result for 'Lambda.coll'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda.coll' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 60/61 (98.4%) - Processing result for 'HOST-20.43.121.254'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-20.43.121.254' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,426 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 61/61 (100.0%) - Processing result for 'HOST-192.168.22.98'
+2025-12-25 14:56:40,426 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-192.168.22.98' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:56:40,427 - __main__ - INFO - [get_all_device_vendors:870] - 🏁 BULK PROCESSING COMPLETE: Processed 61/61 devices for client 86
+2025-12-25 14:56:40,427 - __main__ - INFO - [get_all_device_vendors:871] - ✅ API SUCCESS: /api/client/86/devices/vendors - Returning vendor data for 61 devices
+2025-12-25 14:56:40,427 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/devices/vendors - Status: 200 - Duration: 620.26ms
+2025-12-25 14:56:40,427 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:56:40] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 14:57:15,334 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/summary
+2025-12-25 14:57:15,335 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/devices/with-vendor
+2025-12-25 14:57:15,335 - __main__ - INFO - [get_client_summary:502] - 🚀 API REQUEST: /api/client/86/summary - Getting client summary
+2025-12-25 14:57:15,335 - __main__ - INFO - [get_device_incidents_with_vendor:619] - 🚀 API REQUEST: /api/client/86/devices/with-vendor - Getting devices with vendor lookup
+2025-12-25 14:57:15,521 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:57:15,534 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:57:16,065 - __main__ - INFO - [get_client_summary:542] - ✅ API SUCCESS: /api/client/86/summary - Found summary data: 61 devices, 42591 incidents
+2025-12-25 14:57:16,065 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/summary - Status: 200 - Duration: 730.54ms
+2025-12-25 14:57:16,066 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:57:16] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 14:57:16,244 - __main__ - INFO - [get_device_incidents_with_vendor:654] - 📄 Found 61 devices for vendor lookup for client 86
+2025-12-25 14:57:16,432 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:57:16,483 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 14:57:16,483 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 14:57:16,483 - __main__ - INFO - [get_device_incidents_with_vendor:658] - 🎯 FortiSIEM customer ID for client 86: 86
+2025-12-25 14:57:16,484 - __main__ - INFO - [get_device_incidents_with_vendor:679] - ✅ API SUCCESS: /api/client/86/devices/with-vendor - Returning 61 devices with FortiSIEM ID 86
+2025-12-25 14:57:16,485 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 1150.19ms
+2025-12-25 14:57:16,486 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:57:16] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 14:57:16,531 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4427904960] GET /api/client/86/devices/vendors
+2025-12-25 14:57:16,532 - __main__ - INFO - [get_all_device_vendors:759] - 🚀 API REQUEST: /api/client/86/devices/vendors - Bulk vendor lookup for all devices (debug: False)
+2025-12-25 14:57:16,688 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:57:17,090 - __main__ - INFO - [get_all_device_vendors:786] - 📄 Found 61 unique devices for bulk vendor lookup for client 86
+2025-12-25 14:57:17,301 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 14:57:17,344 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 14:57:17,345 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 14:57:17,345 - __main__ - INFO - [get_all_device_vendors:794] - 🎯 Starting bulk vendor lookup with FortiSIEM customer ID: 86
+2025-12-25 14:57:17,345 - __main__ - INFO - [get_all_device_vendors:801] - 🗂️ BULK PROCESSING LIST:
+2025-12-25 14:57:17,345 - __main__ - INFO - [get_all_device_vendors:803] -   1/61: api.in.xdr.trendmicro.com
+2025-12-25 14:57:17,345 - __main__ - INFO - [get_all_device_vendors:803] -   2/61: LTRPDC.ahm.lambdacro.com
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   3/61: LTRADC.ahm.lambdacro.com
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   4/61: Lambda_Primary_Firewall-200F
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   5/61: HOST-13.233.235.68
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   6/61: PV_TEST.ahm.lambdacro.com
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   7/61: HPVM4
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   8/61: Biznet4.ahm.lambdacro.com
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   9/61: PV_RPT_DB.ahm.lambdacro.com
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   10/61: HPVM6
+2025-12-25 14:57:17,346 - __main__ - INFO - [get_all_device_vendors:803] -   11/61: HOST-10.1.10.139
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   12/61: LTRPactrack.ahm.lambdacro.com
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   13/61: CLLAB07
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   14/61: localhost.localdomain
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   15/61: HPVM3
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   16/61: HOST-3.108.150.181
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   17/61: LC.LCS.COM
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   18/61: Lambda.coll
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   19/61: HOST-20.43.121.254
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   20/61: HOST-192.168.22.98
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   21/61: HOST-13.202.87.160
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   22/61: HOST-40.79.139.196
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   23/61: HOST-192.168.22.98,Lambda.coll
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   24/61: HOST-13.232.42.11
+2025-12-25 14:57:17,347 - __main__ - INFO - [get_all_device_vendors:803] -   25/61: manage.office.com
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   26/61: Test_App.ahm.lambdacro.com
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   27/61: Lambda_MEH_FW-100F
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   28/61: Lambda-Changodar-60F
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   29/61: Fortigate_Firewall_Ahm_OT
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   30/61: HOST-13.107.228.31
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   31/61: HOST-13.107.228.51
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   32/61: HOST-13.107.228.41
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   33/61: LAMFILE_NAS
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   34/61: ARCHIVAL_AHM_NAS
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   35/61: BIZNET7.ahm.lambdacro.com
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   36/61: HOST-10.1.10.117
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   37/61: HOST-10.1.10.140
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   38/61: HOST-10.1.10.126
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   39/61: HOST-10.1.10.138
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   40/61: HOST-3.123.68.65
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   41/61: Softmax_CDMO.ahm.lambdacro.com
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   42/61: supervisor
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   43/61: graph.microsoft.com
+2025-12-25 14:57:17,348 - __main__ - INFO - [get_all_device_vendors:803] -   44/61: HOST-13.107.219.37
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   45/61: HOST-127.0.0.1
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   46/61: AHM_VCenter
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   47/61: HOST-10.1.10.125
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   48/61: Chromeleon_DB.ahm.lambdacro.com
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   49/61: LTRProXE.ahm.lambdacro.com
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   50/61: AHM_PRD_NAS
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   51/61: MEHLAMFILE_NAS
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   52/61: MEH_PRD_NAS
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   53/61: CDMO_NAS
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   54/61: Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   55/61: PV_DB.ahm.lambdacro.com
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   56/61: CDMO_PRD_AHM
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   57/61: LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   58/61: LAMBDA-THERMO-01.ahm.lambdacro.com
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   59/61: Chromeleon_DB
+2025-12-25 14:57:17,349 - __main__ - INFO - [get_all_device_vendors:803] -   60/61: Recovery_Nas
+2025-12-25 14:57:17,350 - __main__ - INFO - [get_all_device_vendors:803] -   61/61: Lambda-Changodar-60F,Lambda_Primary_Firewall-200F
+2025-12-25 14:57:17,350 - __main__ - INFO - [get_all_device_vendors:806] - 🚀 Starting parallel vendor lookups (max 5 concurrent threads)
+2025-12-25 14:57:17,352 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 1/61 (1.6%) - Processing result for 'CLLAB07'
+2025-12-25 14:57:17,353 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CLLAB07' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,353 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 2/61 (3.3%) - Processing result for 'LTRPactrack.ahm.lambdacro.com'
+2025-12-25 14:57:17,353 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRPactrack.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,353 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 3/61 (4.9%) - Processing result for 'HOST-10.1.10.139'
+2025-12-25 14:57:17,353 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.139' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,353 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 4/61 (6.6%) - Processing result for 'api.in.xdr.trendmicro.com'
+2025-12-25 14:57:17,353 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'api.in.xdr.trendmicro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 5/61 (8.2%) - Processing result for 'HPVM4'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM4' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 6/61 (9.8%) - Processing result for 'PV_RPT_DB.ahm.lambdacro.com'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_RPT_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 7/61 (11.5%) - Processing result for 'LTRADC.ahm.lambdacro.com'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRADC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 8/61 (13.1%) - Processing result for 'LTRPDC.ahm.lambdacro.com'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRPDC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 9/61 (14.8%) - Processing result for 'Biznet4.ahm.lambdacro.com'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Biznet4.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 10/61 (16.4%) - Processing result for 'localhost.localdomain'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'localhost.localdomain' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 11/61 (18.0%) - Processing result for 'HOST-13.233.235.68'
+2025-12-25 14:57:17,354 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.233.235.68' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,354 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 12/61 (19.7%) - Processing result for 'Lambda_Primary_Firewall-200F'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 13/61 (21.3%) - Processing result for 'HPVM3'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM3' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 14/61 (23.0%) - Processing result for 'HPVM6'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HPVM6' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 15/61 (24.6%) - Processing result for 'PV_TEST.ahm.lambdacro.com'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_TEST.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 16/61 (26.2%) - Processing result for 'HOST-3.108.150.181'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-3.108.150.181' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 17/61 (27.9%) - Processing result for 'HOST-13.202.87.160'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.202.87.160' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 18/61 (29.5%) - Processing result for 'HOST-40.79.139.196'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-40.79.139.196' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 19/61 (31.1%) - Processing result for 'HOST-192.168.22.98,Lambda.coll'
+2025-12-25 14:57:17,355 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-192.168.22.98,Lambda.coll' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,355 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 20/61 (32.8%) - Processing result for 'HOST-13.232.42.11'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.232.42.11' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 21/61 (34.4%) - Processing result for 'manage.office.com'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'manage.office.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 22/61 (36.1%) - Processing result for 'Test_App.ahm.lambdacro.com'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Test_App.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 23/61 (37.7%) - Processing result for 'Lambda_MEH_FW-100F'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda_MEH_FW-100F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 24/61 (39.3%) - Processing result for 'Lambda-Changodar-60F'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 25/61 (41.0%) - Processing result for 'Fortigate_Firewall_Ahm_OT'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Fortigate_Firewall_Ahm_OT' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 26/61 (42.6%) - Processing result for 'HOST-13.107.228.31'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.31' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 27/61 (44.3%) - Processing result for 'HOST-13.107.228.51'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.51' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,356 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 28/61 (45.9%) - Processing result for 'HOST-13.107.228.41'
+2025-12-25 14:57:17,356 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.228.41' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 29/61 (47.5%) - Processing result for 'LAMFILE_NAS'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LAMFILE_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 30/61 (49.2%) - Processing result for 'ARCHIVAL_AHM_NAS'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'ARCHIVAL_AHM_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 31/61 (50.8%) - Processing result for 'BIZNET7.ahm.lambdacro.com'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'BIZNET7.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 32/61 (52.5%) - Processing result for 'HOST-10.1.10.117'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.117' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 33/61 (54.1%) - Processing result for 'HOST-10.1.10.140'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.140' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 34/61 (55.7%) - Processing result for 'HOST-10.1.10.126'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.126' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 35/61 (57.4%) - Processing result for 'HOST-10.1.10.138'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.138' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 36/61 (59.0%) - Processing result for 'HOST-3.123.68.65'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-3.123.68.65' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 37/61 (60.7%) - Processing result for 'Softmax_CDMO.ahm.lambdacro.com'
+2025-12-25 14:57:17,357 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Softmax_CDMO.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,357 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 38/61 (62.3%) - Processing result for 'supervisor'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'supervisor' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 39/61 (63.9%) - Processing result for 'graph.microsoft.com'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'graph.microsoft.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 40/61 (65.6%) - Processing result for 'HOST-13.107.219.37'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-13.107.219.37' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 41/61 (67.2%) - Processing result for 'HOST-127.0.0.1'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-127.0.0.1' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 42/61 (68.9%) - Processing result for 'AHM_VCenter'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'AHM_VCenter' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 43/61 (70.5%) - Processing result for 'HOST-10.1.10.125'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-10.1.10.125' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 44/61 (72.1%) - Processing result for 'Chromeleon_DB.ahm.lambdacro.com'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Chromeleon_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 45/61 (73.8%) - Processing result for 'LTRProXE.ahm.lambdacro.com'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRProXE.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 46/61 (75.4%) - Processing result for 'AHM_PRD_NAS'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'AHM_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 47/61 (77.0%) - Processing result for 'MEHLAMFILE_NAS'
+2025-12-25 14:57:17,358 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'MEHLAMFILE_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,358 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 48/61 (78.7%) - Processing result for 'MEH_PRD_NAS'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'MEH_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 49/61 (80.3%) - Processing result for 'CDMO_NAS'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CDMO_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 50/61 (82.0%) - Processing result for 'Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F,Lambda_MEH_FW-100F,Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 51/61 (83.6%) - Processing result for 'PV_DB.ahm.lambdacro.com'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'PV_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 52/61 (85.2%) - Processing result for 'CDMO_PRD_AHM'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'CDMO_PRD_AHM' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 53/61 (86.9%) - Processing result for 'LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LTRADC.ahm.lambdacro.com,LTRPDC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 54/61 (88.5%) - Processing result for 'LAMBDA-THERMO-01.ahm.lambdacro.com'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LAMBDA-THERMO-01.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,359 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 55/61 (90.2%) - Processing result for 'Chromeleon_DB'
+2025-12-25 14:57:17,359 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Chromeleon_DB' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 56/61 (91.8%) - Processing result for 'Recovery_Nas'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Recovery_Nas' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 57/61 (93.4%) - Processing result for 'Lambda-Changodar-60F,Lambda_Primary_Firewall-200F'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda-Changodar-60F,Lambda_Primary_Firewall-200F' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 58/61 (95.1%) - Processing result for 'LC.LCS.COM'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'LC.LCS.COM' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 59/61 (96.7%) - Processing result for 'Lambda.coll'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'Lambda.coll' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 60/61 (98.4%) - Processing result for 'HOST-20.43.121.254'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-20.43.121.254' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:817] - 📋 PROGRESS: 61/61 (100.0%) - Processing result for 'HOST-192.168.22.98'
+2025-12-25 14:57:17,360 - __main__ - ERROR - [get_all_device_vendors:854] - ❌ ERROR: 'HOST-192.168.22.98' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:870] - 🏁 BULK PROCESSING COMPLETE: Processed 61/61 devices for client 86
+2025-12-25 14:57:17,360 - __main__ - INFO - [get_all_device_vendors:871] - ✅ API SUCCESS: /api/client/86/devices/vendors - Returning vendor data for 61 devices
+2025-12-25 14:57:17,360 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4427904960] GET /api/client/86/devices/vendors - Status: 200 - Duration: 828.90ms
+2025-12-25 14:57:17,361 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 14:57:17] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 15:14:30,028 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:14:30,034 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:14:30,034 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:14:30,034 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:14:30,034 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:14:30,068 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 15:14:30,068 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 15:14:30,068 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 15:14:30,245 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:14:30,249 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:14:30,249 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:14:30,249 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:14:30,249 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:14:30,267 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 15:14:30,274 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 15:14:41,298 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4430984768] GET /
+2025-12-25 15:14:41,310 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4430984768] GET / - Status: 200 - Duration: 11.34ms
+2025-12-25 15:14:41,311 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:14:41] "GET / HTTP/1.1" 200 -
+2025-12-25 15:14:41,871 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4430984768] GET /api/dashboard/stats
+2025-12-25 15:14:41,872 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4430984768] GET /api/clients
+2025-12-25 15:14:41,872 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 15:14:41,872 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 15:14:52,828 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:14:52,832 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:14:52,832 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:14:52,832 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:14:52,832 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:14:52,861 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 15:14:52,861 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 15:14:52,861 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 15:14:53,034 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:14:53,038 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:14:53,038 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:14:53,038 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:14:53,038 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:14:53,053 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 15:14:53,059 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 15:15:03,190 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /
+2025-12-25 15:15:03,202 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET / - Status: 200 - Duration: 11.72ms
+2025-12-25 15:15:03,203 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:03] "GET / HTTP/1.1" 200 -
+2025-12-25 15:15:03,305 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /api/dashboard/stats
+2025-12-25 15:15:03,306 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 15:15:03,307 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /api/clients
+2025-12-25 15:15:03,307 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 15:15:03,491 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:03,495 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:03,541 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 15:15:03,542 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET /api/clients - Status: 200 - Duration: 235.00ms
+2025-12-25 15:15:03,543 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:03] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 15:15:07,327 - __main__ - INFO - [get_dashboard_stats:1041] - ✅ API SUCCESS: /api/dashboard/stats - Clients: 102, Devices: 394, Incidents: 3190
+2025-12-25 15:15:07,328 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET /api/dashboard/stats - Status: 200 - Duration: 4022.67ms
+2025-12-25 15:15:07,329 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:07] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 15:15:09,191 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /api/client/86/summary
+2025-12-25 15:15:09,192 - __main__ - INFO - [get_client_summary:502] - 🚀 API REQUEST: /api/client/86/summary - Getting client summary
+2025-12-25 15:15:09,192 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /api/client/86/devices/with-vendor
+2025-12-25 15:15:09,193 - __main__ - INFO - [get_device_incidents_with_vendor:621] - 🚀 API REQUEST: /api/client/86/devices/with-vendor - Getting devices with vendor lookup
+2025-12-25 15:15:09,352 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:09,375 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:09,587 - __main__ - INFO - [get_device_incidents_with_vendor:657] - 📄 Found 8 devices for vendor lookup for client 86
+2025-12-25 15:15:09,676 - __main__ - INFO - [get_client_summary:543] - ✅ API SUCCESS: /api/client/86/summary - Found summary data: 8 devices, 20 incidents
+2025-12-25 15:15:09,676 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET /api/client/86/summary - Status: 200 - Duration: 484.48ms
+2025-12-25 15:15:09,677 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:09] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 15:15:09,764 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:09,813 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 15:15:09,814 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 15:15:09,814 - __main__ - INFO - [get_device_incidents_with_vendor:661] - 🎯 FortiSIEM customer ID for client 86: 86
+2025-12-25 15:15:09,814 - __main__ - INFO - [get_device_incidents_with_vendor:682] - ✅ API SUCCESS: /api/client/86/devices/with-vendor - Returning 8 devices with FortiSIEM ID 86
+2025-12-25 15:15:09,815 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 621.96ms
+2025-12-25 15:15:09,815 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:09] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 15:15:09,857 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4405081328] GET /api/client/86/devices/vendors
+2025-12-25 15:15:09,857 - __main__ - INFO - [get_all_device_vendors:762] - 🚀 API REQUEST: /api/client/86/devices/vendors - Bulk vendor lookup for all devices (debug: False)
+2025-12-25 15:15:10,037 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:10,281 - __main__ - INFO - [get_all_device_vendors:790] - 📄 Found 8 unique devices for bulk vendor lookup for client 86
+2025-12-25 15:15:10,424 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:15:10,465 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 15:15:10,465 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 15:15:10,465 - __main__ - INFO - [get_all_device_vendors:798] - 🎯 Starting bulk vendor lookup with FortiSIEM customer ID: 86
+2025-12-25 15:15:10,465 - __main__ - INFO - [get_all_device_vendors:805] - 🗂️ BULK PROCESSING LIST:
+2025-12-25 15:15:10,465 - __main__ - INFO - [get_all_device_vendors:807] -   1/8: Lambda.coll
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   2/8: HOST-3.123.68.65
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   3/8: AHM_VCenter
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   4/8: LTRADC.ahm.lambdacro.com
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   5/8: PV_RPT_DB.ahm.lambdacro.com
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   6/8: LTRPDC.ahm.lambdacro.com
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   7/8: AHM_PRD_NAS
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:807] -   8/8: MEH_PRD_NAS
+2025-12-25 15:15:10,466 - __main__ - INFO - [get_all_device_vendors:810] - 🚀 Starting parallel vendor lookups (max 5 concurrent threads)
+2025-12-25 15:15:10,467 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 1/8 (12.5%) - Processing result for 'AHM_VCenter'
+2025-12-25 15:15:10,468 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'AHM_VCenter' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,468 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 2/8 (25.0%) - Processing result for 'LTRADC.ahm.lambdacro.com'
+2025-12-25 15:15:10,468 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'LTRADC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,468 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 3/8 (37.5%) - Processing result for 'Lambda.coll'
+2025-12-25 15:15:10,468 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'Lambda.coll' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,468 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 4/8 (50.0%) - Processing result for 'PV_RPT_DB.ahm.lambdacro.com'
+2025-12-25 15:15:10,468 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'PV_RPT_DB.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,468 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 5/8 (62.5%) - Processing result for 'HOST-3.123.68.65'
+2025-12-25 15:15:10,468 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'HOST-3.123.68.65' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,468 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 6/8 (75.0%) - Processing result for 'LTRPDC.ahm.lambdacro.com'
+2025-12-25 15:15:10,469 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'LTRPDC.ahm.lambdacro.com' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,469 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 7/8 (87.5%) - Processing result for 'AHM_PRD_NAS'
+2025-12-25 15:15:10,469 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'AHM_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,469 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 8/8 (100.0%) - Processing result for 'MEH_PRD_NAS'
+2025-12-25 15:15:10,469 - __main__ - ERROR - [get_all_device_vendors:858] - ❌ ERROR: 'MEH_PRD_NAS' - Exception during vendor lookup: type object 'datetime.datetime' has no attribute 'timezone'
+2025-12-25 15:15:10,469 - __main__ - INFO - [get_all_device_vendors:874] - 🏁 BULK PROCESSING COMPLETE: Processed 8/8 devices for client 86
+2025-12-25 15:15:10,470 - __main__ - INFO - [get_all_device_vendors:875] - ✅ API SUCCESS: /api/client/86/devices/vendors - Returning vendor data for 8 devices
+2025-12-25 15:15:10,470 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4405081328] GET /api/client/86/devices/vendors - Status: 200 - Duration: 612.88ms
+2025-12-25 15:15:10,471 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:15:10] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 15:16:58,252 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:16:58,256 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:16:58,256 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:16:58,256 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:16:58,256 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:16:58,281 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 15:16:58,281 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 15:16:58,282 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 15:16:58,448 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:16:58,452 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:16:58,452 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:16:58,452 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:16:58,452 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:16:58,467 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 15:16:58,473 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 15:17:01,962 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /
+2025-12-25 15:17:01,972 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET / - Status: 200 - Duration: 10.06ms
+2025-12-25 15:17:01,972 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:01] "GET / HTTP/1.1" 200 -
+2025-12-25 15:17:02,004 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /api/dashboard/stats
+2025-12-25 15:17:02,004 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 15:17:02,013 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /api/clients
+2025-12-25 15:17:02,013 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 15:17:02,190 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:02,190 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:02,236 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 15:17:02,238 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET /api/clients - Status: 200 - Duration: 224.85ms
+2025-12-25 15:17:02,239 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:02] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 15:17:05,620 - __main__ - INFO - [get_dashboard_stats:1041] - ✅ API SUCCESS: /api/dashboard/stats - Clients: 102, Devices: 393, Incidents: 3179
+2025-12-25 15:17:05,622 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET /api/dashboard/stats - Status: 200 - Duration: 3618.01ms
+2025-12-25 15:17:05,623 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:05] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 15:17:06,918 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /api/client/86/summary
+2025-12-25 15:17:06,919 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /api/client/86/devices/with-vendor
+2025-12-25 15:17:06,919 - __main__ - INFO - [get_client_summary:502] - 🚀 API REQUEST: /api/client/86/summary - Getting client summary
+2025-12-25 15:17:06,920 - __main__ - INFO - [get_device_incidents_with_vendor:621] - 🚀 API REQUEST: /api/client/86/devices/with-vendor - Getting devices with vendor lookup
+2025-12-25 15:17:07,079 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:07,104 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:07,350 - __main__ - INFO - [get_device_incidents_with_vendor:657] - 📄 Found 8 devices for vendor lookup for client 86
+2025-12-25 15:17:07,386 - __main__ - INFO - [get_client_summary:543] - ✅ API SUCCESS: /api/client/86/summary - Found summary data: 8 devices, 20 incidents
+2025-12-25 15:17:07,387 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET /api/client/86/summary - Status: 200 - Duration: 467.36ms
+2025-12-25 15:17:07,387 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:07] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 15:17:07,514 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:07,558 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 15:17:07,559 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 15:17:07,559 - __main__ - INFO - [get_device_incidents_with_vendor:661] - 🎯 FortiSIEM customer ID for client 86: 86
+2025-12-25 15:17:07,559 - __main__ - INFO - [get_device_incidents_with_vendor:682] - ✅ API SUCCESS: /api/client/86/devices/with-vendor - Returning 8 devices with FortiSIEM ID 86
+2025-12-25 15:17:07,560 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 640.11ms
+2025-12-25 15:17:07,560 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:07] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 15:17:07,575 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4395579328] GET /api/client/86/devices/vendors
+2025-12-25 15:17:07,576 - __main__ - INFO - [get_all_device_vendors:762] - 🚀 API REQUEST: /api/client/86/devices/vendors - Bulk vendor lookup for all devices (debug: False)
+2025-12-25 15:17:07,802 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:08,024 - __main__ - INFO - [get_all_device_vendors:790] - 📄 Found 8 unique devices for bulk vendor lookup for client 86
+2025-12-25 15:17:08,202 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 15:17:08,252 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 15:17:08,253 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:798] - 🎯 Starting bulk vendor lookup with FortiSIEM customer ID: 86
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:805] - 🗂️ BULK PROCESSING LIST:
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:807] -   1/8: Lambda.coll
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:807] -   2/8: HOST-3.123.68.65
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:807] -   3/8: AHM_VCenter
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:807] -   4/8: LTRADC.ahm.lambdacro.com
+2025-12-25 15:17:08,254 - __main__ - INFO - [get_all_device_vendors:807] -   5/8: PV_RPT_DB.ahm.lambdacro.com
+2025-12-25 15:17:08,255 - __main__ - INFO - [get_all_device_vendors:807] -   6/8: LTRPDC.ahm.lambdacro.com
+2025-12-25 15:17:08,255 - __main__ - INFO - [get_all_device_vendors:807] -   7/8: AHM_PRD_NAS
+2025-12-25 15:17:08,255 - __main__ - INFO - [get_all_device_vendors:807] -   8/8: MEH_PRD_NAS
+2025-12-25 15:17:08,255 - __main__ - INFO - [get_all_device_vendors:810] - 🚀 Starting parallel vendor lookups (max 5 concurrent threads)
+2025-12-25 15:17:12,861 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 1/8 (12.5%) - Processing result for 'PV_RPT_DB.ahm.lambdacro.com'
+2025-12-25 15:17:12,863 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'PV_RPT_DB.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:12,872 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 2/8 (25.0%) - Processing result for 'HOST-3.123.68.65'
+2025-12-25 15:17:12,873 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'HOST-3.123.68.65' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:12,873 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 3/8 (37.5%) - Processing result for 'Lambda.coll'
+2025-12-25 15:17:12,873 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'Lambda.coll' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:12,886 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 4/8 (50.0%) - Processing result for 'AHM_VCenter'
+2025-12-25 15:17:12,887 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'AHM_VCenter' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:12,902 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 5/8 (62.5%) - Processing result for 'LTRADC.ahm.lambdacro.com'
+2025-12-25 15:17:12,903 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'LTRADC.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:15,879 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 6/8 (75.0%) - Processing result for 'MEH_PRD_NAS'
+2025-12-25 15:17:15,879 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'MEH_PRD_NAS' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:15,935 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 7/8 (87.5%) - Processing result for 'AHM_PRD_NAS'
+2025-12-25 15:17:15,935 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'AHM_PRD_NAS' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:15,979 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 8/8 (100.0%) - Processing result for 'LTRPDC.ahm.lambdacro.com'
+2025-12-25 15:17:15,979 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'LTRPDC.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 15:17:15,980 - __main__ - INFO - [get_all_device_vendors:874] - 🏁 BULK PROCESSING COMPLETE: Processed 8/8 devices for client 86
+2025-12-25 15:17:15,980 - __main__ - INFO - [get_all_device_vendors:875] - ✅ API SUCCESS: /api/client/86/devices/vendors - Returning vendor data for 8 devices
+2025-12-25 15:17:15,980 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4395579328] GET /api/client/86/devices/vendors - Status: 200 - Duration: 8404.52ms
+2025-12-25 15:17:15,981 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 15:17:15] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 15:20:33,632 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:20:33,637 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:20:33,637 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:20:33,637 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:20:33,637 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:20:33,663 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 15:20:33,663 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 15:20:33,663 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 15:20:33,842 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 15:20:33,847 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 15:20:33,847 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 15:20:33,847 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 15:20:33,847 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 15:20:33,861 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 15:20:33,867 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:02:11,464 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:02:11,468 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:02:11,468 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:02:11,468 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:02:11,468 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:02:11,500 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:02:11,500 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:02:11,500 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:02:11,726 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:02:11,730 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:02:11,730 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:02:11,730 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:02:11,730 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:02:11,748 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:02:11,754 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:02:15,246 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4429953296] GET /
+2025-12-25 16:02:15,259 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4429953296] GET / - Status: 200 - Duration: 11.10ms
+2025-12-25 16:02:15,259 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:02:15] "GET / HTTP/1.1" 200 -
+2025-12-25 16:02:15,423 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4429953296] GET /api/dashboard/stats
+2025-12-25 16:02:15,424 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4429953296] GET /api/clients
+2025-12-25 16:02:15,424 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 16:02:15,424 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 16:02:36,078 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:02:36,082 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:02:36,082 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:02:36,082 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:02:36,082 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:02:36,113 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:02:36,113 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:02:36,114 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:02:36,283 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:02:36,287 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:02:36,287 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:02:36,287 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:02:36,287 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:02:36,304 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:02:36,310 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:04:59,586 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4471485968] GET /
+2025-12-25 16:04:59,600 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4471485968] GET / - Status: 200 - Duration: 13.26ms
+2025-12-25 16:04:59,601 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:04:59] "GET / HTTP/1.1" 200 -
+2025-12-25 16:04:59,683 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4471485968] GET /api/dashboard/stats
+2025-12-25 16:04:59,684 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 16:04:59,685 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4471485968] GET /api/clients
+2025-12-25 16:04:59,686 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 16:05:05,444 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:05:05,449 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:05:05,449 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:05:05,449 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:05:05,449 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:05:05,494 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:05:05,494 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:05:05,494 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:05:05,668 - __main__ - INFO - [<module>:45] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:05:05,672 - __main__ - INFO - [<module>:1197] - 🚀 Starting Flask application on 0.0.0.0:5002
+2025-12-25 16:05:05,672 - __main__ - INFO - [<module>:1198] - 🔗 Database: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:05:05,672 - __main__ - INFO - [<module>:1199] - 🎯 FortiSIEM: soc.techowl.in
+2025-12-25 16:05:05,672 - __main__ - INFO - [<module>:1200] - 🔍 Debug mode: False
+2025-12-25 16:05:05,686 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:05:05,693 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:05:26,847 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /
+2025-12-25 16:05:26,853 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET / - Status: 200 - Duration: 5.66ms
+2025-12-25 16:05:26,853 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:26] "GET / HTTP/1.1" 200 -
+2025-12-25 16:05:26,957 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/dashboard/stats
+2025-12-25 16:05:26,961 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/clients
+2025-12-25 16:05:26,961 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 16:05:26,961 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 16:05:27,176 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:27,199 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:27,238 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 16:05:27,239 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/clients - Status: 200 - Duration: 278.30ms
+2025-12-25 16:05:27,240 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:27] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:05:33,944 - __main__ - INFO - [get_dashboard_stats:1041] - ✅ API SUCCESS: /api/dashboard/stats - Clients: 102, Devices: 385, Incidents: 3143
+2025-12-25 16:05:33,947 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/dashboard/stats - Status: 200 - Duration: 6986.13ms
+2025-12-25 16:05:33,948 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:33] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 16:05:37,953 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/client/86/summary
+2025-12-25 16:05:37,953 - __main__ - INFO - [get_client_summary:502] - 🚀 API REQUEST: /api/client/86/summary - Getting client summary
+2025-12-25 16:05:37,953 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/client/86/devices/with-vendor
+2025-12-25 16:05:37,953 - __main__ - INFO - [get_device_incidents_with_vendor:621] - 🚀 API REQUEST: /api/client/86/devices/with-vendor - Getting devices with vendor lookup
+2025-12-25 16:05:38,124 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:38,124 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:38,456 - __main__ - INFO - [get_client_summary:543] - ✅ API SUCCESS: /api/client/86/summary - Found summary data: 8 devices, 20 incidents
+2025-12-25 16:05:38,456 - __main__ - INFO - [get_device_incidents_with_vendor:657] - 📄 Found 8 devices for vendor lookup for client 86
+2025-12-25 16:05:38,458 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/client/86/summary - Status: 200 - Duration: 505.05ms
+2025-12-25 16:05:38,460 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:38] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 16:05:38,694 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:38,737 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 16:05:38,738 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 16:05:38,738 - __main__ - INFO - [get_device_incidents_with_vendor:661] - 🎯 FortiSIEM customer ID for client 86: 86
+2025-12-25 16:05:38,739 - __main__ - INFO - [get_device_incidents_with_vendor:682] - ✅ API SUCCESS: /api/client/86/devices/with-vendor - Returning 8 devices with FortiSIEM ID 86
+2025-12-25 16:05:38,740 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 786.10ms
+2025-12-25 16:05:38,740 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:38] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 16:05:38,795 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/client/86/devices/vendors
+2025-12-25 16:05:38,796 - __main__ - INFO - [get_all_device_vendors:762] - 🚀 API REQUEST: /api/client/86/devices/vendors - Bulk vendor lookup for all devices (debug: False)
+2025-12-25 16:05:39,060 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:39,271 - __main__ - INFO - [get_all_device_vendors:790] - 📄 Found 8 unique devices for bulk vendor lookup for client 86
+2025-12-25 16:05:40,432 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:40,550 - __main__ - WARNING - [get_fortisiem_cust_id:446] - ⚠️  Error querying fortisiem_cust_id column (might not exist): 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 16:05:40,551 - __main__ - INFO - [get_fortisiem_cust_id:452] - 🔄 Using fallback: client_id 86 as FortiSIEM customer ID
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:798] - 🎯 Starting bulk vendor lookup with FortiSIEM customer ID: 86
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:805] - 🗂️ BULK PROCESSING LIST:
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:807] -   1/8: Lambda.coll
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:807] -   2/8: HOST-3.123.68.65
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:807] -   3/8: AHM_VCenter
+2025-12-25 16:05:40,552 - __main__ - INFO - [get_all_device_vendors:807] -   4/8: LTRADC.ahm.lambdacro.com
+2025-12-25 16:05:40,553 - __main__ - INFO - [get_all_device_vendors:807] -   5/8: PV_RPT_DB.ahm.lambdacro.com
+2025-12-25 16:05:40,553 - __main__ - INFO - [get_all_device_vendors:807] -   6/8: LTRPDC.ahm.lambdacro.com
+2025-12-25 16:05:40,553 - __main__ - INFO - [get_all_device_vendors:807] -   7/8: AHM_PRD_NAS
+2025-12-25 16:05:40,553 - __main__ - INFO - [get_all_device_vendors:807] -   8/8: MEH_PRD_NAS
+2025-12-25 16:05:40,553 - __main__ - INFO - [get_all_device_vendors:810] - 🚀 Starting parallel vendor lookups (max 5 concurrent threads)
+2025-12-25 16:05:44,132 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 1/8 (12.5%) - Processing result for 'HOST-3.123.68.65'
+2025-12-25 16:05:44,133 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'HOST-3.123.68.65' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:44,228 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 2/8 (25.0%) - Processing result for 'Lambda.coll'
+2025-12-25 16:05:44,228 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'Lambda.coll' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:44,229 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 3/8 (37.5%) - Processing result for 'PV_RPT_DB.ahm.lambdacro.com'
+2025-12-25 16:05:44,231 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'PV_RPT_DB.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:44,231 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 4/8 (50.0%) - Processing result for 'AHM_VCenter'
+2025-12-25 16:05:44,231 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'AHM_VCenter' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:44,231 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 5/8 (62.5%) - Processing result for 'LTRADC.ahm.lambdacro.com'
+2025-12-25 16:05:44,231 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'LTRADC.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:45,012 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 6/8 (75.0%) - Processing result for 'LTRPDC.ahm.lambdacro.com'
+2025-12-25 16:05:45,012 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'LTRPDC.ahm.lambdacro.com' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:45,123 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 7/8 (87.5%) - Processing result for 'AHM_PRD_NAS'
+2025-12-25 16:05:45,124 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'AHM_PRD_NAS' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:45,129 - __main__ - INFO - [get_all_device_vendors:821] - 📋 PROGRESS: 8/8 (100.0%) - Processing result for 'MEH_PRD_NAS'
+2025-12-25 16:05:45,129 - __main__ - INFO - [get_all_device_vendors:835] - ✅ SUCCESS: 'MEH_PRD_NAS' - Found 1 vendor entries, primary: Unknown/Unknown
+2025-12-25 16:05:45,130 - __main__ - INFO - [get_all_device_vendors:874] - 🏁 BULK PROCESSING COMPLETE: Processed 8/8 devices for client 86
+2025-12-25 16:05:45,130 - __main__ - INFO - [get_all_device_vendors:875] - ✅ API SUCCESS: /api/client/86/devices/vendors - Returning vendor data for 8 devices
+2025-12-25 16:05:45,131 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/client/86/devices/vendors - Status: 200 - Duration: 6335.31ms
+2025-12-25 16:05:45,133 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:05:45] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 16:05:57,166 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /
+2025-12-25 16:05:57,168 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET / - Status: 200 - Duration: 0.98ms
+2025-12-25 16:05:57,169 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:05:57] "GET / HTTP/1.1" 200 -
+2025-12-25 16:05:57,812 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/dashboard/stats
+2025-12-25 16:05:57,813 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/clients
+2025-12-25 16:05:57,814 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 16:05:57,814 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 16:05:58,454 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:58,484 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:05:58,662 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 16:05:58,663 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/clients - Status: 200 - Duration: 848.50ms
+2025-12-25 16:05:58,663 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:05:58] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:06:02,366 - __main__ - INFO - [get_dashboard_stats:1041] - ✅ API SUCCESS: /api/dashboard/stats - Clients: 102, Devices: 385, Incidents: 3146
+2025-12-25 16:06:02,368 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/dashboard/stats - Status: 200 - Duration: 4554.09ms
+2025-12-25 16:06:02,369 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:06:02] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 16:06:24,788 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /
+2025-12-25 16:06:24,790 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET / - Status: 200 - Duration: 0.87ms
+2025-12-25 16:06:24,790 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:06:24] "GET / HTTP/1.1" 200 -
+2025-12-25 16:06:24,842 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/dashboard/stats
+2025-12-25 16:06:24,842 - __main__ - INFO - [get_dashboard_stats:1009] - 🚀 API REQUEST: /api/dashboard/stats - Getting overall dashboard statistics
+2025-12-25 16:06:24,843 - __main__ - INFO - [log_request_info:56] - 🔄 REQUEST START [ID: 4431263296] GET /api/clients
+2025-12-25 16:06:24,844 - __main__ - INFO - [get_clients:465] - 🚀 API REQUEST: /api/clients - Getting all clients
+2025-12-25 16:06:25,014 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:06:25,015 - __main__ - INFO - [get_db_connection:126] - ✅ Database connection established successfully
+2025-12-25 16:06:25,061 - __main__ - INFO - [get_clients:486] - ✅ API SUCCESS: /api/clients - Found 119 clients
+2025-12-25 16:06:25,062 - __main__ - INFO - [log_response_info:79] - ✅ REQUEST END [ID: 4431263296] GET /api/clients - Status: 200 - Duration: 217.71ms
+2025-12-25 16:06:25,063 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:06:25] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:14:57,980 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:14:57,985 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:14:57,985 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:14:57,985 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:14:57,985 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:14:58,021 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:14:58,021 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:14:58,022 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:14:58,196 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:14:58,201 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:14:58,201 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:14:58,201 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:14:58,201 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:14:58,217 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:14:58,223 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:15:28,758 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4437645568] GET /
+2025-12-25 16:15:28,774 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4437645568] GET / - Status: 200 - Duration: 14.36ms
+2025-12-25 16:15:28,775 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:15:28] "GET / HTTP/1.1" 200 -
+2025-12-25 16:15:29,240 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4437645568] GET /api/dashboard/stats
+2025-12-25 16:15:29,242 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4437645568] GET /api/clients
+2025-12-25 16:15:39,649 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:15:39,653 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:15:39,653 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:15:39,654 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:15:39,654 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:15:39,688 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:15:39,688 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:15:39,689 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:15:39,857 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:15:39,862 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:15:39,862 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:15:39,862 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:15:39,862 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:15:39,876 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:15:39,882 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:15:47,936 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /
+2025-12-25 16:15:47,947 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET / - Status: 200 - Duration: 10.90ms
+2025-12-25 16:15:47,948 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:47] "GET / HTTP/1.1" 200 -
+2025-12-25 16:15:48,390 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/dashboard/stats
+2025-12-25 16:15:48,391 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/clients
+2025-12-25 16:15:48,570 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:48,572 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:48,619 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/clients - Status: 200 - Duration: 227.17ms
+2025-12-25 16:15:48,623 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:48] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:15:52,347 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/dashboard/stats - Status: 200 - Duration: 3955.86ms
+2025-12-25 16:15:52,349 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:52] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 16:15:54,511 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/client/86/summary
+2025-12-25 16:15:54,513 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/client/86/devices/with-vendor
+2025-12-25 16:15:54,672 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:54,704 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:55,001 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/client/86/summary - Status: 200 - Duration: 489.61ms
+2025-12-25 16:15:55,002 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:55] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 16:15:55,118 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:55,162 - __main__ - WARNING - [get_fortisiem_cust_id:378] - Error querying fortisiem_cust_id: 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 16:15:55,163 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 650.24ms
+2025-12-25 16:15:55,163 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:55] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 16:15:55,213 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/client/86/devices/vendors
+2025-12-25 16:15:55,369 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:55,756 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:15:55,803 - __main__ - WARNING - [get_fortisiem_cust_id:378] - Error querying fortisiem_cust_id: 1054 (42S22): Unknown column 'fortisiem_cust_id' in 'field list'
+2025-12-25 16:15:58,645 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/device/vendor/stream
+2025-12-25 16:15:58,645 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/device/vendor/stream - Status: 200 - Duration: 0.28ms
+2025-12-25 16:15:58,646 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:15:58] "GET /api/device/vendor/stream?device_name=Lambda.coll&cust_id=86 HTTP/1.1" 200 -
+2025-12-25 16:16:02,051 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/client/86/devices/vendors - Status: 200 - Duration: 6837.10ms
+2025-12-25 16:16:02,052 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:16:02] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 16:16:14,377 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/device/vendor/stream
+2025-12-25 16:16:14,378 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/device/vendor/stream - Status: 200 - Duration: 0.35ms
+2025-12-25 16:16:14,379 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:16:14] "GET /api/device/vendor/stream?device_name=Lambda.coll&cust_id=86 HTTP/1.1" 200 -
+2025-12-25 16:16:22,620 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4433894208] GET /api/device/vendor/stream
+2025-12-25 16:16:22,621 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4433894208] GET /api/device/vendor/stream - Status: 200 - Duration: 0.09ms
+2025-12-25 16:16:22,621 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:16:22] "GET /api/device/vendor/stream?device_name=Lambda.coll&cust_id=86 HTTP/1.1" 200 -
+2025-12-25 16:25:53,763 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:25:53,767 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:25:53,767 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:25:53,767 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:25:53,767 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:25:53,800 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:25:53,800 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:25:53,801 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:25:53,969 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:25:53,973 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:25:53,974 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:25:53,974 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:25:53,974 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:25:53,988 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:25:53,995 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:26:01,602 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4404615952] GET /
+2025-12-25 16:26:01,612 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4404615952] GET / - Status: 200 - Duration: 9.37ms
+2025-12-25 16:26:01,613 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:26:01] "GET / HTTP/1.1" 200 -
+2025-12-25 16:26:02,023 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4404615952] GET /api/dashboard/stats
+2025-12-25 16:26:02,024 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4404615952] GET /api/clients
+2025-12-25 16:26:08,336 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:26:08,341 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:26:08,341 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:26:08,341 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:26:08,341 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:26:08,379 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:26:08,379 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:26:08,379 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:26:08,554 - __main__ - INFO - [<module>:47] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:26:08,559 - __main__ - INFO - [<module>:1041] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:26:08,559 - __main__ - INFO - [<module>:1042] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:26:08,559 - __main__ - INFO - [<module>:1043] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:26:08,559 - __main__ - INFO - [<module>:1044] - Debug: False
+2025-12-25 16:26:08,574 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:26:08,581 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:26:18,447 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /
+2025-12-25 16:26:18,452 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET / - Status: 200 - Duration: 4.30ms
+2025-12-25 16:26:18,452 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:18] "GET / HTTP/1.1" 200 -
+2025-12-25 16:26:18,923 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/dashboard/stats
+2025-12-25 16:26:18,924 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/clients
+2025-12-25 16:26:19,101 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:19,114 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:19,168 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/clients - Status: 200 - Duration: 243.06ms
+2025-12-25 16:26:19,169 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:19] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:26:22,614 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/dashboard/stats - Status: 200 - Duration: 3689.89ms
+2025-12-25 16:26:22,614 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:22] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 16:26:23,752 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/client/86/summary
+2025-12-25 16:26:23,753 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/client/86/devices/with-vendor
+2025-12-25 16:26:23,929 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:23,976 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:24,219 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/client/86/summary - Status: 200 - Duration: 466.11ms
+2025-12-25 16:26:24,220 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:24] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 16:26:24,355 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:24,422 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 668.25ms
+2025-12-25 16:26:24,423 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:24] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 16:26:24,448 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/client/86/devices/vendors
+2025-12-25 16:26:24,671 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:25,105 - __main__ - INFO - [get_db_connection:127] - Database connection established successfully
+2025-12-25 16:26:31,442 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/device/vendor/stream
+2025-12-25 16:26:31,443 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/device/vendor/stream - Status: 200 - Duration: 0.13ms
+2025-12-25 16:26:31,443 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:31] "GET /api/device/vendor/stream?device_name=Lambda.coll&cust_id=2126 HTTP/1.1" 200 -
+2025-12-25 16:26:50,087 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/client/86/devices/vendors - Status: 200 - Duration: 25638.60ms
+2025-12-25 16:26:50,088 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:50] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 16:26:56,624 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/device/vendor/stream
+2025-12-25 16:26:56,625 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/device/vendor/stream - Status: 200 - Duration: 0.12ms
+2025-12-25 16:26:56,626 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:26:56] "GET /api/device/vendor/stream?device_name=Lambda.coll&cust_id=2126 HTTP/1.1" 200 -
+2025-12-25 16:28:50,754 - __main__ - INFO - [log_request_info:58] - REQUEST START [ID: 4426390192] GET /api/device/vendor/stream
+2025-12-25 16:28:50,755 - __main__ - INFO - [log_response_info:80] - REQUEST END [ID: 4426390192] GET /api/device/vendor/stream - Status: 200 - Duration: 0.28ms
+2025-12-25 16:28:50,756 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:28:50] "GET /api/device/vendor/stream?device_name=AHM_VCenter&cust_id=2126 HTTP/1.1" 200 -
+2025-12-25 16:43:51,311 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:43:51,316 - __main__ - INFO - [<module>:1324] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:43:51,316 - __main__ - INFO - [<module>:1325] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:43:51,316 - __main__ - INFO - [<module>:1326] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:43:51,316 - __main__ - INFO - [<module>:1327] - Debug: False
+2025-12-25 16:43:51,355 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:43:51,355 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:43:51,355 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:43:51,725 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:43:51,730 - __main__ - INFO - [<module>:1324] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:43:51,730 - __main__ - INFO - [<module>:1325] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:43:51,730 - __main__ - INFO - [<module>:1326] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:43:51,730 - __main__ - INFO - [<module>:1327] - Debug: False
+2025-12-25 16:43:51,746 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:43:51,753 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:44:10,841 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4429304240] GET /
+2025-12-25 16:44:10,852 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4429304240] GET / - Status: 200 - Duration: 10.42ms
+2025-12-25 16:44:10,853 - werkzeug - INFO - [_log:97] - 192.168.10.172 - - [25/Dec/2025 16:44:10] "GET / HTTP/1.1" 200 -
+2025-12-25 16:44:11,553 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4429304240] GET /api/dashboard/stats
+2025-12-25 16:44:11,554 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4429304240] GET /api/clients
+2025-12-25 16:44:18,709 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:44:18,714 - __main__ - INFO - [<module>:1324] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:44:18,714 - __main__ - INFO - [<module>:1325] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:44:18,714 - __main__ - INFO - [<module>:1326] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:44:18,714 - __main__ - INFO - [<module>:1327] - Debug: False
+2025-12-25 16:44:18,746 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.172:5002
+2025-12-25 16:44:18,746 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 16:44:18,746 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 16:44:19,124 - __main__ - INFO - [<module>:50] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 16:44:19,129 - __main__ - INFO - [<module>:1324] - Starting Flask on 0.0.0.0:5002
+2025-12-25 16:44:19,129 - __main__ - INFO - [<module>:1325] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 16:44:19,129 - __main__ - INFO - [<module>:1326] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 16:44:19,129 - __main__ - INFO - [<module>:1327] - Debug: False
+2025-12-25 16:44:19,145 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 16:44:19,151 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
+2025-12-25 16:44:23,119 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /
+2025-12-25 16:44:23,130 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET / - Status: 200 - Duration: 10.79ms
+2025-12-25 16:44:23,130 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:23] "GET / HTTP/1.1" 200 -
+2025-12-25 16:44:23,346 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/dashboard/stats
+2025-12-25 16:44:23,347 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/clients
+2025-12-25 16:44:23,585 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:23,585 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:23,640 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/clients - Status: 200 - Duration: 291.73ms
+2025-12-25 16:44:23,641 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:23] "GET /api/clients HTTP/1.1" 200 -
+2025-12-25 16:44:28,598 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/client/86/summary
+2025-12-25 16:44:28,599 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/client/86/devices/with-vendor
+2025-12-25 16:44:28,753 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:28,753 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:28,787 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/dashboard/stats - Status: 200 - Duration: 5439.51ms
+2025-12-25 16:44:28,788 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:28] "GET /api/dashboard/stats HTTP/1.1" 200 -
+2025-12-25 16:44:29,054 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/client/86/summary - Status: 200 - Duration: 455.28ms
+2025-12-25 16:44:29,055 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:29] "GET /api/client/86/summary HTTP/1.1" 200 -
+2025-12-25 16:44:29,228 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:29,270 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/client/86/devices/with-vendor - Status: 200 - Duration: 670.74ms
+2025-12-25 16:44:29,270 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:29] "GET /api/client/86/devices/with-vendor HTTP/1.1" 200 -
+2025-12-25 16:44:29,310 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/client/86/devices/vendors
+2025-12-25 16:44:29,311 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/device/vendor/selections
+2025-12-25 16:44:29,325 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/device/vendor/selections - Status: 200 - Duration: 12.30ms
+2025-12-25 16:44:29,325 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:29] "GET /api/device/vendor/selections?client_id=86 HTTP/1.1" 200 -
+2025-12-25 16:44:29,457 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:29,839 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:44:36,850 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/client/86/devices/vendors - Status: 200 - Duration: 7538.04ms
+2025-12-25 16:44:36,851 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:44:36] "GET /api/client/86/devices/vendors HTTP/1.1" 200 -
+2025-12-25 16:45:05,959 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/vendor/incidents/summary
+2025-12-25 16:45:06,116 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:45:06,338 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 377.91ms
+2025-12-25 16:45:06,339 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:45:06] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 16:45:22,555 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] POST /api/device/vendor/select
+2025-12-25 16:45:22,595 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 16:45:22,595 - __main__ - INFO - [select_device_vendor:1146] - Vendor selection saved: client=86, device=Lambda.coll, vendor=TrendMicro, model=Vision One
+2025-12-25 16:45:22,595 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] POST /api/device/vendor/select - Status: 200 - Duration: 39.74ms
+2025-12-25 16:45:22,596 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:45:22] "POST /api/device/vendor/select HTTP/1.1" 200 -
+2025-12-25 16:45:29,039 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/vendor/incidents/summary
+2025-12-25 16:45:29,189 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:45:29,807 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 767.76ms
+2025-12-25 16:45:29,808 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:45:29] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 16:46:38,416 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/vendor/incidents/summary
+2025-12-25 16:46:38,600 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:46:38,821 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 404.76ms
+2025-12-25 16:46:38,821 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:46:38] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 16:47:38,301 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] POST /api/device/vendor/select
+2025-12-25 16:47:38,323 - __main__ - INFO - [save_vendor_selections:158] - Vendor selections saved to data/vendor_selections.xlsx
+2025-12-25 16:47:38,323 - __main__ - INFO - [select_device_vendor:1146] - Vendor selection saved: client=86, device=LTRADC.ahm.lambdacro.com, vendor=Microsoft, model=Windows
+2025-12-25 16:47:38,323 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] POST /api/device/vendor/select - Status: 200 - Duration: 20.47ms
+2025-12-25 16:47:38,323 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:47:38] "POST /api/device/vendor/select HTTP/1.1" 200 -
+2025-12-25 16:47:47,101 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/vendor/incidents/summary
+2025-12-25 16:47:47,272 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:47:47,497 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 395.40ms
+2025-12-25 16:47:47,497 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:47:47] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
+2025-12-25 16:47:54,458 - __main__ - INFO - [log_request_info:61] - REQUEST START [ID: 4425847600] GET /api/vendor/incidents/summary
+2025-12-25 16:47:54,626 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
+2025-12-25 16:47:54,873 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4425847600] GET /api/vendor/incidents/summary - Status: 200 - Duration: 414.54ms
+2025-12-25 16:47:54,874 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 16:47:54] "GET /api/vendor/incidents/summary?client_id=86 HTTP/1.1" 200 -
