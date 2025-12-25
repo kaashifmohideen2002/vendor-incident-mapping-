@@ -11,7 +11,11 @@
       "Bash(gh repo create:*)",
       "Bash(ssh-add:*)",
       "Bash(git remote set-url:*)",
-      "Bash(ssh:*)"
+      "Bash(ssh:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(cp:*)"
     ],
     "deny": [],
     "ask": [],

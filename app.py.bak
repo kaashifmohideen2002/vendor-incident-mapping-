@@ -1349,19 +1349,17 @@ def get_vendor_incidents_summary():
         
         cursor = conn.cursor(dictionary=True)
         
-        # Get incident counts by device including true incident counts
+        # Get incident counts by device
         query = """
             SELECT 
                 i.incident_rpt_dev_name AS device_name,
                 COUNT(*) AS incident_count,
-                SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity,
-                SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS medium_severity,
-                SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS low_severity,
-                COUNT(CASE WHEN i.latest_incident_status = 5 AND t.incident_type = 'True Incident' THEN 1 END) AS true_incident_count,
+                SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity,
+                SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS medium_severity,
+                SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS low_severity,
                 MIN(i.incident_first_seen_datetime) AS first_incident,
                 MAX(i.incident_last_seen_datetime) AS last_incident
             FROM incidents i
-            LEFT JOIN incident_statuses t ON i.id = t.incident_id
             WHERE i.client_id = %s
                 AND i.incident_rpt_dev_name IS NOT NULL 
                 AND i.incident_rpt_dev_name != ''
@@ -1379,8 +1377,7 @@ def get_vendor_incidents_summary():
         vendor_selections = get_client_vendor_selections(client_id)
         vendor_selection_dict = {vs['device_name']: vs for vs in vendor_selections}
         
-        # Aggregate by model first, then track vendors for each model
-        model_summary = {}
+        # Aggregate by vendor
         vendor_summary = {}
         unselected_devices = []
         
@@ -1389,57 +1386,48 @@ def get_vendor_incidents_summary():
             vendor_selection = vendor_selection_dict.get(device_name)
             
             if vendor_selection:
-                vendor = vendor_selection.get('selected_vendor', 'Unknown')
+                vendor = vendor_selection['selected_vendor']
                 model = vendor_selection.get('selected_model', 'Unknown')
                 
-                # Create model entry if it doesn't exist
-                model_key = f"{vendor}:{model}"  # Use vendor:model as key to avoid conflicts
-                if model_key not in model_summary:
-                    model_summary[model_key] = {
-                        'model': model,
+                if vendor not in vendor_summary:
+                    vendor_summary[vendor] = {
                         'vendor': vendor,
                         'total_incidents': 0,
-                        'true_incidents': 0,
                         'high_severity': 0,
                         'medium_severity': 0,
                         'low_severity': 0,
                         'device_count': 0,
+                        'models': {},
                         'devices': []
                     }
                 
-                # Update model totals
-                model_summary[model_key]['total_incidents'] += device['incident_count']
-                model_summary[model_key]['true_incidents'] += device['true_incident_count'] or 0
-                model_summary[model_key]['high_severity'] += device['high_severity'] or 0
-                model_summary[model_key]['medium_severity'] += device['medium_severity'] or 0
-                model_summary[model_key]['low_severity'] += device['low_severity'] or 0
-                model_summary[model_key]['device_count'] += 1
+                vendor_summary[vendor]['total_incidents'] += device['incident_count']
+                vendor_summary[vendor]['high_severity'] += device['high_severity'] or 0
+                vendor_summary[vendor]['medium_severity'] += device['medium_severity'] or 0
+                vendor_summary[vendor]['low_severity'] += device['low_severity'] or 0
+                vendor_summary[vendor]['device_count'] += 1
                 
-                # Add device details to model
-                model_summary[model_key]['devices'].append({
+                # Track models for this vendor
+                if model not in vendor_summary[vendor]['models']:
+                    vendor_summary[vendor]['models'][model] = 0
+                vendor_summary[vendor]['models'][model] += device['incident_count']
+                
+                # Add device details
+                vendor_summary[vendor]['devices'].append({
                     'device_name': device['device_name'],
+                    'model': model,
                     'incident_count': device['incident_count'],
-                    'true_incident_count': device['true_incident_count'] or 0,
                     'high_severity': device['high_severity'] or 0,
                     'medium_severity': device['medium_severity'] or 0,
                     'low_severity': device['low_severity'] or 0,
                     'first_incident': device['first_incident'].strftime('%Y-%m-%d %H:%M:%S') if device['first_incident'] else None,
                     'last_incident': device['last_incident'].strftime('%Y-%m-%d %H:%M:%S') if device['last_incident'] else None
                 })
-                
-                # Also maintain vendor summary for summary lines
-                if vendor not in vendor_summary:
-                    vendor_summary[vendor] = {'total_incidents': 0, 'true_incidents': 0, 'device_count': 0}
-                vendor_summary[vendor]['total_incidents'] += device['incident_count']
-                vendor_summary[vendor]['true_incidents'] += device['true_incident_count'] or 0
-                vendor_summary[vendor]['device_count'] += 1
-                
             else:
                 # Device without vendor selection
                 unselected_devices.append({
                     'device_name': device['device_name'],
                     'incident_count': device['incident_count'],
-                    'true_incident_count': device['true_incident_count'] or 0,
                     'high_severity': device['high_severity'] or 0,
                     'medium_severity': device['medium_severity'] or 0,
                     'low_severity': device['low_severity'] or 0,
@@ -1448,32 +1436,19 @@ def get_vendor_incidents_summary():
                 })
         
         # Convert to list and sort by incident count
-        model_list = list(model_summary.values())
-        model_list.sort(key=lambda x: x['total_incidents'], reverse=True)
-        
-        # Create vendor list for summary lines
-        vendor_list = []
-        for vendor, data in vendor_summary.items():
-            vendor_list.append({
-                'vendor': vendor,
-                'total_incidents': data['total_incidents'],
-                'true_incidents': data['true_incidents'],
-                'device_count': data['device_count']
-            })
+        vendor_list = list(vendor_summary.values())
         vendor_list.sort(key=lambda x: x['total_incidents'], reverse=True)
         
         # Create summary lines
         summary_lines = []
         for vendor in vendor_list:
-            line = f"{vendor['vendor']}: {vendor['total_incidents']} incidents ({vendor['true_incidents']} true incidents) across {vendor['device_count']} devices"
+            line = f"{vendor['vendor']}: {vendor['total_incidents']} incidents across {vendor['device_count']} devices"
             summary_lines.append(line)
         
         return jsonify({
-            'model_summary': model_list,
             'vendor_summary': vendor_list,
             'unselected_devices': unselected_devices,
             'summary_lines': summary_lines,
-            'total_models': len(model_list),
             'total_vendors': len(vendor_list),
             'total_unselected_devices': len(unselected_devices)
         })

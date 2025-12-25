@@ -1197,6 +1197,7 @@
                   </div>
                   <div class="d-flex gap-2">
                     <span class="badge bg-primary">${model.total_incidents} incidents</span>
+                    <span class="badge bg-dark">${model.true_incidents || 0} true incidents</span>
                     <span class="badge bg-info">${model.device_count} devices</span>
                     <span class="badge bg-danger">${model.high_severity} high</span>
                     <span class="badge bg-warning">${model.medium_severity} medium</span>
@@ -1210,7 +1211,7 @@
                 <h6>Devices:</h6>
                 <div class="table-responsive">
                   <table class="table table-sm table-striped">
-                    <thead><tr><th>Device Name</th><th>Incidents</th><th>High</th><th>Med</th><th>Low</th><th>First Seen</th><th>Last Seen</th></tr></thead>
+                    <thead><tr><th>Device Name</th><th>Incidents</th><th>True</th><th>High</th><th>Med</th><th>Low</th><th>First Seen</th><th>Last Seen</th></tr></thead>
                     <tbody>
         `;
         
@@ -1219,6 +1220,7 @@
             <tr>
               <td class="device-name-cell" title="${escapeHtml(device.device_name)}">${escapeHtml(device.device_name)}</td>
               <td><span class="badge bg-primary">${device.incident_count}</span></td>
+              <td><span class="badge bg-dark">${device.true_incident_count || 0}</span></td>
               <td><span class="severity-badge severity-high">${device.high_severity}</span></td>
               <td><span class="severity-badge severity-medium">${device.medium_severity}</span></td>
               <td><span class="severity-badge severity-low">${device.low_severity}</span></td>
