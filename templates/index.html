@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Date Range Picker CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
   <style>
     :root {
@@ -267,6 +269,36 @@
       background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05));
       border-left: 4px solid #e74c3c;
     }
+
+    /* Calendar Date Picker Styles */
+    .daterangepicker {
+      border-radius: 12px !important;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.16) !important;
+      border: none !important;
+    }
+    .daterangepicker .calendar-table th, 
+    .daterangepicker .calendar-table td {
+      border-radius: 8px;
+    }
+    .daterangepicker td.active, 
+    .daterangepicker td.active:hover {
+      background: var(--secondary-color) !important;
+    }
+    .daterangepicker .ranges li.active {
+      background: var(--secondary-color) !important;
+    }
+    .date-picker-input {
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.08), rgba(52, 152, 219, 0.02));
+      border: 2px solid rgba(52, 152, 219, 0.2);
+      border-radius: 10px;
+      padding: 10px 16px;
+      transition: all 0.3s ease;
+    }
+    .date-picker-input:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+      outline: none;
+    }
   </style>
 </head>
 
@@ -279,6 +311,42 @@
 </nav>
 
 <div class="container-fluid">
+  <!-- Date Range Filter Controls -->
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body py-3">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center">
+                <label class="form-label mb-0 me-3 fw-medium">
+                  <i class="bi bi-calendar-range"></i> Database Date Range:
+                </label>
+                <input type="text" class="form-control date-picker-input" id="dateRange" 
+                       placeholder="Select date range..." readonly style="max-width: 280px; cursor: pointer;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-outline-primary btn-sm" id="applyDateRange">
+                  <i class="bi bi-check-circle"></i> Apply Range
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" id="resetToLast24h">
+                  <i class="bi bi-arrow-clockwise"></i> Last 24h
+                </button>
+                <div class="alert alert-info mb-0 py-2 flex-grow-1">
+                  <small>
+                    <i class="bi bi-info-circle"></i> 
+                    <strong>Note:</strong> SIEM vendor lookups remain fixed at 24 hours for optimal performance.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row mb-4" id="dashboardStats">
     <div class="col-md-3 mb-3">
       <div class="card stat-card bg-primary text-white">
@@ -438,6 +506,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<!-- Date Range Picker JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
   let selectedClientId = null;
@@ -446,9 +517,14 @@
   let deviceTable = null;
   let severityChart = null;
   let deviceVendors = {}; // bulk cache
+  let currentDateRange = {
+    start: moment().subtract(24, 'hours'),
+    end: moment()
+  };
 
   function loadDashboardStats() {
-    fetch('/api/dashboard/stats')
+    const hours = calculateHoursFromDateRange();
+    fetch(`/api/dashboard/stats?hours=${hours}`)
       .then(r => r.json())
       .then(data => {
         $('#totalClients').text(data.total_clients || 0);
@@ -457,6 +533,11 @@
         $('#highSeverity').text(data.high_severity_count || 0);
       })
       .catch(err => console.error('Error loading dashboard stats:', err));
+  }
+
+  function calculateHoursFromDateRange() {
+    const diffInHours = currentDateRange.end.diff(currentDateRange.start, 'hours');
+    return Math.max(1, diffInHours); // Minimum 1 hour
   }
 
   function loadClients() {
@@ -515,7 +596,8 @@
   }
 
   function loadClientSummary(clientId) {
-    fetch(`/api/client/${clientId}/summary`)
+    const hours = calculateHoursFromDateRange();
+    fetch(`/api/client/${clientId}/summary?hours=${hours}`)
       .then(r => r.json())
       .then(data => {
         $('#clientSummary').show();
@@ -563,7 +645,8 @@
     $('#deviceTableContainer').hide();
     $('#deviceLoadingSpinner').show();
 
-    fetch(`/api/client/${clientId}/devices/with-vendor`)
+    const hours = calculateHoursFromDateRange();
+    fetch(`/api/client/${clientId}/devices/with-vendor?hours=${hours}`)
       .then(r => r.json())
       .then(data => {
         $('#deviceLoadingSpinner').hide();
@@ -653,8 +736,9 @@
     $('#vendorLoadingIndicator').show();
     
     // Load vendor info and existing selections in parallel
+    const hours = calculateHoursFromDateRange();
     Promise.all([
-      fetch(`/api/client/${clientId}/devices/vendors`).then(r => r.json()),
+      fetch(`/api/client/${clientId}/devices/vendors?hours=${hours}`).then(r => r.json()),
       fetch(`/api/device/vendor/selections?client_id=${clientId}`).then(r => r.json())
     ])
       .then(([vendorData, selectionsData]) => {
@@ -676,7 +760,9 @@
           const existingSelection = selectionMap[deviceName];
 
           if (!vendorInfo) {
-            $(this).find('.vendor-cell').prepend('<span class="vendor-unknown">N/A</span><br>');
+            const vendorCell = $(this).find('.vendor-cell');
+            const liveLink = vendorCell.find('small').parent().html();
+            vendorCell.html(`<span class="vendor-unknown">N/A</span> <small><a href="#" onclick="showManualVendorEntry('${escapeHtml(deviceName)}'); return false;" class="text-primary text-decoration-none"><i class="bi bi-pencil-square"></i> Set Manually</a></small><br>${liveLink}`);
             $(this).find('.model-cell').html('<span class="vendor-unknown">N/A</span>');
             return;
           }
@@ -689,9 +775,17 @@
             const selectedVendor = existingSelection.selected_vendor;
             const selectedModel = existingSelection.selected_model;
             
+            // Determine if this was a manual selection (if vendor doesn't match any SIEM results)
+            const isManual = !vendorInfo || vendorInfo.vendor === 'Unknown' || 
+              !vendorInfo.vendors.some(v => v.vendor === selectedVendor && v.model === selectedModel);
+            
+            const badge = isManual ? 
+              '<small class="badge bg-info rounded-pill"><i class="bi bi-pencil-square"></i> Manual</small>' :
+              '<small class="badge bg-success rounded-pill"><i class="bi bi-check-circle"></i> Selected</small>';
+            
             // keep live link (second line)
             const liveLink = vendorCell.find('small').parent().html();
-            vendorCell.html(`<span class="vendor-badge">${escapeHtml(selectedVendor)}</span> <small class="badge bg-success rounded-pill"><i class="bi bi-check-circle"></i> Selected</small><br>${liveLink}`);
+            vendorCell.html(`<span class="vendor-badge">${escapeHtml(selectedVendor)}</span> ${badge}<br>${liveLink}`);
             modelCell.html(`<span class="model-badge">${escapeHtml(selectedModel)}</span>`);
             modelCell.off('click').css('cursor', 'default').removeAttr('title');
           } else {
@@ -719,7 +813,7 @@
                 vendorTop += ` <small class="badge bg-warning rounded-pill"><i class="bi bi-exclamation-triangle"></i> ${vendorInfo.total_entries} options - Click to choose</small>`;
               }
             } else {
-              vendorTop = `<span class="vendor-unknown">${escapeHtml(primaryVendor)}</span>`;
+              vendorTop = `<span class="vendor-unknown">${escapeHtml(primaryVendor)}</span> <small><a href="#" onclick="showManualVendorEntry('${escapeHtml(deviceName)}'); return false;" class="text-primary text-decoration-none"><i class="bi bi-pencil-square"></i> Set Manually</a></small>`;
             }
 
             // keep live link (second line)
@@ -957,7 +1051,7 @@
     });
   });
 
-  function updateDeviceRowVendor(deviceName, vendor, model) {
+  function updateDeviceRowVendor(deviceName, vendor, model, isManual = false) {
     $('#deviceTable tbody tr').each(function() {
       if ($(this).data('device-name') === deviceName) {
         const vendorCell = $(this).find('.vendor-cell');
@@ -967,7 +1061,11 @@
         const liveLink = vendorCell.find('small').parent().html();
         const liveLinkPart = liveLink.split('<br>')[1] || '';
         
-        vendorCell.html(`<span class="vendor-badge">${escapeHtml(vendor)}</span> <small class="badge bg-success">Selected</small><br>${liveLinkPart}`);
+        const badge = isManual ? 
+          '<small class="badge bg-info rounded-pill"><i class="bi bi-pencil-square"></i> Manual</small>' :
+          '<small class="badge bg-success rounded-pill"><i class="bi bi-check-circle"></i> Selected</small>';
+        
+        vendorCell.html(`<span class="vendor-badge">${escapeHtml(vendor)}</span> ${badge}<br>${liveLinkPart}`);
         modelCell.html(`<span class="model-badge">${escapeHtml(model)}</span>`);
         modelCell.off('click').css('cursor', 'default').removeAttr('title');
       }
@@ -1013,6 +1111,14 @@
     }
   }
 
+  function getTimeRangeText(hours) {
+    if (hours <= 1) return 'Last 1 Hour';
+    if (hours <= 6) return `Last ${hours} Hours`;
+    if (hours <= 24) return `Last ${hours} Hours`;
+    if (hours <= 48) return `Last ${Math.ceil(hours/24)} Day(s)`;
+    return `Last ${Math.ceil(hours/24)} Days`;
+  }
+
   function showVendorIncidentsReport() {
     if (!selectedClientId) return;
     
@@ -1020,7 +1126,10 @@
     const originalText = btn.html();
     btn.html('<i class="bi bi-hourglass-split"></i> Loading...').prop('disabled', true);
     
-    fetch(`/api/vendor/incidents/summary?client_id=${selectedClientId}`)
+    // Get current time filter in hours
+    const hours = Math.ceil(currentDateRange.end.diff(currentDateRange.start, 'hours', true));
+    
+    fetch(`/api/vendor/incidents/summary?client_id=${selectedClientId}&hours=${hours}`)
       .then(response => response.json())
       .then(data => {
         if (data.error) {
@@ -1028,7 +1137,7 @@
           return;
         }
         
-        displayVendorIncidentsModal(data);
+        displayVendorIncidentsModal(data, hours);
       })
       .catch(error => {
         console.error('Error loading vendor incidents:', error);
@@ -1039,15 +1148,19 @@
       });
   }
 
-  function displayVendorIncidentsModal(data) {
+  function displayVendorIncidentsModal(data, hours) {
+    const timeRangeText = getTimeRangeText(hours);
     let modalHtml = `
       <div class="modal fade" id="vendorIncidentsModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">
-                <i class="bi bi-building"></i> Vendor Incidents Report - ${escapeHtml(selectedClientName)}
-              </h5>
+              <div>
+                <h5 class="modal-title">
+                  <i class="bi bi-building"></i> Vendor Incidents Report - ${escapeHtml(selectedClientName)}
+                </h5>
+                <small class="text-muted">Time Range: ${timeRangeText}</small>
+              </div>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -1065,54 +1178,46 @@
       modalHtml += `</ul></div>`;
     }
     
-    if (data.vendor_summary && data.vendor_summary.length > 0) {
+    if (data.model_summary && data.model_summary.length > 0) {
       modalHtml += `
-        <h6 class="mt-3"><i class="bi bi-building-fill"></i> Vendor Breakdown</h6>
-        <div class="accordion" id="vendorAccordion">
+        <h6 class="mt-3"><i class="bi bi-cpu-fill"></i> Model Breakdown</h6>
+        <div class="accordion" id="modelAccordion">
       `;
       
-      data.vendor_summary.forEach((vendor, idx) => {
+      data.model_summary.forEach((model, idx) => {
         modalHtml += `
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button ${idx > 0 ? 'collapsed' : ''}" type="button" 
-                      data-bs-toggle="collapse" data-bs-target="#vendor${idx}">
+                      data-bs-toggle="collapse" data-bs-target="#model${idx}">
                 <div class="d-flex w-100 justify-content-between align-items-center me-3">
-                  <span><strong>${escapeHtml(vendor.vendor)}</strong></span>
-                  <div class="d-flex gap-3">
-                    <span class="badge bg-primary">${vendor.total_incidents} incidents</span>
-                    <span class="badge bg-info">${vendor.device_count} devices</span>
-                    <span class="badge bg-danger">${vendor.high_severity} high</span>
-                    <span class="badge bg-warning">${vendor.medium_severity} medium</span>
-                    <span class="badge bg-success">${vendor.low_severity} low</span>
+                  <div class="d-flex align-items-center gap-3">
+                    <span><strong>${escapeHtml(model.model)}</strong></span>
+                    <span class="badge bg-secondary vendor-indicator">${escapeHtml(model.vendor)}</span>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <span class="badge bg-primary">${model.total_incidents} incidents</span>
+                    <span class="badge bg-info">${model.device_count} devices</span>
+                    <span class="badge bg-danger">${model.high_severity} high</span>
+                    <span class="badge bg-warning">${model.medium_severity} medium</span>
+                    <span class="badge bg-success">${model.low_severity} low</span>
                   </div>
                 </div>
               </button>
             </h2>
-            <div id="vendor${idx}" class="accordion-collapse collapse ${idx === 0 ? 'show' : ''}" data-bs-parent="#vendorAccordion">
+            <div id="model${idx}" class="accordion-collapse collapse ${idx === 0 ? 'show' : ''}" data-bs-parent="#modelAccordion">
               <div class="accordion-body">
-                <h6>Models:</h6>
-                <div class="mb-3">
-        `;
-        
-        Object.entries(vendor.models).forEach(([model, count]) => {
-          modalHtml += `<span class="badge bg-secondary me-2 mb-1">${escapeHtml(model)}: ${count} incidents</span>`;
-        });
-        
-        modalHtml += `
-                </div>
                 <h6>Devices:</h6>
                 <div class="table-responsive">
                   <table class="table table-sm table-striped">
-                    <thead><tr><th>Device Name</th><th>Model</th><th>Incidents</th><th>High</th><th>Med</th><th>Low</th><th>First Seen</th><th>Last Seen</th></tr></thead>
+                    <thead><tr><th>Device Name</th><th>Incidents</th><th>High</th><th>Med</th><th>Low</th><th>First Seen</th><th>Last Seen</th></tr></thead>
                     <tbody>
         `;
         
-        vendor.devices.forEach(device => {
+        model.devices.forEach(device => {
           modalHtml += `
             <tr>
               <td class="device-name-cell" title="${escapeHtml(device.device_name)}">${escapeHtml(device.device_name)}</td>
-              <td><span class="model-badge">${escapeHtml(device.model)}</span></td>
               <td><span class="badge bg-primary">${device.incident_count}</span></td>
               <td><span class="severity-badge severity-high">${device.high_severity}</span></td>
               <td><span class="severity-badge severity-medium">${device.medium_severity}</span></td>
@@ -1154,7 +1259,16 @@
             <td><span class="severity-badge severity-high">${device.high_severity}</span></td>
             <td><span class="severity-badge severity-medium">${device.medium_severity}</span></td>
             <td><span class="severity-badge severity-low">${device.low_severity}</span></td>
-            <td><button class="btn btn-sm btn-outline-primary" onclick="selectVendorForDevice('${escapeHtml(device.device_name)}')">Select Vendor</button></td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-primary" onclick="selectVendorForDevice('${escapeHtml(device.device_name)}')">
+                  <i class="bi bi-list-ul"></i> Choose
+                </button>
+                <button class="btn btn-outline-info" onclick="showManualVendorEntry('${escapeHtml(device.device_name)}')">
+                  <i class="bi bi-pencil-square"></i> Manual
+                </button>
+              </div>
+            </td>
           </tr>
         `;
       });
@@ -1167,11 +1281,11 @@
       `;
     }
     
-    if (!data.vendor_summary || data.vendor_summary.length === 0) {
+    if (!data.model_summary || data.model_summary.length === 0) {
       modalHtml += `
         <div class="empty-state">
-          <i class="bi bi-building"></i>
-          <h4>No Vendor Data Available</h4>
+          <i class="bi bi-cpu"></i>
+          <h4>No Model Data Available</h4>
           <p>No vendor selections have been made yet. Select vendors for devices to see incident reports.</p>
         </div>
       `;
@@ -1203,6 +1317,134 @@
     } else {
       showAlert('info', 'Please load vendor information for this device first by viewing the device table.');
     }
+  }
+
+  function showManualVendorEntry(deviceName) {
+    let modalHtml = `
+      <div class="modal fade" id="manualVendorModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">
+                <i class="bi bi-pencil-square"></i> Manually Set Vendor Information
+              </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-light border-primary">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-hdd-network-fill text-primary fs-4 me-3"></i>
+                  <div>
+                    <strong class="text-primary">Device:</strong> ${escapeHtml(deviceName)}<br>
+                    <small class="text-muted">Set vendor and model information manually</small>
+                  </div>
+                </div>
+              </div>
+              
+              <form id="manualVendorForm">
+                <div class="mb-3">
+                  <label for="vendorInput" class="form-label">
+                    <i class="bi bi-building"></i> Vendor Name <span class="text-danger">*</span>
+                  </label>
+                  <input type="text" class="form-control" id="vendorInput" placeholder="Enter vendor name (e.g., Microsoft, Cisco, HP)" required>
+                  <div class="form-text">Enter the manufacturer or vendor of this device</div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="modelInput" class="form-label">
+                    <i class="bi bi-cpu"></i> Model Name
+                  </label>
+                  <input type="text" class="form-control" id="modelInput" placeholder="Enter model name (optional)">
+                  <div class="form-text">Enter the specific model or leave blank if unknown</div>
+                </div>
+                
+                <div class="alert alert-info">
+                  <i class="bi bi-lightbulb"></i> <strong>Tips:</strong>
+                  <ul class="mb-0 mt-2">
+                    <li>Use standard vendor names (Microsoft, Cisco, Dell, HP, etc.)</li>
+                    <li>Model field is optional - you can leave it blank or enter "Unknown"</li>
+                    <li>This information will be saved and used for reporting</li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                <i class="bi bi-x-circle"></i> Cancel
+              </button>
+              <button type="submit" form="manualVendorForm" class="btn btn-primary" id="saveManualVendor">
+                <i class="bi bi-check-circle"></i> Save Vendor Info
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    $('#manualVendorModal').remove();
+    $('body').append(modalHtml);
+    
+    const modal = new bootstrap.Modal(document.getElementById('manualVendorModal'));
+    modal.show();
+    
+    // Focus on vendor input when modal opens
+    $('#manualVendorModal').on('shown.bs.modal', function() {
+      $('#vendorInput').focus();
+    });
+    
+    // Handle form submission
+    $('#manualVendorForm').on('submit', function(e) {
+      e.preventDefault();
+      
+      const vendor = $('#vendorInput').val().trim();
+      const model = $('#modelInput').val().trim() || 'Unknown';
+      
+      if (!vendor) {
+        showAlert('warning', 'Please enter a vendor name.');
+        $('#vendorInput').focus();
+        return;
+      }
+      
+      const btn = $('#saveManualVendor');
+      const originalText = btn.html();
+      btn.html('<i class="bi bi-hourglass-split"></i> Saving...').prop('disabled', true);
+      
+      // Save manual vendor selection
+      fetch('/api/device/vendor/manual', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          device_name: deviceName,
+          client_id: selectedClientId,
+          vendor: vendor,
+          model: model
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          // Close modal
+          modal.hide();
+          
+          // Update the device table to show manual vendor
+          updateDeviceRowVendor(deviceName, data.vendor, data.model, true);
+          
+          // Show success message
+          showAlert('success', `Manual vendor information saved: ${data.vendor} / ${data.model}`);
+        } else {
+          showAlert('danger', `Error saving vendor information: ${data.error || 'Unknown error'}`);
+        }
+      })
+      .catch(error => {
+        console.error('Error saving manual vendor:', error);
+        showAlert('danger', 'Error saving vendor information. Please try again.');
+      })
+      .finally(() => {
+        btn.html(originalText).prop('disabled', false);
+      });
+    });
   }
 
   // NEW: live XML + progress + result via SSE
@@ -1350,7 +1592,10 @@
   // export actions
   $('#exportBasic').on('click', function(e) {
     e.preventDefault();
-    if (selectedClientId) window.location.href = `/api/client/${selectedClientId}/export`;
+    if (selectedClientId) {
+      const hours = calculateHoursFromDateRange();
+      window.location.href = `/api/client/${selectedClientId}/export?hours=${hours}`;
+    }
   });
 
   $('#exportWithVendor').on('click', function(e) {
@@ -1363,7 +1608,8 @@
     btn.addClass('disabled');
 
     setTimeout(() => {
-      window.location.href = `/api/client/${selectedClientId}/export?include_vendor=true`;
+      const hours = calculateHoursFromDateRange();
+      window.location.href = `/api/client/${selectedClientId}/export?include_vendor=true&hours=${hours}`;
       setTimeout(() => {
         btn.html(originalHtml);
         btn.removeClass('disabled');
@@ -1391,7 +1637,102 @@
     });
   });
 
+  // Initialize Date Range Picker
+  function initializeDateRangePicker() {
+    $('#dateRange').daterangepicker({
+      startDate: currentDateRange.start,
+      endDate: currentDateRange.end,
+      timePicker: true,
+      timePicker24Hour: true,
+      timePickerIncrement: 15,
+      locale: {
+        format: 'MM/DD/YYYY HH:mm'
+      },
+      ranges: {
+        'Last 1 Hour': [moment().subtract(1, 'hours'), moment()],
+        'Last 6 Hours': [moment().subtract(6, 'hours'), moment()],
+        'Last 12 Hours': [moment().subtract(12, 'hours'), moment()],
+        'Last 24 Hours': [moment().subtract(24, 'hours'), moment()],
+        'Last 2 Days': [moment().subtract(2, 'days'), moment()],
+        'Last 3 Days': [moment().subtract(3, 'days'), moment()],
+        'Last 7 Days': [moment().subtract(7, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(30, 'days'), moment()]
+      },
+      alwaysShowCalendars: true,
+      showDropdowns: true,
+      autoApply: false
+    }, function(start, end, label) {
+      currentDateRange.start = start;
+      currentDateRange.end = end;
+      
+      // Update display
+      $('#dateRange').val(start.format('MM/DD/YYYY HH:mm') + ' - ' + end.format('MM/DD/YYYY HH:mm'));
+      
+      // Show friendly label if it's a preset range
+      if (label && label !== 'Custom Range') {
+        showAlert('info', `Date range updated: ${label}`, 2000);
+      }
+      
+      // Auto-refresh vendor incidents modal if it's open (for preset ranges only)
+      if (label && label !== 'Custom Range') {
+        const vendorModal = document.getElementById('vendorIncidentsModal');
+        if (vendorModal && $(vendorModal).hasClass('show')) {
+          setTimeout(() => {
+            showVendorIncidentsReport();
+          }, 500); // Small delay to let the alert show
+        }
+      }
+    });
+
+    // Set initial display
+    $('#dateRange').val(currentDateRange.start.format('MM/DD/YYYY HH:mm') + ' - ' + currentDateRange.end.format('MM/DD/YYYY HH:mm'));
+  }
+
+  // Apply date range button handler
+  $('#applyDateRange').on('click', function() {
+    const btn = $(this);
+    const originalHtml = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Applying...').prop('disabled', true);
+    
+    // Reload all data with new date range
+    loadDashboardStats();
+    
+    const selectedClientId = $('.client-card.selected').data('client-id');
+    if (selectedClientId) {
+      loadClientSummary(selectedClientId);
+      loadDeviceData(selectedClientId);
+      
+      // Refresh vendor incidents modal if it's open
+      const vendorModal = document.getElementById('vendorIncidentsModal');
+      if (vendorModal && $(vendorModal).hasClass('show')) {
+        showVendorIncidentsReport();
+      }
+    }
+    
+    showAlert('success', `Applied date range: ${currentDateRange.start.format('MM/DD HH:mm')} - ${currentDateRange.end.format('MM/DD HH:mm')}`, 3000);
+    
+    setTimeout(() => {
+      btn.html(originalHtml).prop('disabled', false);
+    }, 1000);
+  });
+
+  // Reset to last 24 hours button handler
+  $('#resetToLast24h').on('click', function() {
+    currentDateRange = {
+      start: moment().subtract(24, 'hours'),
+      end: moment()
+    };
+    
+    // Update picker
+    $('#dateRange').data('daterangepicker').setStartDate(currentDateRange.start);
+    $('#dateRange').data('daterangepicker').setEndDate(currentDateRange.end);
+    $('#dateRange').val(currentDateRange.start.format('MM/DD/YYYY HH:mm') + ' - ' + currentDateRange.end.format('MM/DD/YYYY HH:mm'));
+    
+    showAlert('info', 'Reset to last 24 hours', 2000);
+  });
+
   $(document).ready(function() {
+    initializeDateRangePicker();
     loadDashboardStats();
     loadClients();
   });

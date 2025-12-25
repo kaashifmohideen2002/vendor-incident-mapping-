@@ -674,6 +674,13 @@ def get_clients():
 
 @app.route('/api/client/<int:client_id>/summary')
 def get_client_summary(client_id):
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+
     conn = get_db_connection()
     if not conn:
         return jsonify({'error': 'Database connection failed'}), 500
@@ -686,24 +693,25 @@ def get_client_summary(client_id):
             COUNT(*) AS total_incidents,
             COUNT(DISTINCT DATE(i.incident_first_seen_datetime)) AS active_days,
             COUNT(DISTINCT i.id) AS unique_incidents,
-            SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity,
-            SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS medium_severity,
-            SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS low_severity
+            SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS medium_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS low_severity
         FROM incidents i
         INNER JOIN clients c ON i.client_id = c.id
         WHERE c.id = %s
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
         GROUP BY c.name
     """
     try:
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         result = cursor.fetchone()
         cursor.close()
         conn.close()
         if result:
+            result['time_filter_hours'] = hours
             return jsonify(result)
         return jsonify({'error': 'Client not found or no data'}), 404
     except Error as e:
@@ -714,6 +722,13 @@ def get_client_summary(client_id):
 
 @app.route('/api/client/<int:client_id>/devices')
 def get_device_incidents(client_id):
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+
     conn = get_db_connection()
     if not conn:
         return jsonify({'error': 'Database connection failed'}), 500
@@ -725,20 +740,20 @@ def get_device_incidents(client_id):
             COUNT(*) AS incident_count,
             MIN(i.incident_first_seen_datetime) AS first_incident,
             MAX(i.incident_last_seen_datetime) AS last_incident,
-            SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity,
-            SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS medium_severity,
-            SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS low_severity
+            SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS medium_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS low_severity
         FROM incidents i
         WHERE i.client_id = %s
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
         GROUP BY i.incident_rpt_dev_name
         ORDER BY incident_count DESC
     """
     try:
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         results = cursor.fetchall()
 
         for row in results:
@@ -758,6 +773,13 @@ def get_device_incidents(client_id):
 
 @app.route('/api/client/<int:client_id>/devices/with-vendor')
 def get_device_incidents_with_vendor(client_id):
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+
     conn = get_db_connection()
     if not conn:
         return jsonify({'error': 'Database connection failed'}), 500
@@ -769,20 +791,20 @@ def get_device_incidents_with_vendor(client_id):
             COUNT(*) AS incident_count,
             MIN(i.incident_first_seen_datetime) AS first_incident,
             MAX(i.incident_last_seen_datetime) AS last_incident,
-            SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity,
-            SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS medium_severity,
-            SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS low_severity
+            SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS medium_severity,
+            SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS low_severity
         FROM incidents i
         WHERE i.client_id = %s
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
         GROUP BY i.incident_rpt_dev_name
         ORDER BY incident_count DESC
     """
     try:
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         results = cursor.fetchall()
         cursor.close()
         conn.close()
@@ -867,6 +889,12 @@ def get_device_vendor():
 @app.route('/api/client/<int:client_id>/devices/vendors')
 def get_all_device_vendors(client_id):
     include_debug = request.args.get('debug', 'false').lower() == 'true'
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
 
     conn = get_db_connection()
     if not conn:
@@ -880,10 +908,10 @@ def get_all_device_vendors(client_id):
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
     """
     try:
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         devices = cursor.fetchall()
         cursor.close()
         conn.close()
@@ -962,6 +990,12 @@ def get_all_device_vendors(client_id):
 @app.route('/api/client/<int:client_id>/export')
 def export_client_data(client_id):
     include_vendor = request.args.get('include_vendor', 'false').lower() == 'true'
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
 
     conn = get_db_connection()
     if not conn:
@@ -981,21 +1015,21 @@ def export_client_data(client_id):
             COUNT(*) AS 'Incident Count',
             MIN(i.incident_first_seen_datetime) AS 'First Seen',
             MAX(i.incident_last_seen_datetime) AS 'Last Seen',
-            SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS 'High Severity',
-            SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS 'Medium Severity',
-            SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS 'Low Severity'
+            SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS 'High Severity',
+            SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS 'Medium Severity',
+            SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS 'Low Severity'
         FROM incidents i
         WHERE i.client_id = %s
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
         GROUP BY i.incident_rpt_dev_name
         ORDER BY COUNT(*) DESC
     """
 
     try:
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         results = cursor.fetchall()
         cursor.close()
         conn.close()
@@ -1067,6 +1101,13 @@ def export_client_data(client_id):
 
 @app.route('/api/dashboard/stats')
 def get_dashboard_stats():
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+
     conn = get_db_connection()
     if not conn:
         return jsonify({'error': 'Database connection failed'}), 500
@@ -1077,7 +1118,7 @@ def get_dashboard_stats():
             COUNT(DISTINCT c.id) AS total_clients,
             COUNT(DISTINCT i.incident_rpt_dev_name) AS total_devices,
             COUNT(*) AS total_incidents,
-            SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity_count,
+            SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity_count,
             COUNT(DISTINCT DATE(i.incident_first_seen_datetime)) AS active_days
         FROM incidents i
         INNER JOIN clients c ON i.client_id = c.id
@@ -1085,11 +1126,13 @@ def get_dashboard_stats():
             AND c.deleted_at IS NULL
             AND i.incident_rpt_dev_name IS NOT NULL 
             AND i.incident_rpt_dev_name != ''
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
     """
     try:
-        cursor.execute(query)
+        cursor.execute(query, (hours,))
         result = cursor.fetchone()
+        if result:
+            result['time_filter_hours'] = hours
         cursor.close()
         conn.close()
         return jsonify(result)
@@ -1101,6 +1144,13 @@ def get_dashboard_stats():
 
 @app.route('/api/top-devices')
 def get_top_devices():
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
+
     conn = get_db_connection()
     if not conn:
         return jsonify({'error': 'Database connection failed'}), 500
@@ -1117,13 +1167,13 @@ def get_top_devices():
             AND i.incident_rpt_dev_name != ''
             AND i.deleted_at IS NULL
             AND c.deleted_at IS NULL
-            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
         GROUP BY c.name, i.incident_rpt_dev_name
         ORDER BY incident_count DESC
         LIMIT 10
     """
     try:
-        cursor.execute(query)
+        cursor.execute(query, (hours,))
         results = cursor.fetchall()
         cursor.close()
         conn.close()
@@ -1204,6 +1254,52 @@ def select_device_vendor():
         return jsonify({'error': f'Error: {str(e)}'}), 500
 
 
+@app.route('/api/device/vendor/manual', methods=['POST'])
+def manual_device_vendor():
+    """Manually set vendor and model for a device"""
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No JSON data provided'}), 400
+    
+    device_name = data.get('device_name')
+    client_id = data.get('client_id') 
+    vendor = data.get('vendor', '').strip()
+    model = data.get('model', '').strip()
+    
+    if not all([device_name, client_id]):
+        return jsonify({'error': 'Missing required fields: device_name, client_id'}), 400
+    
+    if not vendor:
+        return jsonify({'error': 'Vendor name is required'}), 400
+        
+    if not model:
+        model = 'Unknown'
+    
+    try:
+        client_id = int(client_id)
+    except ValueError:
+        return jsonify({'error': 'Invalid client_id'}), 400
+    
+    try:
+        success = save_vendor_selection(client_id, device_name, vendor, model)
+        
+        if success:
+            logger.info(f"Manual vendor selection saved: client={client_id}, device={device_name}, vendor={vendor}, model={model}")
+            return jsonify({
+                'status': 'success',
+                'message': 'Manual vendor selection saved successfully',
+                'device_name': device_name,
+                'vendor': vendor,
+                'model': model
+            })
+        else:
+            return jsonify({'error': 'Failed to save manual vendor selection'}), 500
+            
+    except Exception as e:
+        logger.error(f"Error saving manual vendor selection: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
 @app.route('/api/device/vendor/selections')
 def get_device_vendor_selections_api():
     """Get all device vendor selections for a client"""
@@ -1230,6 +1326,12 @@ def get_device_vendor_selections_api():
 def get_vendor_incidents_summary():
     """Generate vendor incidents summary showing 'this vendor has this many incidents'"""
     client_id = request.args.get('client_id')
+    # Get time filter parameters
+    hours = request.args.get('hours', '24')
+    try:
+        hours = int(hours)
+    except ValueError:
+        hours = 24
     
     if not client_id:
         return jsonify({'error': 'Missing client_id parameter'}), 400
@@ -1252,9 +1354,9 @@ def get_vendor_incidents_summary():
             SELECT 
                 i.incident_rpt_dev_name AS device_name,
                 COUNT(*) AS incident_count,
-                SUM(CASE WHEN i.event_severity >= 3 THEN 1 ELSE 0 END) AS high_severity,
-                SUM(CASE WHEN i.event_severity = 2 THEN 1 ELSE 0 END) AS medium_severity,
-                SUM(CASE WHEN i.event_severity <= 1 THEN 1 ELSE 0 END) AS low_severity,
+                SUM(CASE WHEN i.event_severity_cat = 'HIGH' THEN 1 ELSE 0 END) AS high_severity,
+                SUM(CASE WHEN i.event_severity_cat = 'MEDIUM' THEN 1 ELSE 0 END) AS medium_severity,
+                SUM(CASE WHEN i.event_severity_cat = 'LOW' THEN 1 ELSE 0 END) AS low_severity,
                 MIN(i.incident_first_seen_datetime) AS first_incident,
                 MAX(i.incident_last_seen_datetime) AS last_incident
             FROM incidents i
@@ -1262,11 +1364,11 @@ def get_vendor_incidents_summary():
                 AND i.incident_rpt_dev_name IS NOT NULL 
                 AND i.incident_rpt_dev_name != ''
                 AND i.deleted_at IS NULL
-                AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+                AND i.incident_first_seen_datetime >= DATE_SUB(NOW(), INTERVAL %s HOUR)
             GROUP BY i.incident_rpt_dev_name
             ORDER BY COUNT(*) DESC
         """
-        cursor.execute(query, (client_id,))
+        cursor.execute(query, (client_id, hours))
         device_results = cursor.fetchall()
         cursor.close()
         conn.close()
@@ -1275,7 +1377,8 @@ def get_vendor_incidents_summary():
         vendor_selections = get_client_vendor_selections(client_id)
         vendor_selection_dict = {vs['device_name']: vs for vs in vendor_selections}
         
-        # Aggregate by vendor
+        # Aggregate by model first, then track vendors for each model
+        model_summary = {}
         vendor_summary = {}
         unselected_devices = []
         
@@ -1284,36 +1387,33 @@ def get_vendor_incidents_summary():
             vendor_selection = vendor_selection_dict.get(device_name)
             
             if vendor_selection:
-                vendor = vendor_selection['selected_vendor']
+                vendor = vendor_selection.get('selected_vendor', 'Unknown')
                 model = vendor_selection.get('selected_model', 'Unknown')
                 
-                if vendor not in vendor_summary:
-                    vendor_summary[vendor] = {
+                # Create model entry if it doesn't exist
+                model_key = f"{vendor}:{model}"  # Use vendor:model as key to avoid conflicts
+                if model_key not in model_summary:
+                    model_summary[model_key] = {
+                        'model': model,
                         'vendor': vendor,
                         'total_incidents': 0,
                         'high_severity': 0,
                         'medium_severity': 0,
                         'low_severity': 0,
                         'device_count': 0,
-                        'models': {},
                         'devices': []
                     }
                 
-                vendor_summary[vendor]['total_incidents'] += device['incident_count']
-                vendor_summary[vendor]['high_severity'] += device['high_severity'] or 0
-                vendor_summary[vendor]['medium_severity'] += device['medium_severity'] or 0
-                vendor_summary[vendor]['low_severity'] += device['low_severity'] or 0
-                vendor_summary[vendor]['device_count'] += 1
+                # Update model totals
+                model_summary[model_key]['total_incidents'] += device['incident_count']
+                model_summary[model_key]['high_severity'] += device['high_severity'] or 0
+                model_summary[model_key]['medium_severity'] += device['medium_severity'] or 0
+                model_summary[model_key]['low_severity'] += device['low_severity'] or 0
+                model_summary[model_key]['device_count'] += 1
                 
-                # Track models for this vendor
-                if model not in vendor_summary[vendor]['models']:
-                    vendor_summary[vendor]['models'][model] = 0
-                vendor_summary[vendor]['models'][model] += device['incident_count']
-                
-                # Add device details
-                vendor_summary[vendor]['devices'].append({
+                # Add device details to model
+                model_summary[model_key]['devices'].append({
                     'device_name': device['device_name'],
-                    'model': model,
                     'incident_count': device['incident_count'],
                     'high_severity': device['high_severity'] or 0,
                     'medium_severity': device['medium_severity'] or 0,
@@ -1321,6 +1421,13 @@ def get_vendor_incidents_summary():
                     'first_incident': device['first_incident'].strftime('%Y-%m-%d %H:%M:%S') if device['first_incident'] else None,
                     'last_incident': device['last_incident'].strftime('%Y-%m-%d %H:%M:%S') if device['last_incident'] else None
                 })
+                
+                # Also maintain vendor summary for summary lines
+                if vendor not in vendor_summary:
+                    vendor_summary[vendor] = {'total_incidents': 0, 'device_count': 0}
+                vendor_summary[vendor]['total_incidents'] += device['incident_count']
+                vendor_summary[vendor]['device_count'] += 1
+                
             else:
                 # Device without vendor selection
                 unselected_devices.append({
@@ -1334,7 +1441,17 @@ def get_vendor_incidents_summary():
                 })
         
         # Convert to list and sort by incident count
-        vendor_list = list(vendor_summary.values())
+        model_list = list(model_summary.values())
+        model_list.sort(key=lambda x: x['total_incidents'], reverse=True)
+        
+        # Create vendor list for summary lines
+        vendor_list = []
+        for vendor, data in vendor_summary.items():
+            vendor_list.append({
+                'vendor': vendor,
+                'total_incidents': data['total_incidents'],
+                'device_count': data['device_count']
+            })
         vendor_list.sort(key=lambda x: x['total_incidents'], reverse=True)
         
         # Create summary lines
@@ -1344,9 +1461,11 @@ def get_vendor_incidents_summary():
             summary_lines.append(line)
         
         return jsonify({
+            'model_summary': model_list,
             'vendor_summary': vendor_list,
             'unselected_devices': unselected_devices,
             'summary_lines': summary_lines,
+            'total_models': len(model_list),
             'total_vendors': len(vendor_list),
             'total_unselected_devices': len(unselected_devices)
         })
