@@ -26,6 +26,7 @@ import logging
 import pandas as pd
 import os
 from pathlib import Path
+import re
 
 # Load environment variables
 load_dotenv()
@@ -124,9 +125,14 @@ vendor_cache_lock = threading.Lock()
 # Excel file paths for data storage
 VENDOR_SELECTIONS_FILE = 'data/vendor_selections.xlsx'
 VENDOR_INCIDENTS_FILE = 'data/vendor_incidents.xlsx'
+VENDOR_RULES_FILE = 'data/vendor_rules.xlsx'
 
 # Ensure data directory exists
 Path('data').mkdir(exist_ok=True)
+
+# Cache for rules data
+rules_cache = {}
+rules_cache_lock = threading.Lock()
 
 
 def load_vendor_selections():
@@ -208,6 +214,188 @@ def get_client_vendor_selections(client_id):
     df = load_vendor_selections()
     selections = df[df['client_id'] == client_id]
     return selections.to_dict('records') if not selections.empty else []
+
+
+def fetch_fortisiem_rules():
+    """Fetch rules data from FortiSIEM API"""
+    logger.info("Fetching rules data from FortiSIEM API")
+    
+    if not FORTISIEM_CONFIG['password']:
+        logger.error("FORTISIEM_PASSWORD is empty. Cannot fetch rules.")
+        return None
+    
+    try:
+        url = f"https://{FORTISIEM_CONFIG['ip']}/phoenix/rest/dataRequest/rule"
+        auth = HTTPBasicAuth(FORTISIEM_CONFIG['username'], FORTISIEM_CONFIG['password'])
+        
+        response = requests.get(
+            url,
+            auth=auth,
+            verify=FORTISIEM_CONFIG['verify_ssl'],
+            timeout=60
+        )
+        
+        if response.status_code == 200:
+            logger.info("Successfully fetched rules data from FortiSIEM")
+            return response.text
+        else:
+            logger.error(f"Failed to fetch rules from FortiSIEM: HTTP {response.status_code}")
+            return None
+            
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error fetching rules from FortiSIEM: {e}")
+        return None
+
+
+def parse_rules_xml(xml_content):
+    """Parse XML content and extract vendor-rule mappings"""
+    logger.info("Parsing rules XML content")
+    
+    if not xml_content:
+        return {}
+    
+    try:
+        # Parse XML
+        root = ET.fromstring(xml_content)
+        vendor_rules = {}
+        
+        # Find all DataRequest elements (rules)
+        for data_request in root.findall('DataRequest'):
+            rule_id = data_request.get('id', '')
+            rule_name_elem = data_request.find('Name')
+            data_source_elem = data_request.find('DataSource')
+            function_elem = data_request.get('function', '')
+            incident_category = data_request.get('phIncidentCategory', '')
+            
+            if rule_name_elem is not None and data_source_elem is not None:
+                rule_name = rule_name_elem.text or ''
+                data_source = data_source_elem.text or ''
+                
+                # Extract vendors from data source using regex patterns
+                vendors = extract_vendors_from_datasource(data_source)
+                
+                rule_info = {
+                    'id': rule_id,
+                    'name': rule_name,
+                    'data_source': data_source,
+                    'function': function_elem,
+                    'category': incident_category,
+                    'vendors': vendors
+                }
+                
+                # Map each vendor to this rule
+                for vendor in vendors:
+                    if vendor not in vendor_rules:
+                        vendor_rules[vendor] = []
+                    vendor_rules[vendor].append(rule_info)
+        
+        logger.info(f"Parsed {len([rule for rules in vendor_rules.values() for rule in rules])} rules for {len(vendor_rules)} vendors")
+        return vendor_rules
+        
+    except ET.ParseError as e:
+        logger.error(f"Error parsing rules XML: {e}")
+        return {}
+    except Exception as e:
+        logger.error(f"Unexpected error parsing rules: {e}")
+        return {}
+
+
+def extract_vendors_from_datasource(data_source):
+    """Extract vendor names from data source string"""
+    vendors = set()
+    
+    if not data_source:
+        return list(vendors)
+    
+    # Common vendor patterns in data sources
+    vendor_patterns = {
+        'Fortigate': ['fortigate', 'fortiguard'],
+        'FortiEDR': ['fortiedr'],
+        'FortiDeceptor': ['fortideceptor'],
+        'FortiAnalyzer': ['fortianalyzer'],
+        'FortiWeb': ['fortiweb'],
+        'FortiRecon': ['fortirecon'],
+        'Microsoft': ['microsoft', 'windows'],
+        'Cisco': ['cisco'],
+        'Palo Alto': ['palo alto', 'paloalto'],
+        'Checkpoint': ['checkpoint', 'check point'],
+        'F5': ['f5'],
+        'TrendMicro': ['trendmicro', 'trend micro'],
+        'Symantec': ['symantec'],
+        'McAfee': ['mcafee'],
+        'HP': ['hp'],
+        'Dell': ['dell'],
+        'VMware': ['vmware'],
+        'Linux': ['linux'],
+        'Apache': ['apache'],
+        'Nginx': ['nginx'],
+        'Oracle': ['oracle'],
+        'MySQL': ['mysql'],
+        'PostgreSQL': ['postgresql'],
+        'MongoDB': ['mongodb']
+    }
+    
+    data_source_lower = data_source.lower()
+    
+    for vendor, patterns in vendor_patterns.items():
+        for pattern in patterns:
+            if pattern in data_source_lower:
+                vendors.add(vendor)
+                break
+    
+    # If no specific vendor found, try to extract from common formats
+    if not vendors:
+        # Try to extract vendor from formats like "VendorName via Syslog"
+        via_pattern = r'(\w+)\s+via\s+'
+        matches = re.findall(via_pattern, data_source, re.IGNORECASE)
+        for match in matches:
+            if len(match) > 2:  # Avoid short matches
+                vendors.add(match.title())
+    
+    return list(vendors) if vendors else ['Unknown']
+
+
+def load_rules_data(force_refresh=False):
+    """Load rules data from cache or fetch from FortiSIEM"""
+    with rules_cache_lock:
+        if not force_refresh and rules_cache:
+            logger.debug("Using cached rules data")
+            return rules_cache
+        
+        logger.info("Loading fresh rules data from FortiSIEM")
+        xml_content = fetch_fortisiem_rules()
+        
+        if xml_content:
+            vendor_rules = parse_rules_xml(xml_content)
+            rules_cache.update(vendor_rules)
+            logger.info(f"Loaded rules for {len(vendor_rules)} vendors into cache")
+            return rules_cache
+        else:
+            logger.warning("Failed to fetch rules data, returning empty cache")
+            return rules_cache
+
+
+def get_rules_for_vendors(vendor_list):
+    """Get all rules applicable to the given list of vendors"""
+    if not vendor_list:
+        return {}
+    
+    rules_data = load_rules_data()
+    vendor_rules = {}
+    
+    for vendor in vendor_list:
+        # Try exact match first
+        if vendor in rules_data:
+            vendor_rules[vendor] = rules_data[vendor]
+        else:
+            # Try fuzzy matching
+            for cached_vendor in rules_data.keys():
+                if vendor.lower() in cached_vendor.lower() or cached_vendor.lower() in vendor.lower():
+                    if vendor not in vendor_rules:
+                        vendor_rules[vendor] = []
+                    vendor_rules[vendor].extend(rules_data[cached_vendor])
+    
+    return vendor_rules
 
 
 def get_db_connection():
@@ -1480,6 +1668,147 @@ def get_vendor_incidents_summary():
         
     except Exception as e:
         logger.error(f"Error getting vendor incidents summary: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/vendors/rules')
+def get_vendor_rules():
+    """Get rules for specified vendors"""
+    vendor_list = request.args.getlist('vendors')  # Can accept multiple vendors
+    
+    if not vendor_list:
+        return jsonify({'error': 'Missing vendors parameter. Provide one or more vendor names.'}), 400
+    
+    try:
+        logger.info(f"Getting rules for vendors: {vendor_list}")
+        
+        vendor_rules = get_rules_for_vendors(vendor_list)
+        
+        # Count total rules
+        total_rules = sum(len(rules) for rules in vendor_rules.values())
+        
+        return jsonify({
+            'vendors': vendor_list,
+            'vendor_rules': vendor_rules,
+            'total_vendors': len(vendor_rules),
+            'total_rules': total_rules,
+            'summary': {
+                vendor: {
+                    'rule_count': len(rules),
+                    'functions': list(set(rule['function'] for rule in rules if rule['function'])),
+                    'categories': list(set(rule['category'] for rule in rules if rule['category']))
+                }
+                for vendor, rules in vendor_rules.items()
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting vendor rules: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/vendors/available')
+def get_available_vendors():
+    """Get list of all available vendors from rules data"""
+    try:
+        rules_data = load_rules_data()
+        
+        vendor_stats = {}
+        for vendor, rules in rules_data.items():
+            vendor_stats[vendor] = {
+                'rule_count': len(rules),
+                'functions': list(set(rule['function'] for rule in rules if rule['function'])),
+                'categories': list(set(rule['category'] for rule in rules if rule['category']))
+            }
+        
+        # Sort by rule count descending
+        sorted_vendors = sorted(vendor_stats.items(), key=lambda x: x[1]['rule_count'], reverse=True)
+        
+        return jsonify({
+            'vendors': dict(sorted_vendors),
+            'total_vendors': len(vendor_stats),
+            'total_rules': sum(len(rules) for rules in rules_data.values())
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting available vendors: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/rules/refresh', methods=['POST'])
+def refresh_rules_data():
+    """Force refresh of rules data from FortiSIEM"""
+    try:
+        logger.info("Manual refresh of rules data requested")
+        
+        # Clear the cache and reload
+        with rules_cache_lock:
+            rules_cache.clear()
+        
+        rules_data = load_rules_data(force_refresh=True)
+        
+        total_vendors = len(rules_data)
+        total_rules = sum(len(rules) for rules in rules_data.values())
+        
+        logger.info(f"Rules data refreshed: {total_vendors} vendors, {total_rules} rules")
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Rules data refreshed successfully',
+            'total_vendors': total_vendors,
+            'total_rules': total_rules,
+            'timestamp': datetime.now().isoformat()
+        })
+        
+    except Exception as e:
+        logger.error(f"Error refreshing rules data: {e}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
+
+@app.route('/api/vendors/rules/search')
+def search_vendor_rules():
+    """Search rules by vendor name or rule name"""
+    search_term = request.args.get('q', '').strip()
+    
+    if not search_term or len(search_term) < 2:
+        return jsonify({'error': 'Search term must be at least 2 characters long'}), 400
+    
+    try:
+        rules_data = load_rules_data()
+        matching_results = {}
+        
+        search_lower = search_term.lower()
+        
+        for vendor, rules in rules_data.items():
+            vendor_matches = []
+            
+            # Check if vendor name matches
+            vendor_matches_name = search_lower in vendor.lower()
+            
+            for rule in rules:
+                # Check if rule name matches
+                rule_matches = search_lower in rule['name'].lower()
+                
+                if vendor_matches_name or rule_matches:
+                    vendor_matches.append({
+                        **rule,
+                        'match_type': 'vendor' if vendor_matches_name else 'rule'
+                    })
+            
+            if vendor_matches:
+                matching_results[vendor] = vendor_matches
+        
+        total_matches = sum(len(rules) for rules in matching_results.values())
+        
+        return jsonify({
+            'search_term': search_term,
+            'matching_vendors': len(matching_results),
+            'total_matching_rules': total_matches,
+            'results': matching_results
+        })
+        
+    except Exception as e:
+        logger.error(f"Error searching vendor rules: {e}")
         return jsonify({'error': f'Error: {str(e)}'}), 500
 
 

@@ -405,6 +405,61 @@
     </div>
   </div>
 
+  <!-- Vendor to Rules Mapping Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="section-title mb-0">
+            <i class="bi bi-shield-check"></i> Vendor to Rules Mapping
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-info btn-sm" id="refreshRulesBtn" title="Refresh Rules Data">
+              <i class="bi bi-arrow-clockwise"></i> Refresh Rules
+            </button>
+            <button class="btn btn-outline-primary btn-sm" id="viewAllVendorsBtn" title="View All Available Vendors">
+              <i class="bi bi-building"></i> All Vendors
+            </button>
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="vendorSearchInput" 
+                     placeholder="Enter vendor names (comma-separated) e.g., Fortigate, Microsoft, Cisco">
+              <button class="btn btn-primary" id="searchVendorRulesBtn">
+                <i class="bi bi-search"></i> Get Rules
+              </button>
+            </div>
+            <small class="text-muted">Enter one or more vendor names to see their applicable security rules</small>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-funnel"></i></span>
+              <input type="text" class="form-control" id="ruleSearchInput" 
+                     placeholder="Search within results...">
+            </div>
+          </div>
+        </div>
+        
+        <div id="vendorRulesContainer">
+          <div class="empty-state">
+            <i class="bi bi-shield-exclamation"></i>
+            <h4>Vendor Rules Lookup</h4>
+            <p>Enter vendor names above to discover all applicable security rules and policies</p>
+          </div>
+        </div>
+        
+        <div id="vendorRulesLoadingSpinner" class="loading-spinner">
+          <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <p class="mt-2">Loading vendor rules...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-4 mb-4">
       <div class="section-title"><i class="bi bi-list-ul"></i> Select Client</div>
@@ -517,6 +572,7 @@
   let deviceTable = null;
   let severityChart = null;
   let deviceVendors = {}; // bulk cache
+  let vendorRulesData = {}; // vendor rules cache
   let currentDateRange = {
     start: moment().subtract(24, 'hours'),
     end: moment()
@@ -1732,6 +1788,450 @@
     
     showAlert('info', 'Reset to last 24 hours', 2000);
   });
+
+  // Vendor Rules Functions
+  function searchVendorRules() {
+    const vendorInput = $('#vendorSearchInput').val().trim();
+    
+    if (!vendorInput) {
+      showAlert('warning', 'Please enter at least one vendor name.');
+      return;
+    }
+    
+    // Parse comma-separated vendors
+    const vendors = vendorInput.split(',').map(v => v.trim()).filter(v => v.length > 0);
+    
+    if (vendors.length === 0) {
+      showAlert('warning', 'Please enter valid vendor names.');
+      return;
+    }
+    
+    const btn = $('#searchVendorRulesBtn');
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Loading...').prop('disabled', true);
+    
+    $('#vendorRulesContainer').hide();
+    $('#vendorRulesLoadingSpinner').show();
+    
+    // Build query parameters
+    const params = new URLSearchParams();
+    vendors.forEach(vendor => params.append('vendors', vendor));
+    
+    fetch(`/api/vendors/rules?${params.toString()}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showAlert('danger', `Error: ${data.error}`);
+          return;
+        }
+        
+        vendorRulesData = data;
+        displayVendorRules(data);
+        showAlert('success', `Found ${data.total_rules} rules for ${data.total_vendors} vendors`);
+      })
+      .catch(error => {
+        console.error('Error fetching vendor rules:', error);
+        showAlert('danger', 'Error loading vendor rules. Please try again.');
+        $('#vendorRulesContainer').html(`
+          <div class="empty-state">
+            <i class="bi bi-exclamation-triangle"></i>
+            <h4>Error Loading Rules</h4>
+            <p>Failed to load vendor rules. Please try again.</p>
+          </div>
+        `).show();
+      })
+      .finally(() => {
+        $('#vendorRulesLoadingSpinner').hide();
+        btn.html(originalText).prop('disabled', false);
+      });
+  }
+  
+  function displayVendorRules(data) {
+    let html = '';
+    
+    if (!data.vendor_rules || Object.keys(data.vendor_rules).length === 0) {
+      html = `
+        <div class="empty-state">
+          <i class="bi bi-search"></i>
+          <h4>No Rules Found</h4>
+          <p>No rules found for the specified vendors. Try different vendor names.</p>
+        </div>
+      `;
+    } else {
+      // Summary section
+      html += `
+        <div class="alert alert-info mb-4">
+          <h6><i class="bi bi-info-circle"></i> Summary</h6>
+          <div class="row">
+            <div class="col-md-4">
+              <strong>Total Vendors:</strong> ${data.total_vendors}
+            </div>
+            <div class="col-md-4">
+              <strong>Total Rules:</strong> ${data.total_rules}
+            </div>
+            <div class="col-md-4">
+              <strong>Searched:</strong> ${data.vendors.join(', ')}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Vendor accordion
+      html += `<div class="accordion" id="vendorRulesAccordion">`;
+      
+      let vendorIndex = 0;
+      for (const [vendor, rules] of Object.entries(data.vendor_rules)) {
+        const summary = data.summary[vendor];
+        const isFirst = vendorIndex === 0;
+        
+        html += `
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button ${isFirst ? '' : 'collapsed'}" type="button" 
+                      data-bs-toggle="collapse" data-bs-target="#vendor${vendorIndex}">
+                <div class="d-flex w-100 justify-content-between align-items-center me-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <span><strong>${escapeHtml(vendor)}</strong></span>
+                    <span class="badge bg-primary">${rules.length} rules</span>
+                  </div>
+                  <div class="d-flex gap-2">
+                    ${summary.functions.map(f => `<span class="badge bg-secondary">${f}</span>`).join(' ')}
+                    ${summary.categories.map(c => `<span class="badge bg-info">${c}</span>`).join(' ')}
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div id="vendor${vendorIndex}" class="accordion-collapse collapse ${isFirst ? 'show' : ''}" 
+                 data-bs-parent="#vendorRulesAccordion">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-hover vendor-rules-table">
+                    <thead>
+                      <tr>
+                        <th width="5%">#</th>
+                        <th width="35%">Rule Name</th>
+                        <th width="25%">Data Source</th>
+                        <th width="15%">Function</th>
+                        <th width="15%">Category</th>
+                        <th width="5%">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        rules.forEach((rule, ruleIndex) => {
+          html += `
+            <tr data-rule-id="${rule.id}" data-vendor="${vendor}">
+              <td>${ruleIndex + 1}</td>
+              <td>
+                <div class="rule-name" title="${escapeHtml(rule.name)}">
+                  ${escapeHtml(rule.name)}
+                </div>
+              </td>
+              <td>
+                <small class="text-muted">${escapeHtml(rule.data_source || 'N/A')}</small>
+              </td>
+              <td>
+                ${rule.function ? `<span class="badge bg-secondary">${escapeHtml(rule.function)}</span>` : 'N/A'}
+              </td>
+              <td>
+                ${rule.category ? `<span class="badge bg-info">${escapeHtml(rule.category)}</span>` : 'N/A'}
+              </td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm" onclick="viewRuleDetails('${rule.id}', '${escapeHtml(vendor)}')" 
+                        title="View Rule Details">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+        
+        html += `
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        vendorIndex++;
+      }
+      
+      html += `</div>`;
+    }
+    
+    $('#vendorRulesContainer').html(html).show();
+    
+    // Apply search filtering if there's text in the search box
+    const searchTerm = $('#ruleSearchInput').val().trim();
+    if (searchTerm) {
+      filterVendorRulesResults(searchTerm);
+    }
+  }
+  
+  function filterVendorRulesResults(searchTerm) {
+    const term = searchTerm.toLowerCase();
+    
+    $('.vendor-rules-table tbody tr').each(function() {
+      const row = $(this);
+      const ruleName = row.find('.rule-name').text().toLowerCase();
+      const dataSource = row.find('td:nth-child(3)').text().toLowerCase();
+      const functionName = row.find('td:nth-child(4)').text().toLowerCase();
+      const category = row.find('td:nth-child(5)').text().toLowerCase();
+      
+      const matches = ruleName.includes(term) || dataSource.includes(term) || 
+                     functionName.includes(term) || category.includes(term);
+      
+      row.toggle(matches);
+    });
+    
+    // Show/hide accordions based on visible rows
+    $('.accordion-item').each(function() {
+      const accordion = $(this);
+      const visibleRows = accordion.find('tbody tr:visible').length;
+      accordion.toggle(visibleRows > 0);
+    });
+  }
+  
+  function viewRuleDetails(ruleId, vendor) {
+    // Find the rule in our cached data
+    let ruleData = null;
+    if (vendorRulesData.vendor_rules && vendorRulesData.vendor_rules[vendor]) {
+      ruleData = vendorRulesData.vendor_rules[vendor].find(r => r.id === ruleId);
+    }
+    
+    if (!ruleData) {
+      showAlert('warning', 'Rule details not found.');
+      return;
+    }
+    
+    const modalHtml = `
+      <div class="modal fade" id="ruleDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">
+                <i class="bi bi-shield-check"></i> Rule Details
+              </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <strong>Vendor:</strong>
+                  <span class="vendor-badge ms-2">${escapeHtml(vendor)}</span>
+                </div>
+                <div class="col-md-6">
+                  <strong>Rule ID:</strong>
+                  <code>${escapeHtml(ruleData.id)}</code>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <strong>Rule Name:</strong>
+                <p class="mt-1">${escapeHtml(ruleData.name)}</p>
+              </div>
+              
+              <div class="mb-3">
+                <strong>Data Source:</strong>
+                <p class="mt-1 text-muted">${escapeHtml(ruleData.data_source || 'Not specified')}</p>
+              </div>
+              
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <strong>Function:</strong>
+                  <p class="mt-1">
+                    ${ruleData.function ? `<span class="badge bg-secondary">${escapeHtml(ruleData.function)}</span>` : 'Not specified'}
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <strong>Category:</strong>
+                  <p class="mt-1">
+                    ${ruleData.category ? `<span class="badge bg-info">${escapeHtml(ruleData.category)}</span>` : 'Not specified'}
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <strong>Detected Vendors:</strong>
+                <p class="mt-1">
+                  ${ruleData.vendors.map(v => `<span class="badge bg-success me-1">${escapeHtml(v)}</span>`).join('')}
+                </p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    $('#ruleDetailsModal').remove();
+    $('body').append(modalHtml);
+    new bootstrap.Modal(document.getElementById('ruleDetailsModal')).show();
+  }
+  
+  function refreshRulesData() {
+    const btn = $('#refreshRulesBtn');
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Refreshing...').prop('disabled', true);
+    
+    fetch('/api/rules/refresh', { method: 'POST' })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showAlert('danger', `Error: ${data.error}`);
+        } else {
+          showAlert('success', `Rules refreshed: ${data.total_vendors} vendors, ${data.total_rules} rules`);
+        }
+      })
+      .catch(error => {
+        console.error('Error refreshing rules:', error);
+        showAlert('danger', 'Error refreshing rules data. Please try again.');
+      })
+      .finally(() => {
+        btn.html(originalText).prop('disabled', false);
+      });
+  }
+  
+  function showAllVendors() {
+    const btn = $('#viewAllVendorsBtn');
+    const originalText = btn.html();
+    btn.html('<i class="bi bi-hourglass-split"></i> Loading...').prop('disabled', true);
+    
+    fetch('/api/vendors/available')
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showAlert('danger', `Error: ${data.error}`);
+          return;
+        }
+        
+        displayAllVendorsModal(data);
+      })
+      .catch(error => {
+        console.error('Error loading vendors:', error);
+        showAlert('danger', 'Error loading vendors data. Please try again.');
+      })
+      .finally(() => {
+        btn.html(originalText).prop('disabled', false);
+      });
+  }
+  
+  function displayAllVendorsModal(data) {
+    let modalHtml = `
+      <div class="modal fade" id="allVendorsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                <i class="bi bi-building"></i> All Available Vendors (${data.total_vendors})
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <input type="text" class="form-control" id="vendorModalSearch" 
+                       placeholder="Search vendors...">
+              </div>
+              
+              <div class="table-responsive">
+                <table class="table table-hover" id="vendorsTable">
+                  <thead>
+                    <tr>
+                      <th>Vendor</th>
+                      <th>Rules Count</th>
+                      <th>Functions</th>
+                      <th>Categories</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+    `;
+    
+    Object.entries(data.vendors).forEach(([vendor, stats]) => {
+      modalHtml += `
+        <tr data-vendor="${escapeHtml(vendor).toLowerCase()}">
+          <td><strong>${escapeHtml(vendor)}</strong></td>
+          <td><span class="badge bg-primary">${stats.rule_count}</span></td>
+          <td>
+            ${stats.functions.slice(0, 3).map(f => `<span class="badge bg-secondary me-1">${escapeHtml(f)}</span>`).join('')}
+            ${stats.functions.length > 3 ? `<span class="text-muted">+${stats.functions.length - 3} more</span>` : ''}
+          </td>
+          <td>
+            ${stats.categories.slice(0, 3).map(c => `<span class="badge bg-info me-1">${escapeHtml(c)}</span>`).join('')}
+            ${stats.categories.length > 3 ? `<span class="text-muted">+${stats.categories.length - 3} more</span>` : ''}
+          </td>
+          <td>
+            <button class="btn btn-outline-primary btn-sm" onclick="selectVendorFromModal('${escapeHtml(vendor)}')" 
+                    title="Use this vendor">
+              <i class="bi bi-plus-circle"></i> Use
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+    
+    modalHtml += `
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    $('#allVendorsModal').remove();
+    $('body').append(modalHtml);
+    
+    const modal = new bootstrap.Modal(document.getElementById('allVendorsModal'));
+    modal.show();
+    
+    // Add search functionality for vendors modal
+    $('#vendorModalSearch').on('keyup', function() {
+      const searchTerm = $(this).val().toLowerCase();
+      $('#vendorsTable tbody tr').each(function() {
+        const vendorName = $(this).data('vendor');
+        $(this).toggle(vendorName.includes(searchTerm));
+      });
+    });
+  }
+  
+  function selectVendorFromModal(vendor) {
+    const currentInput = $('#vendorSearchInput').val().trim();
+    const vendors = currentInput ? currentInput.split(',').map(v => v.trim()) : [];
+    
+    if (!vendors.includes(vendor)) {
+      vendors.push(vendor);
+      $('#vendorSearchInput').val(vendors.join(', '));
+    }
+    
+    $('#allVendorsModal').modal('hide');
+    showAlert('info', `Added ${vendor} to search list`);
+  }
+
+  // Event Handlers
+  $('#searchVendorRulesBtn').on('click', searchVendorRules);
+  
+  $('#vendorSearchInput').on('keypress', function(e) {
+    if (e.which === 13) { // Enter key
+      searchVendorRules();
+    }
+  });
+  
+  $('#ruleSearchInput').on('keyup', function() {
+    const searchTerm = $(this).val().trim();
+    filterVendorRulesResults(searchTerm);
+  });
+  
+  $('#refreshRulesBtn').on('click', refreshRulesData);
+  $('#viewAllVendorsBtn').on('click', showAllVendors);
 
   $(document).ready(function() {
     initializeDateRangePicker();

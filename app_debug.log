@@ -3523,3 +3523,21 @@
 2025-12-25 23:26:00,979 - __main__ - INFO - [get_db_connection:218] - Database connection established successfully
 2025-12-25 23:26:01,266 - __main__ - INFO - [log_response_info:83] - REQUEST END [ID: 4393806496] GET /api/vendor/incidents/summary - Status: 200 - Duration: 451.92ms
 2025-12-25 23:26:01,266 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [25/Dec/2025 23:26:01] "GET /api/vendor/incidents/summary?client_id=86&hours=24 HTTP/1.1" 200 -
+2025-12-25 23:38:41,269 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:38:41,275 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:38:41,275 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:38:41,275 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:38:41,275 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:38:41,311 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.157:5002
+2025-12-25 23:38:41,311 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-12-25 23:38:41,311 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-12-25 23:38:41,700 - __main__ - INFO - [<module>:51] - === PRODUCTION MODE - Standard logging active ===
+2025-12-25 23:38:41,706 - __main__ - INFO - [<module>:1825] - Starting Flask on 0.0.0.0:5002
+2025-12-25 23:38:41,706 - __main__ - INFO - [<module>:1826] - DB: 43.242.36.151:3306/ticketing_tool_techowl
+2025-12-25 23:38:41,706 - __main__ - INFO - [<module>:1827] - FortiSIEM: soc.techowl.in verify_ssl=False
+2025-12-25 23:38:41,706 - __main__ - INFO - [<module>:1828] - Debug: False
+2025-12-25 23:38:41,722 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-12-25 23:38:41,729 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 657-395-318
